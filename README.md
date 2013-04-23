@@ -1,2 +1,2 @@
-smartlauncher
+SmartLauncher
 =============

@@ -1,0 +1,114 @@
+This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: DP_Mach_Bohuslav_2013.aux
+The style file: plain.bst
+Database file #1: bibliography.bib
+Warning--to sort, need author, organization, or key in mobile_stats
+Warning--to sort, need author, organization, or key in market_share
+Warning--to sort, need author, organization, or key in pcmag
+Warning--to sort, need author, organization, or key in amplified
+Warning--to sort, need author, organization, or key in launcher
+Warning--to sort, need author, organization, or key in platform
+Warning--to sort, need author, organization, or key in heureka
+Warning--to sort, need author, organization, or key in ios_apps
+Warning--to sort, need author, organization, or key in pristupnost
+Warning--to sort, need author, organization, or key in blind_apps
+Warning--to sort, need author, organization, or key in iphone
+Warning--to sort, need author, organization, or key in iphone_anatomy
+Warning--to sort, need author, organization, or key in ipad_blind
+Warning--to sort, need author, organization, or key in iphone_blind
+Warning--to sort, need author, organization, or key in iphone_inside
+Warning--to sort, need author, organization, or key in android_blind
+Warning--to sort, need author, organization, or key in android_start
+Warning--to sort, need author, organization, or key in touch_yes_or_no
+Warning--to sort, need author, organization, or key in win8_blind
+Warning--to sort, need author, organization, or key in win8_blind2
+Warning--to sort, need author, organization, or key in win8_no_reader
+Warning--to sort, need author, organization, or key in iphone_blind_dev
+Warning--to sort, need author, organization, or key in android_blind_dev
+Warning--to sort, need author, organization, or key in cross_platform
+Warning--to sort, need author, organization, or key in android_dev
+Warning--to sort, need author, organization, or key in win_sdk
+Warning--to sort, need author, organization, or key in win8_sdk
+Warning--to sort, need author, organization, or key in iphone_shortcuts
+Warning--to sort, need author, organization, or key in ios_jailbreak
+Warning--to sort, need author, organization, or key in apple_about_jailbreak
+Warning--to sort, need author, organization, or key in iphone_launcher
+Warning--to sort, need author, organization, or key in android_launcher
+Warning--to sort, need author, organization, or key in android_adw_launcher
+Warning--to sort, need author, organization, or key in win_launcher
+Warning--to sort, need author, organization, or key in win_launcher2
+Warning--to sort, need author, organization, or key in apple_url_scheme
+Warning--to sort, need author, organization, or key in apple_app_launch
+Warning--to sort, need author, organization, or key in apple_app_launch2
+Warning--to sort, need author, organization, or key in android_app_launch
+Warning--to sort, need author, organization, or key in win_app_launch
+Warning--to sort, need author, organization, or key in apple_listener
+Warning--to sort, need author, organization, or key in apple_history
+Warning--to sort, need author, organization, or key in android_calendar
+Warning--to sort, need author, organization, or key in android_calendar2
+Warning--to sort, need author, organization, or key in android_calendar3
+Warning--to sort, need author, organization, or key in android_calendar4
+Warning--to sort, need author, organization, or key in android_calllog
+Warning--to sort, need author, organization, or key in android_sms
+Warning--to sort, need author, organization, or key in android_observer
+Warning--to sort, need author, organization, or key in android_gps
+Warning--to sort, need author, organization, or key in android_wifi
+Warning--to sort, need author, organization, or key in android_profile
+Warning--to sort, need author, organization, or key in win_calendar
+Warning--to sort, need author, organization, or key in win_incoming_event
+Warning--to sort, need author, organization, or key in win_location
+Warning--to sort, need author, organization, or key in win_wifi
+Warning--to sort, need author, organization, or key in android_location
+Warning--to sort, need author, organization, or key in android_location_manager
+Warning--to sort, need author, organization, or key in class
+Warning--to sort, need author, organization, or key in android_location_listener
+Warning--to sort, need author, organization, or key in interface
+Warning--to sort, need author, organization, or key in android_project_structure
+Warning--to sort, need author, organization, or key in active_record
+Warning--to sort, need author, organization, or key in ormlite
+Warning--to sort, need author, organization, or key in ormdroid
+Warning--to sort, need author, organization, or key in greendao
+Warning--to sort, need author, organization, or key in launchers_list
+You've used 67 entries,
+            2118 wiz_defined-function locations,
+            698 strings with 13770 characters,
+and the built_in function-call counts, 9672 in all, are:
+= -- 938
+> -- 67
+< -- 0
++ -- 68
+- -- 0
+* -- 471
+:= -- 1150
+add.period$ -- 134
+call.type$ -- 67
+change.case$ -- 134
+chr.to.int$ -- 0
+cite$ -- 134
+duplicate$ -- 536
+empty$ -- 1274
+format.name$ -- 0
+if$ -- 2279
+int.to.chr$ -- 0
+int.to.str$ -- 67
+missing$ -- 0
+newline$ -- 271
+num.names$ -- 0
+pop$ -- 268
+preamble$ -- 1
+purify$ -- 134
+quote$ -- 0
+skip$ -- 401
+stack$ -- 0
+substring$ -- 336
+swap$ -- 67
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 268
+warning$ -- 67
+while$ -- 0
+width$ -- 69
+write$ -- 471
+(There were 67 warnings)

@@ -1,0 +1,332 @@
+\begin{thebibliography}{10}
+
+\bibitem{android_blind_dev}
+{\em Accessibility}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/guide/topics/ui/accessibility/index.html.
+
+\bibitem{iphone_blind_dev}
+{\em Accessibility on iPhone}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.apple.com/library/ios/\#documentation/UserExperience/Conceptual/iPhoneAccessibility/Accessibility\_on\_iPhone/Accessibility\_on\_iPhone.html.
+
+\bibitem{android_adw_launcher}
+{\em adw-launcher-android}.
+\newblock [cit. 22.4.2013] \\ http://code.google.com/p/adw-launcher-android/.
+
+\bibitem{amplified}
+{\em Amplified Analytics - Customer Satisfaction with Windows smart phones rise
+  by 18\%}.
+\newblock [cit. 22.4.2013] \\
+  http://blog.amplifiedanalytics.com/2012/07/customer-satisfaction-with-windows-smart-phones-rise-by-18/.
+
+\bibitem{iphone_anatomy}
+{\em Anatomy of iPhone}.
+\newblock [cit. 22.4.2013] \\
+  http://ipod.about.com/od/introductiontotheiphone/ss/Anatomy-Of-Iphone-4.htm.
+
+\bibitem{android_sms}
+{\em Android 1.5: Reading SMS messages}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/900294/android-1-5-reading-sms-messages.
+
+\bibitem{active_record}
+{\em android-active-record}.
+\newblock [cit. 22.4.2013] \\ http://code.google.com/p/android-active-record/.
+
+\bibitem{android_calendar2}
+{\em Android Calendar Events}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/4302209/android-calendar-events.
+
+\bibitem{android_calllog}
+{\em Android: CallLog.Calls}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/reference/android/provider/CallLog.Calls.html.
+
+\bibitem{android_observer}
+{\em Android: ContentObserver}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/reference/android/database/ContentObserver.html.
+
+\bibitem{android_dev}
+{\em Android Developers}.
+\newblock [cit. 22.4.2013] \\ http://developer.android.com/.
+
+\bibitem{android_gps}
+{\em Android GPS on or off state}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/4300572/android-gps-on-or-off-state.
+
+\bibitem{android_app_launch}
+{\em android: how do i open another app from my app?}
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/2923265/android-how-do-i-open-another-app-from-my-app.
+
+\bibitem{android_calendar3}
+{\em Android: How to get calendar change events? Is calendar observer working?}
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/9440993/how-to-get-calendar-change-events-is-calendar-observer-working.
+
+\bibitem{android_launcher}
+{\em Android Launcher - Git repository}.
+\newblock [cit. 22.4.2013] \\
+  https://android.googlesource.com/platform/packages/apps/Launcher2.git.
+
+\bibitem{android_wifi}
+{\em Android WifiManager}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/reference/android/net/wifi/WifiManager.html\#isWifiEnabled().
+
+\bibitem{apple_about_jailbreak}
+{\em Apple oficiálně upozorňuje na negativa Jailbreaku}.
+\newblock [cit. 22.4.2013] \\
+  http://www.muj-ipad.cz/apple-oficialne-upozornuje-na-negativa-jailbreaku.
+
+\bibitem{apple_url_scheme}
+{\em Apple URL Scheme Reference}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.apple.com/library/ios/\#featuredarticles/iPhoneURLScheme\_Reference/Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40007899.
+
+\bibitem{iphone_launcher}
+{\em The Best App Launcher for iPhone}.
+\newblock [cit. 22.4.2013] \\
+  http://lifehacker.com/5836229/the-best-app-launcher-for-iphone.
+
+\bibitem{android_calendar}
+{\em Calendar Provider}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/guide/topics/providers/calendar-provider.html.
+
+\bibitem{apple_history}
+{\em Call history, SMS history, Email history in iOS}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/9822031/call-history-sms-history-email-history-in-ios.
+
+\bibitem{class}
+{\em Class (Java 2 Platform SE v1.4.2)}.
+\newblock [cit. 22.4.2013] \\
+  http://docs.oracle.com/javase/1.4.2/docs/api/java/lang/Class.html.
+
+\bibitem{launcher}
+{\em Co je to vlastně ten Launcher?}
+\newblock [cit. 22.4.2013] \\
+  http://www.androidmarket.cz/navod/co-je-to-vlastne-ten-launcher/.
+
+\bibitem{blind_apps}
+{\em Co se zabydlelo v mém Androidu}.
+\newblock [cit. 22.4.2013] \\
+  http://www.geekblind.com/2013/01/co-se-zabydlelo-v-mem-androidu.html.
+
+\bibitem{cross_platform}
+{\em Cross-platform}.
+\newblock [cit. 22.4.2013] \\ http://en.wikipedia.org/wiki/Cross-platform.
+
+\bibitem{win8_blind}
+{\em Ease of access settings improve Windows Phone 8 accessibility}.
+\newblock [cit. 22.4.2013] \\
+  http://allaboutwindowsphone.com/flow/item/15887\_Ease\_of\_access\_settings\_improv.php.
+
+\bibitem{android_location}
+{\em Google Android: Location Strategies}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/guide/topics/location/strategies.html.
+
+\bibitem{android_location_listener}
+{\em Google Android: LocationListener}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/reference/android/location/LocationListener.html.
+
+\bibitem{android_location_manager}
+{\em Google Android: LocationManager}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.android.com/reference/android/location/LocationManager.html.
+
+\bibitem{greendao}
+{\em greenDAO – Android ORM for SQLite}.
+\newblock [cit. 22.4.2013] \\ http://greendao-orm.com/.
+
+\bibitem{heureka}
+{\em Heureka}.
+\newblock [cit. 22.4.2013] \\ http://www.heureka.cz/.
+
+\bibitem{win_calendar}
+{\em How to access calendar data for Windows Phone}.
+\newblock [cit. 22.4.2013] \\
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh286421(v=vs.105).aspx.
+
+\bibitem{android_profile}
+{\em How to check if phone is mute, vibrate or loud in android}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/11985448/how-to-check-if-phone-is-mute-vibrate-or-loud-in-android.
+
+\bibitem{iphone_shortcuts}
+{\em How To Create Custom Home Screen Shortcuts For Settings Toggles Without
+  Jailbreaking}.
+\newblock [cit. 22.4.2013] \\
+  http://www.iphonehacks.com/2011/11/how-to-create-custom-home-screen-shortcuts-for-settings-toggles-without-jailbreaking.html.
+
+\bibitem{interface}
+{\em Interfaces (The Java Tutorials, Learning the Java Language, Interfaces and
+  Inheritance)}.
+\newblock [cit. 22.4.2013] \\
+  http://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html.
+
+\bibitem{apple_listener}
+{\em Introduction to Calendars and Reminders}.
+\newblock [cit. 22.4.2013] \\
+  http://developer.apple.com/library/ios/\#documentation/DataManagement/Conceptual/EventKitProgGuide/Introduction/Introduction.html.
+
+\bibitem{ios_jailbreak}
+{\em iOS jailbreaking}.
+\newblock [cit. 22.4.2013] \\ http://en.wikipedia.org/wiki/IOS\_jailbreaking.
+
+\bibitem{iphone_blind}
+{\em Jablečné doteky: Apple iPhone 4S a uživatelské dojmy poslepu}.
+\newblock [cit. 22.4.2013] \\
+  http://fanapple.cz/jablecne-doteky-apple-iphone-4s-a-uzivatelske-dojmy-poslepu/.
+
+\bibitem{android_start}
+{\em Jak začít se čtyřkovým Androidem?}
+\newblock [cit. 22.4.2013] \\
+  http://www.blind-android.cz/clanky/ice-cream-sandwich-pod-lupou/1.-dil--jak-zacit-se-ctyrkovym-androidem-.html.
+
+\bibitem{apple_app_launch}
+{\em Launch an app from within another (iPhone)}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/419119/launch-an-app-from-within-another-iphone.
+
+\bibitem{win_app_launch}
+{\em Launch another app from wp7}.
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/13496119/launch-another-app-from-wp7.
+
+\bibitem{apple_app_launch2}
+{\em Launching Your iPhone App Via Custom URL Scheme}.
+\newblock [cit. 22.4.2013] \\
+  http://iosdevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html.
+
+\bibitem{market_share}
+{\em Mobile OS market share}.
+\newblock [cit. 22.4.2013] \\
+  http://stats.areppim.com/stats/stats\_mobiosxtime\_eu.htm.
+
+\bibitem{mobile_stats}
+{\em Mobile statistics}.
+\newblock [cit. 22.4.2013] \\
+  http://www.mobilestatistics.com/mobile-statistics/.
+
+\bibitem{win8_no_reader}
+{\em Nokia talks accessibility, confirms there is no screen reader for Windows
+  Phone 8}.
+\newblock [cit. 22.4.2013] \\
+  http://wmpoweruser.com/nokia-talks-accessibility-confirms-there-is-no-screen-reader-for-windows-phone-8/.
+
+\bibitem{ormdroid}
+{\em ORMDroid}.
+\newblock [cit. 22.4.2013] \\ https://github.com/roscopeco/ormdroid.
+
+\bibitem{ormlite}
+{\em OrmLite - Lightweight Java ORM Supports Android and SQLite}.
+\newblock [cit. 22.4.2013] \\
+  http://ormlite.com/sqlite\_java\_android\_orm.shtml.
+
+\bibitem{pcmag}
+{\em PCMag - Readers choice awards}.
+\newblock [cit. 22.4.2013] \\
+  http://www.pcmag.com/article2/0,2817,2402202,00.asp.
+
+\bibitem{android_blind}
+{\em Přístupnost Androida 2.3.x pro zrakově postižené}.
+\newblock [cit. 22.4.2013] \\
+  http://www.androidmarket.cz/ruzne/pristupnost-androida-2-3-x-pro-zrakove-postizene/.
+
+\bibitem{pristupnost}
+{\em Přístupnost aplikací na Google Android}.
+\newblock [cit. 22.4.2013] \\
+  http://www.blind-android.cz/clanky/pristupnost-aplikaci.html.
+
+\bibitem{ipad_blind}
+{\em Přístupnost iPadu}.
+\newblock [cit. 22.4.2013] \\
+  http://poslepu.blogspot.cz/2011/05/ipad-standard-pristupnosti-dotykovych.html.
+
+\bibitem{win_launcher2}
+{\em Start Screen for Windows Phone 8}.
+\newblock [cit. 22.4.2013] \\
+  http://www.windowsphone.com/en-us/store/app/start-screen-for-windows-phone-8/621dc25e-9be7-497c-8ad9-7a621ea7ebf9.
+
+\bibitem{android_project_structure}
+{\em Struktura Google Android projektu}.
+\newblock [cit. 23.4.2013] \\
+  http://developer.android.com/tools/projects/index.html.
+
+\bibitem{iphone_inside}
+{\em V útrobách jednoho iPhonu}.
+\newblock [cit. 22.4.2013] \\ http://www.geekblind.cz/?p=59.
+
+\bibitem{android_calendar4}
+{\em What is the best way to handle updates when the calendar syncs new
+  events?}
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/9170903/what-is-the-best-way-to-handle-updates-when-the-calendar-syncs-new-events.
+
+\bibitem{ios_apps}
+{\em Wikipedia - iOS included applications}.
+\newblock [cit. 22.4.2013] \\
+  http://en.wikipedia.org/wiki/IOS\#Included\_applications.
+
+\bibitem{iphone}
+{\em Wikipedia - iPhone}.
+\newblock [cit. 22.4.2013] \\ http://cs.wikipedia.org/wiki/IPhone.
+
+\bibitem{platform}
+{\em Wikipedia - Počítačová platforma}.
+\newblock [cit. 22.4.2013] \\
+  http://cs.wikipedia.org/wiki/Platforma\_(informatika).
+
+\bibitem{launchers_list}
+{\em Wikipedia: List of Android launchers}.
+\newblock [cit. 22.4.2013] \\
+  http://en.wikipedia.org/wiki/List\_of\_Android\_launchers.
+
+\bibitem{win_launcher}
+{\em Windows Phone - Tiler}.
+\newblock [cit. 22.4.2013] \\
+  http://www.windowsphone.com/en-us/store/app/tiler/a28a37f8-48a5-429c-b8e7-fd04e1ccf5da.
+
+\bibitem{win8_blind2}
+{\em Windows Phone 8 Accessibility}.
+\newblock [cit. 22.4.2013] \\
+  http://www.freelists.org/post/real-eyes/ATI-Windows-Phone-8-Accessibility.
+
+\bibitem{win_incoming_event}
+{\em Windows Phone 8 support to capture SMS or a incoming call?}
+\newblock [cit. 22.4.2013] \\
+  http://stackoverflow.com/questions/13176545/windows-phone-8-support-to-capture-sms-or-a-incoming-call.
+
+\bibitem{win_location}
+{\em Windows Phone: GeoCoordinateWatcher.Status Property}.
+\newblock [cit. 22.4.2013] \\
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/system.device.location.geocoordinatewatcher.status(v=vs.105).aspx.
+
+\bibitem{win_sdk}
+{\em Windows Phone SDK}.
+\newblock [cit. 22.4.2013] \\ https://dev.windowsphone.com/en-us/downloadsdk.
+
+\bibitem{win8_sdk}
+{\em Windows Phone SDK 8.0}.
+\newblock [cit. 22.4.2013] \\
+  http://www.microsoft.com/en-us/download/details.aspx?id=35471.
+
+\bibitem{win_wifi}
+{\em WindowsPhone: DeviceNetworkInformation.IsWiFiEnabled Property}.
+\newblock [cit. 22.4.2013] \\
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.net.networkinformation.devicenetworkinformation.iswifienabled(v=vs.105).aspx.
+
+\bibitem{touch_yes_or_no}
+{\em Úvaha: nevidomí a dotykové telefony, bezradní či ne?}
+\newblock [cit. 22.4.2013] \\
+  http://geekblind.blogspot.cz/2012/10/uvaha-nevidomi-dotykove-telefony.html.
+
+\end{thebibliography}
