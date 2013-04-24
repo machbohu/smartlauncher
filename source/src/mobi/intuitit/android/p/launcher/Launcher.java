@@ -31,6 +31,8 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import cz.cvut.fel.managers.LaunchManager;
+
 import mobi.intuitit.android.content.LauncherIntent;
 import mobi.intuitit.android.content.LauncherMetadata;
 import mobi.intuitit.android.p.launcher.ScreenLayout.onScreenChangeListener;
@@ -1870,8 +1872,9 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 
     void startActivitySafely(Intent intent) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-// 		TODO notify listeners about app launch
-//        
+        
+        // Notify LaunchManager about application launch
+        LaunchManager.onAppLaunch(intent);
         Toast.makeText(this, intent.getComponent().toShortString(), Toast.LENGTH_LONG).show();
         Log.v(LOG_TAG, "Launched app: " + intent.getComponent().toShortString());
         

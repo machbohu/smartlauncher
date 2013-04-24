@@ -12,17 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * TODO modified
  */
 
 package mobi.intuitit.android.p.launcher;
 
 import android.app.Application;
+
+import com.roscopeco.ormdroid.ORMDroidApplication;
+
 import dalvik.system.VMRuntime;
 
 public class LauncherApplication extends Application {
     @Override
     public void onCreate() {
         VMRuntime.getRuntime().setMinimumHeapSize(4 * 1024 * 1024);
+        
+        // Initialize ORMDroid library
+        ORMDroidApplication.initialize(getApplicationContext());
 
         super.onCreate();
     }
