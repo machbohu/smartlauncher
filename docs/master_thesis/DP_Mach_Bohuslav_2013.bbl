@@ -68,6 +68,11 @@
 \newblock [cit. 22.4.2013] \\
   http://stackoverflow.com/questions/9440993/how-to-get-calendar-change-events-is-calendar-observer-working.
 
+\bibitem{android_i18n}
+{\em Android i18n}.
+\newblock [cit. 25.4.2013] \\
+  http://developer.android.com/guide/topics/resources/localization.html.
+
 \bibitem{android_launcher}
 {\em Android Launcher - Git repository}.
 \newblock [cit. 22.4.2013] \\

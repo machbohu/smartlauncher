@@ -30,11 +30,11 @@ import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
-import cz.cvut.fel.managers.LaunchManager;
+import java.util.List;
 
 import mobi.intuitit.android.content.LauncherIntent;
 import mobi.intuitit.android.content.LauncherMetadata;
+import mobi.intuitit.android.p.launcher.CellLayout.CellInfo;
 import mobi.intuitit.android.p.launcher.ScreenLayout.onScreenChangeListener;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -58,6 +58,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.LabeledIntent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.ContentObserver;
@@ -95,6 +96,7 @@ import android.widget.GridView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
+import cz.cvut.fel.managers.LaunchManager;
 
 /**
  * Default launcher application.
@@ -414,6 +416,9 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     protected void onResume() {
         super.onResume();
 
+        // [SmartLauncher] rewrite default screen with our applications
+        rewriteDefaultScreen();
+        
         if (restartOnScreenNumberChange())
             return;
 
@@ -445,6 +450,93 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
 
         mIsNewIntent = false;
+    }
+    
+    /**
+     * Iterate over given applications names and add them to the screen
+     * according to order in List<String>. Items are not stored permanently.
+     * 
+     * TODO remove permanently added items (applications, widgets ...)
+     * from database (i.e. user add icon on default screen)
+	 * 
+     * @param appNames - List of applications names, i.e. com.android.contacts
+     */
+    private void rewriteDefaultScreen(){
+    	final int COLUMN_CNT = 4;
+        List<String> appNames = new LinkedList<String>();
+        appNames.add("com.android.contacts");
+        appNames.add("com.android.email");
+        appNames.add("com.android.mms");
+        appNames.add("com.android.settings");
+        appNames.add("com.android.contacts");
+
+    	// Get default screen number (index)
+    	int defaultScreen = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
+                .getString(getString(R.string.key_default_screen), "2"))-1;
+    	// Remove old application icons (or saved widgets, icons etc.)
+    	// Permanently added to database won't be removed from database!
+        CellLayout defaultWorkspace = (CellLayout)mWorkspace.getChildAt(defaultScreen);
+        defaultWorkspace.removeAllViewsInLayout();
+        
+        // Get installed applications (MAIN intents)
+        final PackageManager manager = getPackageManager();
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        final List<ResolveInfo> apps = manager.queryIntentActivities(mainIntent, 0);
+
+        // Iterate over application names and add them to screen
+        int x=0, y=0, offset=1;
+        
+        for(String appName : appNames){
+	        ResolveInfo info = null;
+	        // TODO maybe exists better way for getting ResolveInfo for specific
+	        // application package name
+	        for(ResolveInfo app : apps){
+	        	if(app.activityInfo.applicationInfo.packageName.equals(appName)){
+	        		info = app;
+	        		break;
+	        	}
+	        }
+	        
+	        // TODO application is uninstalled -> should be removed from database?
+	        if(info == null){
+	        	continue;
+	        }
+	        
+	        ComponentName componentName = new ComponentName(
+	        		info.activityInfo.applicationInfo.packageName, info.activityInfo.name);
+	
+	        ApplicationInfo application = new ApplicationInfo();
+	        application.container = ItemInfo.NO_ID;
+	        application.title = info.loadLabel(manager);
+	        
+	        if (application.title == null) {
+	            application.title = info.activityInfo.name;
+	        }
+	
+	        application.icon = Utilities.createIconThumbnail(
+	        		info.activityInfo.loadIcon(manager), getApplicationContext());
+	        application.filtered = false;
+	
+	        application.setActivity(componentName,
+	                Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+	        
+	        // Create item position on the screen
+	    	CellInfo i = new CellInfo();
+	    	i.cellX = x;
+	    	i.cellY = y;
+	    	i.spanX = 1;
+	    	i.spanY = 1;
+	    	i.screen = defaultScreen;
+	    	
+	    	x += offset;
+	    	if(x==COLUMN_CNT){
+	    		offset *= -1;
+	    		y++;
+	    	}
+	    	
+	    	mWorkspace.addApplicationShortcut(application, i, false, false);
+    	}
     }
 
     @Override
@@ -1685,6 +1777,9 @@ public final class Launcher extends Activity implements View.OnClickListener, On
                 workspace.addWidget(view, widget, !desktopLocked);
                 break;
             }
+            
+            // [SmartLauncher] Rewrite default screen with our applications
+            rewriteDefaultScreen();
         }
 
         workspace.requestLayout();
@@ -1873,14 +1968,16 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     void startActivitySafely(Intent intent) {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         
-        // Notify LaunchManager about application launch
-        LaunchManager.onAppLaunch(intent);
-        Toast.makeText(this, intent.getComponent().toShortString(), Toast.LENGTH_LONG).show();
-        Log.v(LOG_TAG, "Launched app: " + intent.getComponent().toShortString());
-        
         try {
             startActivity(intent);
+            
+            // Notify LaunchManager about application launch
+            LaunchManager.onAppLaunch(intent);
+            if (BuildConfig.DEBUG) {
+            	Log.d(LOG_TAG, "Launched app: " + intent.getComponent().toShortString());
+            }
         } catch (ActivityNotFoundException e) {
+        	Log.d(LOG_TAG, "Launched app: " + intent.getComponent().toShortString());
             Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
         } catch (SecurityException e) {
             Toast.makeText(this, R.string.activity_not_found, Toast.LENGTH_SHORT).show();

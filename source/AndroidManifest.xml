@@ -70,6 +70,11 @@
         android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- SmartLauncher custom permissions -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:name="LauncherApplication"
@@ -138,6 +143,6 @@
         <!-- Initialize ORMDroid library -->
         <meta-data
   			android:name="ormdroid.database.name"
-  			android:value="smart_launcher" />
+  			android:value="smart_launcher.db" />
     </application>
 </manifest> 

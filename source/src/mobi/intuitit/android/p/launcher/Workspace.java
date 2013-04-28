@@ -12,6 +12,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ * 
+ * TODO notification about change
  */
 
 package mobi.intuitit.android.p.launcher;
@@ -901,11 +903,16 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
     void addApplicationShortcut(ApplicationInfo info, CellLayout.CellInfo cellInfo,
             boolean insertAtFirst) {
+    	addApplicationShortcut(info, cellInfo, insertAtFirst, true);
+    }
+    
+    void addApplicationShortcut(ApplicationInfo info, CellLayout.CellInfo cellInfo,
+            boolean insertAtFirst, boolean saveToDatabase) {
         final CellLayout layout = (CellLayout) getChildAt(cellInfo.screen);
         final int[] result = new int[2];
 
         layout.cellToPoint(cellInfo.cellX, cellInfo.cellY, result);
-        onDropExternal(result[0], result[1], info, layout, insertAtFirst);
+        onDropExternal(result[0], result[1], info, layout, insertAtFirst, saveToDatabase);
     }
 
     public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset, Object dragInfo) {
@@ -951,9 +958,14 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
     private void onDropExternal(int x, int y, Object dragInfo, CellLayout cellLayout) {
         onDropExternal(x, y, dragInfo, cellLayout, false);
     }
-
+    
     private void onDropExternal(int x, int y, Object dragInfo, CellLayout cellLayout,
             boolean insertAtFirst) {
+    	onDropExternal(x, y, dragInfo, cellLayout, insertAtFirst, true);
+    }
+
+    private void onDropExternal(int x, int y, Object dragInfo, CellLayout cellLayout,
+            boolean insertAtFirst, boolean saveToDatabase) {
         // Drag from somewhere else
         ItemInfo info = (ItemInfo) dragInfo;
 
@@ -985,8 +997,11 @@ public class Workspace extends WidgetSpace implements DropTarget, DragSource, Dr
 
         final LauncherModel model = Launcher.getModel();
         model.addDesktopItem(info);
-        LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
+        
+        if(saveToDatabase){
+        	LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
                 LauncherSettings.Favorites.CONTAINER_DESKTOP, mCurrentScreen, lp.cellX, lp.cellY);
+        }
     }
 
     /**

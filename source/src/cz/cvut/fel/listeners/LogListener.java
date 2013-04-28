@@ -1,7 +1,11 @@
 package cz.cvut.fel.listeners;
 
-import cz.cvut.fel.models.LogRecord;
+import java.util.List;
+
+import com.roscopeco.ormdroid.Entity;
+
+import cz.cvut.fel.models.log.LogRecord;
 
 public interface LogListener {
-	public void onLogSave(LogRecord l);
+	public List<Entity> onLogSave(LogRecord lr);
 }

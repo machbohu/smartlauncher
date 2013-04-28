@@ -20,20 +20,20 @@
 \contentsline {subsection}{\numberline {1.2.1}Senzory}{11}{subsection.1.2.1}
 \contentsline {subsection}{\numberline {1.2.2}Aktivita OS}{12}{subsection.1.2.2}
 \contentsline {subsection}{\numberline {1.2.3}Data ze senzor\IeC {\r u}}{13}{subsection.1.2.3}
-\contentsline {subsection}{\numberline {1.2.4}S\IeC {\'e}mantika dat}{13}{subsection.1.2.4}
+\contentsline {subsection}{\numberline {1.2.4}S\IeC {\'e}mantika dat}{14}{subsection.1.2.4}
 \contentsline {subsection}{\numberline {1.2.5}Interpretace dat}{14}{subsection.1.2.5}
 \contentsline {section}{\numberline {1.3}Re\IeC {\v s}er\IeC {\v s}e platforem opera\IeC {\v c}n\IeC {\'\i }ch syst\IeC {\'e}m\IeC {\r u}}{15}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Pod\IeC {\'\i }l na trhu}{15}{subsection.1.3.1}
-\contentsline {subsection}{\numberline {1.3.2}Spokojenost u\IeC {\v z}ivatel\IeC {\r u}}{17}{subsection.1.3.2}
+\contentsline {subsection}{\numberline {1.3.2}Spokojenost u\IeC {\v z}ivatel\IeC {\r u}}{16}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Cena koncov\IeC {\'y}ch za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{19}{subsection.1.3.3}
-\contentsline {subsection}{\numberline {1.3.4}Dostupn\IeC {\'e} aplikace}{19}{subsection.1.3.4}
+\contentsline {subsection}{\numberline {1.3.4}Dostupn\IeC {\'e} aplikace}{20}{subsection.1.3.4}
 \contentsline {subsection}{\numberline {1.3.5}Mo\IeC {\v z}nosti a omezen\IeC {\'\i }}{21}{subsection.1.3.5}
 \contentsline {subsubsection}{\numberline {1.3.5.1}HW tla\IeC {\v c}\IeC {\'\i }tka}{22}{subsubsection.1.3.5.1}
 \contentsline {subsubsection}{\numberline {1.3.5.2}Ozvu\IeC {\v c}en\IeC {\'\i } syst\IeC {\'e}mu}{23}{subsubsection.1.3.5.2}
 \contentsline {subsubsection}{\numberline {1.3.5.3}Accessibility API}{24}{subsubsection.1.3.5.3}
 \contentsline {subsubsection}{\numberline {1.3.5.4}V\IeC {\'y}voj aplikac\IeC {\'\i }}{24}{subsubsection.1.3.5.4}
 \contentsline {subsubsection}{\numberline {1.3.5.5}Nahrazen\IeC {\'\i }/modifikace launcheru}{25}{subsubsection.1.3.5.5}
-\contentsline {subsubsection}{\numberline {1.3.5.6}Parametrizovan\IeC {\'e} spou\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } aplikac\IeC {\'\i }}{25}{subsubsection.1.3.5.6}
+\contentsline {subsubsection}{\numberline {1.3.5.6}Parametrizovan\IeC {\'e} spou\IeC {\v s}t\IeC {\v e}n\IeC {\'\i } aplikac\IeC {\'\i }}{26}{subsubsection.1.3.5.6}
 \contentsline {subsubsection}{\numberline {1.3.5.7}Propojen\IeC {\'\i } se z\IeC {\'a}kladn\IeC {\'\i }mi funkcemi}{26}{subsubsection.1.3.5.7}
 \contentsline {subsection}{\numberline {1.3.6}V\IeC {\'y}sledky \IeC {\v r}e\IeC {\v s}er\IeC {\v s}e}{27}{subsection.1.3.6}
 \contentsline {section}{\numberline {1.4}S\IeC {\'e}mantick\IeC {\'y} model}{27}{section.1.4}
@@ -48,21 +48,22 @@
 \contentsline {subsection}{\numberline {1.6.2}Listener}{37}{subsection.1.6.2}
 \contentsline {subsection}{\numberline {1.6.3}Princip}{37}{subsection.1.6.3}
 \contentsline {section}{\numberline {1.7}Ukl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } log\IeC {\r u}}{39}{section.1.7}
-\contentsline {section}{\numberline {1.8}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{39}{section.1.8}
+\contentsline {section}{\numberline {1.8}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{40}{section.1.8}
 \contentsline {subsection}{\numberline {1.8.1}Seznam aplikac\IeC {\'\i }}{40}{subsection.1.8.1}
 \contentsline {subsection}{\numberline {1.8.2}Komunikace s u\IeC {\v z}ivatelem}{41}{subsection.1.8.2}
 \contentsline {chapter}{\chapternumberline {2}Realizace}{43}{chapter.2}
 \contentsline {section}{\numberline {2.1}Adres\IeC {\'a}\IeC {\v r}ov\IeC {\'a} struktura}{43}{section.2.1}
 \contentsline {section}{\numberline {2.2}Datab\IeC {\'a}ze}{45}{section.2.2}
-\contentsline {section}{\numberline {2.3}Launcher}{45}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}ADW.Launcher}{45}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.3}Launcher}{46}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}ADW.Launcher}{46}{subsection.2.3.1}
 \contentsline {subsection}{\numberline {2.3.2}Android Launcher Plus}{46}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Trebuchet Launcher}{46}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Extern\IeC {\'\i } knihovny}{46}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}OMRDroid}{47}{subsection.2.4.1}
-\contentsline {chapter}{Z{\' a}v{\v e}r}{49}{chapter*.27}
-\contentsline {chapter}{Literatura}{51}{section*.29}
-\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{57}{appendix.A}
-\contentsline {appendix}{\chapternumberline {B}Seznam ostatn\IeC {\'\i }ch p\IeC {\v r}\IeC {\'\i }loh}{59}{appendix.B}
-\contentsline {section}{\numberline {B.1}Tyflonet - dota\IeC {\v c}n\IeC {\'\i } politika}{59}{section.B.1}
-\contentsline {appendix}{\chapternumberline {C}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{63}{appendix.C}
+\contentsline {subsection}{\numberline {2.3.3}Trebuchet Launcher}{47}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Zobrazen\IeC {\'\i } a \IeC {\v r}azen\IeC {\'\i } aplikac\IeC {\'\i }}{47}{section.2.4}
+\contentsline {section}{\numberline {2.5}Extern\IeC {\'\i } knihovny}{48}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}OMRDroid}{49}{subsection.2.5.1}
+\contentsline {chapter}{Z{\' a}v{\v e}r}{51}{chapter*.27}
+\contentsline {chapter}{Literatura}{53}{section*.29}
+\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{59}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}Seznam ostatn\IeC {\'\i }ch p\IeC {\v r}\IeC {\'\i }loh}{61}{appendix.B}
+\contentsline {section}{\numberline {B.1}Tyflonet - dota\IeC {\v c}n\IeC {\'\i } politika}{61}{section.B.1}
+\contentsline {appendix}{\chapternumberline {C}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{65}{appendix.C}

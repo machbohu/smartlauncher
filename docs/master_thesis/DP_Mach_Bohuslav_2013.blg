@@ -65,50 +65,51 @@ Warning--to sort, need author, organization, or key in class
 Warning--to sort, need author, organization, or key in android_location_listener
 Warning--to sort, need author, organization, or key in interface
 Warning--to sort, need author, organization, or key in android_project_structure
+Warning--to sort, need author, organization, or key in android_i18n
 Warning--to sort, need author, organization, or key in active_record
 Warning--to sort, need author, organization, or key in ormlite
 Warning--to sort, need author, organization, or key in ormdroid
 Warning--to sort, need author, organization, or key in greendao
 Warning--to sort, need author, organization, or key in launchers_list
-You've used 67 entries,
+You've used 68 entries,
             2118 wiz_defined-function locations,
-            698 strings with 13770 characters,
-and the built_in function-call counts, 9672 in all, are:
-= -- 938
-> -- 67
+            701 strings with 13883 characters,
+and the built_in function-call counts, 9816 in all, are:
+= -- 952
+> -- 68
 < -- 0
-+ -- 68
++ -- 69
 - -- 0
-* -- 471
-:= -- 1150
-add.period$ -- 134
-call.type$ -- 67
-change.case$ -- 134
+* -- 478
+:= -- 1167
+add.period$ -- 136
+call.type$ -- 68
+change.case$ -- 136
 chr.to.int$ -- 0
-cite$ -- 134
-duplicate$ -- 536
-empty$ -- 1274
+cite$ -- 136
+duplicate$ -- 544
+empty$ -- 1293
 format.name$ -- 0
-if$ -- 2279
+if$ -- 2313
 int.to.chr$ -- 0
-int.to.str$ -- 67
+int.to.str$ -- 68
 missing$ -- 0
-newline$ -- 271
+newline$ -- 275
 num.names$ -- 0
-pop$ -- 268
+pop$ -- 272
 preamble$ -- 1
-purify$ -- 134
+purify$ -- 136
 quote$ -- 0
-skip$ -- 401
+skip$ -- 407
 stack$ -- 0
-substring$ -- 336
-swap$ -- 67
+substring$ -- 341
+swap$ -- 68
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 268
-warning$ -- 67
+type$ -- 272
+warning$ -- 68
 while$ -- 0
-width$ -- 69
-write$ -- 471
-(There were 67 warnings)
+width$ -- 70
+write$ -- 478
+(There were 68 warnings)

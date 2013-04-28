@@ -1,5 +1,6 @@
 package cz.cvut.fel.managers;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Executors;
@@ -23,17 +24,23 @@ public class TimeManager{
         times.put(l, seconds);
 	}
 	
-	public static void resetListener(TimeListener l){
-		removeTimer(l);
-		addListener(l, times.get(l));
+	public static void resetTimer(TimeListener l){
+		if(timers.containsKey(l)){
+			removeTimer(l);
+			addListener(l, times.get(l));
+		}
 	}
 	
 	public static void removeListener(TimeListener l){
-		removeTimer(l);
-		times.remove(l);
+		if(timers.containsKey(l)){
+			removeTimer(l);
+			times.remove(l);
+		}
 	}
 	
-	
+	public static Date getDateTime(){
+		return new Date();
+	}
 	
 // ---------- PRIVATE --------------------------------------------------
 

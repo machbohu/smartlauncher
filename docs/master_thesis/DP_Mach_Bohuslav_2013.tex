@@ -38,16 +38,14 @@ Rád bych poděkoval především vedoucímu práce panu Ing. Zdeňku Míkovcovi
 }
 \abstractCS{
 Tato práce se zabývá problematikou tvorby mobilní platformy pro efektivní spouštění aplikací v závislosti na 
-pravidelným aktivitách. Cílem je vytvořit aplikaci pro mobilní zařízení, která přináší inovativní vylepšení stávajících řešení, se zaměřením na limitované uživatele.
-
-V první části text detailněji popisuje tento problém, vymezuje cíle práce, podává přehled o stávajících řešeních a vývojových platformách. Dále popisuje provedený návrh řešení, požadavky na funkcionalitu aplikace a na některé implementační části. Následující část čtenáři přiblíží vlastní implementaci aplikace a její testování v průběhu vývoje. V závěrečné části je pak výsledná práce zhodnocena a nastíněna práce budoucí.
+pravidelným aktivitách. Cílem je vytvořit aplikaci pro mobilní zařízení, která přináší inovativní vylepšení stávajících řešení, se zaměřením na limitované uživatele (především zrakově postižené).
 }
 \abstractEN{
 Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.
 }
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{1} %volba Prohlášení
-\keywordsCS{Launcher, Accessibility, Kontext, Mobilita}
+\keywordsCS{Launcher, Accessibility, Kontext, Mobilita, Android}
 \keywordsEN{Nahraďte seznamem klíčových slov v angličtině oddělených čárkou.}
 
 \begin{document}
@@ -56,7 +54,7 @@ Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
 \begin{introduction}
-Mobilní zařízení se v posledních letech stala nedílnou součástí našich životů a není nadsázkou, řekneme-li, že si svůj běžný den bez těchto moderních vymožeností nedokážeme představit. Obyčejné aktivity, jako zasílání textových zpráv nebo uskutečnování a přijímání hovorů, si už ani neuvědomujeme. Vyřizování emailů, hledání spojení nebo rezervaci oblíbené restaurace můžeme pohodlně realizovat prostřednictvím mobilních aplikací, rychle a jednoduše. Díky tomu mnoho uživatelů již nepotřebuje osobní počítač a všechny potřebné úkony vyřídí přes svůj mobilní telefon nebo tablet.
+Mobilní zařízení se v posledních letech stala nedílnou součástí našich životů a není nadsázkou, řekneme-li, že si svůj běžný den bez těchto moderních vymožeností nedokážeme představit. Obyčejné aktivity, jako zasílání textových zpráv nebo uskutečňování a přijímání hovorů, si už ani neuvědomujeme. Vyřizování emailů, hledání spojení nebo rezervaci oblíbené restaurace můžeme pohodlně realizovat prostřednictvím mobilních aplikací, rychle a jednoduše. Díky tomu mnoho uživatelů již nepotřebuje osobní počítač a všechny potřebné úkony vyřídí přes svůj mobilní telefon nebo tablet.
 
 Počet aplikací se každým dnem zvyšuje a my objevujeme stále více takových, které nám usnadní každodenní úkony. Jejich instalace je díky specializovaným internetovým obchodům velmi jednoduchá a proto nikdo z nás nepřemýšlí nad tím, kolik jich vlastně v telefonu má. S rostoucím počtem nainstalovaných aplikací se stává hlavní menu čím dál tím víc nepřehledné a hledání zdlouhavější a obtížnější. Určitou formou řešení může být sdružení podobných/oblíbených aplikací do složek, čímž časovou ztrátu při hledání zmenšíme. Méně zkušení uživatelé však nemusí být s těmito možnostmi obeznámeni a jakékoliv složitější operace je mohou odradit.
 
@@ -78,7 +76,7 @@ Na základě těchto údajů se pokusíme navrhnout platformu využívající ak
 
 \subsection{Definice pojmů}
 
-Vytvoření definice pojmů, který bude shrnovat nejčastější pojmy spojené s vývojem aplikace, je velmi důležité z důvodu lepší a snadnější orientace čtenáře v celém textu. Jedná se vlastně o formu výkladového slovníku, jenž pomůže především těm, kteří jsou méně znalí dané problematiky. Pro tuto skupinu by se totiž výsledná práce mohla stát matoucí a těžko pochopitelnou.
+Vytvoření definice pojmů, který bude shrnovat nejčastější pojmy spojené s vývojem aplikace, je velmi důležité z důvodu lepší a snadnější orientace čtenáře v celém textu. Jedná se vlastně o formu výkladového slovníku, jenž pomůže především těm, kteří jsou méně znalí dané problematiky. Pro tuto skupinu by se totiž výsledná práce mohla stát matoucí a těžko uchopitelnou.
 
 \begin{description}
 \item[Uživatel] je entita, která nějakým způsobem interaguje s naší aplikací a využívá ji.
@@ -97,6 +95,8 @@ Takto zadefinované pojmy nám pomohou lépe se orientovat v probírané problem
 \subsection{Vymezení cílů práce}
 Jednotlivé cíle práce jsme v širším pohledu zmínili již v předchozích kapitolách. Během návrhu a vývoje aplikace chceme klást důraz na reflektování potřeb a zachycení pravidelného režimu specifických skupin uživatelů (zrakově postižení). Na jejich základě vybrat nejvhodnější budoucí platformu, která by jim i vývojářům poskytovala co nejkomfortnější služby, a detailně analyzovat vnitřek budoucího systému s důrazem na nízkou provázanost, vysokou flexibilitu a jednoduchou rozšiřitelnost vzhledem k předpokládané další práci.
 
+V zásadě se budeme potýkat se známým problémem, který bychom ale rádi řešili inovativním způsobem a nabídli tak uživateli větší užitek a efektivitu při používání výsledného produktu.
+
 Rozepsat v analyze funkcni nefunkcni pozadavky? nebo zde sepsat oblasti, ktere je potreba vyresit? (Jak se budou aplikace radit, jak se budou shromazdovat informace atp.)
 
 \end{introduction}
@@ -105,7 +105,7 @@ Rozepsat v analyze funkcni nefunkcni pozadavky? nebo zde sepsat oblasti, ktere j
 Správná a dostatečně detailní analýza projektu bude stěžejní součástí tohoto textu a výsledného produktu. Nejprve se budeme věnovat uživatelskému výzkumu, díky kterému budeme schopni modelovat pravidelný cyklus naší cílové skupiny. Popíšeme si jak by měla vypadat architektura systému a provedeme rešerši mobilních platforem...?
 
 \section{Uživatelský výzkum}
-Stěžejní částí naší práce je uživatelský výzkum uskutečněný, mimo jiné, ve spolupráci s ČVUT FEL, katedrou počítačové grafiky a interakce. Informace z provedených rozhovorů nám pomohou nahlédnout do světa uživatelů, pro které naši aplikaci vyvíjíme, a pochopit jejich potřeby a požadavky. Výstupním produktem pak bude sestavení pravidelného týdenního cyklu, který nám pomůže odhalit s jakým druhem problému se budeme reálně potýkat.
+Stěžejní částí naší práce je uživatelský výzkum uskutečněný ve spolupráci s ČVUT FEL, katedrou počítačové grafiky a interakce. Informace z provedených rozhovorů nám pomohou nahlédnout do světa uživatelů, pro které naši aplikaci vyvíjíme, a pochopit jejich potřeby a požadavky. Výstupním produktem pak bude sestavení pravidelného týdenního cyklu, který nám pomůže odhalit s jakým druhem problému se budeme reálně potýkat.
 
 \subsection{Interview}
 Seznam následujících několik otázek, které by nám měly pomoci získat od uživatelů potřebné informace pro další vývoj, sloužil jako volnější osnova v závislosti na směru, kterým se rozhovor ubíral. Výsledný počet položek byl během několika iterací (před započetím rozhovorů) redukován a jejich znění mírně upravováno vzhledem k tomu, že na jednotlivé rozhovory bylo vymezeno časové rozhraní cca 10-15 minut.
@@ -129,13 +129,13 @@ Dotazy nebyly omezeny pouze na mobilní zařízení, ale brali jsme v potaz i os
 \end{enumerate}
 
 \subsection{Vzorové scénáře}
-Na základě uživatelského výzkumu si v následujících podkapitolách budeme schopni popsat pravidelné režimy našich cílových skupin. Jedná se o uměle vytvořené ideální scénáře (vytvoření prototypů), které jsou složené ze všech participantů dané skupiny s přihlédnutím k logickému uspořádání aktivit. Z takto popsaných scénářů a jejich aktivit odehrávajících se v rámci dne/týdne můžeme vypozorovat, jak bude vypadat reálný problém, který se snažíme pokrýt, v praxi a jak se bude naše aplikace v průběhu času schopna učit.
+Na základě uživatelského výzkumu si v následujících podkapitolách budeme schopni popsat pravidelné režimy naší cílové skupiny. Jedná se o uměle vytvořený ideální scénář (vytvoření prototypu), který je složen ze všech participantů dané skupiny s přihlédnutím k logickému uspořádání aktivit. Z takto popsaného scénáře a jeho aktivit odehrávajících se v rámci dne/týdne můžeme vypozorovat, jak bude vypadat reálný problém, který se snažíme pokrýt, v praxi a jak se bude naše aplikace v průběhu času schopna učit.
 
 \subsubsection*{Rozčlenění aktivit}
 Abychom mohli lépe odhadnout horizont učení, stanovili jsme si několik kritérií pro určitou formu kategorizace jednotlivých aktivit. Jmenovitě to jsou četnost, pravidelnost a variabilita. Na základě takto zvolených údajů můžeme přibližně stanovit, jak dlouho bude aplikaci trvat vysledování jednotlivých pravidelností v rámci našeho scénáře.
 
 \subsubsection*{Četnost a pravidelnost}
-Zcela záměrně uvádíme tato dvě kritéria ve společné kapitole, protože spolu velice úzce souvisí, jak si následně vysvětlíme. Zjednodušeně se dá na úvod říci, že čím četnější a pravidelnější aktivita, tím lépe a rychleji se ji bude aplikace schopna naučit.
+Zcela záměrně uvádíme tato dvě kritéria ve společné kapitole, protože spolu velice úzce souvisí, jak si následně vysvětlíme. Zjednodušeně bychom mohli říci, že čím četnější a pravidelnější aktivita, tím lépe a rychleji se ji bude aplikace schopna naučit.
 
 Sledováním četnosti výskytu dané aktivity ve scénáři získáme přehled o cyklech, ve kterých se jednotlivé činnosti objevují, a také o tom, jaký má uživatel režim. Ty, které se vyskytují denně se bude aplikace schopna učit podstatně rychleji, než například ty, které se vyskytují jednou týdně nebo dokonce měsíčně. Díky stanovení pravidelnosti budeme mít přehled o tom, jak obtížné bude pro aplikaci najít tyto pravidelné cykly v záplavě sledovaných dat. Ideálním případem je pro nás absolutně pravidelný výskyt bez mezer (časových úseků vybočujících z pravidelného řádu).
 
@@ -157,7 +157,7 @@ Výskyt aktivity může a nemusí být striktně vázán na časové období (po
 Variabilitu výskytu budeme popisovat na stupnici od jedné do pěti (podobně jako u pravidelnosti), přičemž jedna udává pevný čas a pět naproti tomu velké časové rozmezí.
 
 \subsubsection*{Nevidomí}
-V prvním scénáři se pokusíme popsat možný pravidelný rytmus nevidomého člověka tak, jak jsme ho zaznamenali během našich rozhovorů.
+V tomto scénáři se pokusíme namodelovat prototyp pravidelného rytmu nevidomého člověka tak, jak jsme ho zaznamenali během našich rozhovorů.
 
 \paragraph{Všední den}
 \begin{itemize}
@@ -170,7 +170,7 @@ V prvním scénáři se pokusíme popsat možný pravidelný rytmus nevidomého 
         \item nabídnutí aplikace pro poslech rádia, emailového klienta, aplikace s počasím
         \item četnost: denní | pravidelnost: 1 | variabilita: 1-2
 \end{itemize}
-    \item \textbf{8:30} - poslech pravidelného pořadu “Jak to vidí” na ČRo 2
+    \item \textbf{8:30} - poslech pravidelného pořadu \uv{Jak to vidí} na ČRo 2
 \begin{itemize}
         \item nabídnutí aplikace pro poslech rádia (vstupní parametr - frekvence ČRo 2)
         \item četnost: denní | pravidelnost: 2 | variabilita: 1
@@ -258,14 +258,14 @@ Architektura systému bude obsahovat několik nezbytných vrstev. Její hrubý n
 \item    Interpretace dat
 \end{itemize}
 
-Jednotlivé vrstvy budou propojeny procesy a vznikne nám tak stromová struktura, jejímž kořenem je vrstva “Interpretace dat”. Ta bude pro svoji funkčnost využívat informace ze dvou podřízených vrstev a to “Data ze senzorů” a “Sémantika dat”. “Data ze senzorů” pak budou shromažďovat informace z dostupných senzorů ve vrstvě “Senzory”. Pokud to bude implementace vyžadovat, nemělo by být překážkou přistupování i o více než jedno patro hlouběji ve stromové struktuře.
+Jednotlivé vrstvy budou propojeny procesy a vznikne nám tak stromová struktura, jejímž kořenem je vrstva \uv{Interpretace dat}. Ta bude pro svoji funkčnost využívat informace ze dvou podřízených vrstev a to \uv{Data ze senzorů} a \uv{Sémantika dat}. \uv{Data ze senzorů} společně s vrstvou \uv{Aktivita OS} pak budou shromažďovat informace z dostupných senzorů ve vrstvě \uv{Senzory} a stavu operačního systému. Pokud to bude implementace vyžadovat, nemělo by být překážkou přistupování i o více než jedno patro hlouběji ve stromové struktuře.
 
 \subsection{Senzory}
 Seznam uvažovaných senzorů, které bychom mohli v rámci naší aplikace monitorovat, je následující:
 
 \begin{itemize}
 \item    Síť, GPS, Wi-Fi, Bluetooth, Internet
-\item    Akcelerometr, Okolní teplota, Gravitace, Gyroskop, Okolní světlo, Magnetické pole, Okolní tlak, Proximity (“blízkost” objektu, např. přiložení k uchu), Okolní vlhkost, Rotace
+\item    Akcelerometr, Okolní teplota, Gravitace, Gyroskop, Okolní světlo, Magnetické pole, Okolní tlak, Proximity (\uv{blízkost} objektu, např. přiložení k uchu), Okolní vlhkost, Rotace
 \item    Hovory, SMS, Kalendář, Čas + datum, Spuštěné aplikace
 \item    Klávesnice, Kamera, Mikrofon
 \item    Interakce s displejem
@@ -274,13 +274,13 @@ Seznam uvažovaných senzorů, které bychom mohli v rámci naší aplikace moni
 
 V souvislosti s výše uvedeným seznamem musíme brát na vědomí, že na trhu je v současné době dostupné velké množství zařízení, přičemž každé z nich může mít rozlišné vybavení (senzory). Ty mohou být navíc ne/dostupné v čase, například aplikace nebude schopna získávat informace z modulu GPS v případě, že se bude zařízení nacházet v budově nebo analogicky pro modul Síť, pokud se bude nacházet mimo pokrytí signálem. Všechny tyto aspekty budou ovlivňovat spolehlivost a přesnost následně získaných dat.
 
-Hlavním úkolem této vrstvy proto bude poskytovat informace o aktuálně připojených (dostupných) senzorech (v naší terminologii je budeme vnímat jako připojitelné moduly) a jejich vlastnostech. Nemusí se však nutně jednat o “fyzické” zařízení, data můžeme získávat například z kalendáře, poslaných SMS, uskutečněných hovorů atp.
+Hlavním úkolem této vrstvy proto bude poskytovat informace o aktuálně připojených (dostupných) senzorech (v naší terminologii je budeme vnímat jako připojitelné moduly) a jejich vlastnostech. Nemusí se však nutně jednat o \uv{fyzické} zařízení, data můžeme získávat například z kalendáře, poslaných SMS, uskutečněných hovorů atp.
 
 \subsubsection*{Síť}
-Kvalita informací získaných z tohoto senzoru je závislá na kvalitě signálu a místním pokrytí. Tento senzor zároveň ovlivňuje kvalitu senzoru “Internet” v případě, že není dostupné Wi-Fi připojení. Může tak docházet k absenci internetového připojení na základě nedostupnosti síťového pokrytí nebo jeho zhoršení v případě místní lokace. Například ve velkých městech je mnohonásobně kvalitnější pokrytí a internetové připojení díky dostupnosti lepší generace síťe. Těch existuje několik - v ČR je aktuálně nejlepší možná dostupná síť třetí generace (velká města).
+Kvalita informací získaných z tohoto senzoru je závislá na kvalitě signálu a místním pokrytí. Tento senzor zároveň ovlivňuje kvalitu senzoru \uv{Internet} v případě, že není dostupné Wi-Fi připojení. Může tak docházet k absenci internetového připojení na základě nedostupnosti síťového pokrytí nebo jeho zhoršení v případě místní lokace. Například ve velkých městech je mnohonásobně kvalitnější pokrytí a internetové připojení díky dostupnosti lepší generace síťe. Těch existuje několik - v ČR je aktuálně nejlepší možná dostupná síť třetí generace (velká města).
 
 \subsubsection*{API}
-Prostřednictvím bluetooth nebo internetu a nainstalovaných aplikací v našem zařízení bychom mohli docílit rozšíření dostupných interních senzorů o senzory externí, což by nám následně umožnilo přistupovat k informacím mimo “fyzické” senzory aktuálního zařízení. Mohlo by se jednat například o externí zařízení typu výrobní linka, osobní automobil nebo monitor zdravotního stavu. Systém výrobní linky tak může poskytovat informace o
+Prostřednictvím bluetooth nebo internetu a nainstalovaných aplikací v našem zařízení bychom mohli docílit rozšíření dostupných interních senzorů o senzory externí, což by nám následně umožnilo přistupovat k informacím mimo \uv{fyzické} senzory aktuálního zařízení. Mohlo by se jednat například o externí zařízení typu výrobní linka, osobní automobil nebo monitor zdravotního stavu. Systém výrobní linky tak může poskytovat informace o
 
 \begin{itemize}
 \item    upozorněních.
@@ -311,8 +311,10 @@ Pokud bychom byli schopni sledovat aktivitu operačního systému, pomohlo by n�
 \item    Aktuální stav OS (stav baterie, síla signálu)
 \end{itemize}
 
+Možnosti získávání potřebných dat jsou však silně závislé od operačního systému, který zvolíme pro budoucí implementaci. Z tohoto důvodu nejsme nyní schopni určit, zda se nám podaří jednotlivé položky nějakým způsobem monitorovat.
+
 \subsection{Data ze senzorů}
-Na základě informací z dostupných senzorů a z aktivit OS budeme schopni získat data pro další zpracování, např.:
+Na základě informací z dostupných senzorů a z aktivit OS budeme schopni získat data pro další zpracování, například:
 
 \begin{itemize}
 \item    Poloha
@@ -329,10 +331,10 @@ Každá z výše uvedených položek bude přistupovat k informacím z několika
 
 Jak jsme si nastínili v předchozím odstavci, v rámci naší aplikace nás budou zajímat dva druhy dat. Zaprvé jsou to aktuálně reportované informace ze senzorů a zadruhé je nutné brát v potaz i informace dlouhodobého rázu (především periodicita). Jedná se tedy například o opakované činnosti/aktivity, přičemž data mohou pocházet ze záznamů v kalendáři, ale také ze zaznamenaných a pravidelně se opakujících činností/aktivit.
 
-Takto získaná data bude následně popisovat vrstva “Sémantika dat”. Z tohoto důvodu musí být data popsána nějakým formálním jazykem, pro který budeme schopni tuto vrstvu definovat (například XML). Do budoucna musíme rozhodnout, jak ji budeme realizovat pro data aktuální (nebudou persistentně uložena) a dlouhodobá (budou persistentně uložena).
+Takto získaná data bude následně popisovat vrstva \uv{Sémantika dat}. Z tohoto důvodu musí být data popsána nějakým formálním jazykem, pro který budeme schopni tuto vrstvu definovat (například XML). Do budoucna musíme rozhodnout, jak ji budeme realizovat pro data aktuální (nebudou persistentně uložena) a dlouhodobá (budou persistentně uložena).
 
 \subsection{Sémantika dat}
-Popis (neboli sémantika) dat bude ve spojení s vrstvou “Data ze senzorů” sloužit pro využití vrstvou “Interpretace dat”. Předpokládáme, že se v rámci návrhu budeme muset vypořádat s problémem rozličné fyzické interpretace dat aktuálních a dlouhodobých. Aktuální data v některých případech nebude nutné archivovat a proto musí tato vrstva v souvislosti s vrstvou “Data ze senzorů” popisovat obě formy dat abstraktním způsobem tak, aby se s nimi dalo pracovat co nejuniverzálněji.
+Popis (neboli sémantika) dat bude ve spojení s vrstvou \uv{Data ze senzorů} sloužit pro využití vrstvou \uv{Interpretace dat}. Předpokládáme, že se v rámci návrhu budeme muset vypořádat s problémem rozličné fyzické interpretace dat aktuálních a dlouhodobých. Aktuální data v některých případech nebude nutné archivovat a proto musí tato vrstva v souvislosti s vrstvou \uv{Data ze senzorů} popisovat obě formy dat abstraktním způsobem tak, aby se s nimi dalo pracovat co nejuniverzálněji.
 
 Pro samotnou implementaci této vrstvy předběžně počítáme s využitím projektu OWL ve verzi Lite, maximálně DL (jena.apache.org).
 
@@ -343,7 +345,7 @@ Okamžitě po startu bude aplikace schopná získávat data z dostupných senzor
 
 Při tomto procesu bude tedy nutné zjistit informace například o omezení, se kterými se uživatel potýká (slepota, hluchota, omezená pohyblivost atp.). Teprve na základě toho pak může aplikace korektně interpretovat získaná data. Uveďme si jednoduchý příklad s okolním prostředím. Uživatel postižený hluchotou bude okolní prostředí považovat za rušivé v případě nepříjemných světelných podmínek (ostré světlo, blikající světla atp.). To ovšem nutně nemusí být rušivé pro někoho, kdo je nevidomý. Tomu může naopak vadit vysoká hladina zvuku nebo nepříjemná frekvence.
 
-Požadovaného výsledku bychom mohli docílit tím, že při prvním spuštění necháme uživatele zodpovědět několik základních otázek, které nám pomohou se “odpíchnout” a vytvoříme tak pro aplikaci lepší startovní pozici.
+Požadovaného výsledku bychom mohli docílit tím, že při prvním spuštění necháme uživatele zodpovědět několik základních otázek, které nám pomohou se \uv{odpíchnout} a vytvoříme tak pro aplikaci lepší startovní pozici.
 
 \subsubsection*{Proces interpretace}
 TODO text - ma cenu zde popsat tento proces, vzhledem k tomu, ze tak aplikace nyni nefunguje?
@@ -353,7 +355,7 @@ Graf průběhu interpretace vizte soubor “Proces interpretace” v adresáři 
 \section{Rešerše platforem operačních systémů}
 Předtím, než začneme s implementací naší aplikace, je nutné zvolit vhodnou platformu operačního systému. V následujících kapitolách si rozvedeme jednotlivá kriteria, se kterými konfrontujeme předem vytipované platformy a na základě takto získaných poznatků se pak rozhodneme, která z nich bude pro naše účely nejvhodnější.
 
-Na základě povrchového prozkoumání aktuálního trhu a statistik prodejů jednotlivých zařízení, jsme dospěli k závěru, že se budeme primárně zabývat platformami
+Na základě předběžného prozkoumání aktuálního trhu a statistik prodejů jednotlivých zařízení, jsme dospěli k závěru, že se budeme primárně zabývat platformami
 
 \begin{itemize}
 \item    Apple iOS,
@@ -605,7 +607,7 @@ První část grafu popisuje tabulky pro skladování logovacích informací a j
 slouží jako určitá forma středobodu všech logovacích záznamů a je tedy provázaný se všemi tabulkami, které shromažďují informace o uživatelské nebo systémové činnosti. Vždy musí mít vazbu na záznam v tabulce Timestamp, který určuje časovou linearitu. Ostatní vazby jsou nepovinné (tedy k danému času nemusí existovat záznamy v ostatních tabulkách), protože není zaručeno, že tyto informace budou v danou chvíli dostupné. Pokud v následujících kapitolách zmiňujeme sousloví “informace o aktuálních...” máme tím na mysli právě záznamy vztažené k tomuto časovému záznamu.
 
 \item[BTS]
-obsahuje informace o BTS, ke které je telefon aktuálně připojen. V případě konkrétního záznamu se uchovává jméno BTS.
+obsahuje informace o BTS, ke které je telefon aktuálně připojen. V případě konkrétního záznamu se uchovává kód lokace a její ID.
 
 \item[WiFiNetwork]
 obsahuje informace o aktuálních Wi-Fi sítích dostupných telefonu. V případě konkrétního záznamu se uchovává jméno Wi-Fi sítě a zda je k ní telefon připojen.
@@ -698,10 +700,10 @@ Je zřejmé, že než dojde k uložení jednotlivých instanciovaných entit, je
 \section{Uživatelské rozhraní}
 Během implementace našeho projektu se z časových důvodů a vzhledem ke stanoveným cílům nebudeme zabývat hlavní viditelnou součástí, kterou je Launcher. Existuje několik jeho v principu podobných verzí s dostupným zdrojovým kódem, ze kterých vybereme tu nejvhodnější a využijeme ji v našem projektu. Nám tato volba ušetří čas a umožní se soustředit na hlavní cíle projektu, navíc díky tomu bude zaručeno, že nebudeme znovu vynalézat kolo a nutit uživatele zvykat si na něco jiného než co poměrně důvěrně zná a již se s tím naučil pracovat. Jak budeme zobrazovat seznam relevantních aplikací a komunikovat s uživatelem si popíšeme v následujících kapitolách.
 
-\subsection{Seznam aplikací}
+\subsection{Seznam aplikací}\label{app_list}
 Upravovat stávající uživatelské rozhraní tedy budeme pouze minimálně, především z důvodu změny domovské obrazovky, na kterou chceme umístit seznam aplikací. Ten se bude měnit podle toho, jaký bude aktuální kontext, ve kterém se mobilní zařízení (uživatel) nachází, ve spojení s již naučenými pravidelnostmi. Registrujeme několik oblastí, které musíme pokrýt a naplánovat jejich vhodné řešení.
 
-V reakci na měnící se aktuální kontext bude potřeba obnovovat pořadí zobrazených aplikací. Jednou z možností je upravovat seznam aplikací při jakémkoliv vnějším podnětu (změna času, připojení k Wi-Fi). Jeho nevýhodou je ovšem fakt, že by se systém snažil o změnu pořadí i v případě, že uživatel si právě vybírá požadovanou aplikaci. Pokud bychom tuto operaci omezili tím způsobem, aby běžela pouze když je na popředí jiná aplikace, zbytečně bychom mrhali výpočetními zdroji a energií. Tento nedostatek nám však vyřeší způsob, kdy bude k obnovení pořadí docházet v případě, že se naše aplikace vrací na popředí, což umožňuje implementace metody onResume(). Díky tomu budeme kontrolovat aktuálnost pořadí pouze v případě, že se na něj uživatel chystá přejít.
+V reakci na měnící se aktuální okolní situaci bude potřeba obnovovat pořadí zobrazených aplikací. Jednou z možností je upravovat seznam aplikací při jakémkoliv vnějším podnětu (změna času, připojení k Wi-Fi). Jeho nevýhodou je ovšem fakt, že by se systém snažil o změnu pořadí i v případě, že uživatel si právě vybírá požadovanou aplikaci. Pokud bychom tuto operaci omezili tím způsobem, aby běžela pouze když je na popředí jiná aplikace, zbytečně bychom mrhali výpočetními zdroji a energií. Tento nedostatek nám však vyřeší způsob, kdy bude k obnovení pořadí docházet v případě, že se naše aplikace vrací na popředí, což umožňuje implementace metody onResume(). Díky tomu budeme kontrolovat aktuálnost pořadí pouze v případě, že se na něj uživatel chystá přejít.
 
 V tomto případě ale může nastat situace, kdy uživatel setrvává na hlavní obrazovce, nicméně nevyvíjí žádnou aktivitu (telefon leží na stole a uživatel nad nečím přemýšlí). V takovém případě by bylo vhodné i přesto, že se naše aplikace nachází v popředí, obnovit pořadí aplikací a nabídnout tak uživateli lepší možnosti vzhledem k aktuálnímu kontextu. Pro vyřešení tohoto problému bude vhodné využít služeb časovače (podobně jako u automatického ukládání logovacích záznamů), který po definované době, během které systém nezaregistruje činnost uživatele, mu pošle zprávu o tom, že má provést revizi stávajícího pořadí.
 
@@ -724,28 +726,32 @@ V předešlých kapitolách tohoto dokumentu jsme si definovali čím se bude ta
 V této kapitole si přiblížíme některé zajímavé části implementace naší aplikace. Vysvětlíme si strukturu Android projektu tak, jak ho generuje Eclipse IDE. Probereme komunikaci s databází a výběr vhodného Launcheru. Na závěr celé kapitoly si uvedeme, které externí knihovny jsme použili pro řešení typických implementačních problémů.
 
 \section{Adresářová struktura}
-Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu \cite{android_project_structure} tak, jak je generován při založení nového projektu v Eclipse IDE (obrázek \ref{fig:android_project_structure} na straně \pageref{fig:android_project_structure}).
+Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu \cite{android_project_structure} tak, jak je generován při založení nového projektu v Eclipse IDE (diagram \ref{fig:android_project_structure} na straně \pageref{fig:android_project_structure}) a zároveň se zaměříme na popis struktury adresářů naší aplikace.
 
 \begin{figure}
-\begin{center}
-\begin{verbatim}
-.
-|-- AndroidManifest.xml
-|-- assets
-|-- bin
-|-- doc
-|-- gen
-|-- lib
-|-- res
-|   |-- drawable
-|   |-- layout
-|   |-- menu
-|   |-- values
-|-- src
-\end{verbatim}
+	\dirtree{%
+		.1 AndroidManifest.xml.
+		.1 assets.
+		.1 bin.
+		.1 doc.
+		.1 gen.
+		.1 res.
+		.2 drawable.
+		.2 layout.
+		.2 menu.
+		.2 values.
+		.1 src.
+		.2 com.roscopeco.ormdroid.
+		.2 cz.cvut.fel.
+		.3 listeners.
+		.3 managers.
+		.3 models.
+		.4 log.
+		.4 periodic.
+		.2 mobi.intuitit.android.
+	}
 \caption{Adresářová struktura Google Android projektu}
 \label{fig:android_project_structure}
-\end{center}
 \end{figure}
 
 \begin{description}
@@ -754,25 +760,32 @@ Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu 
 \item[bin/] obsahuje přeložené zdrojové soubory a instalační balíček soardroid.apk
 \item[doc/] obsahuje vygenerovanou dokumentaci pomocí nástroje Javadoc
 \item[gen/] obsahuje soubor R.java, který je generován automaticky a jsou v něm ukládány odkazy na externí zdroje uložené v res.
-\item[lib/] obsahuje .jar soubory externích knihoven použitých v našem projektu, tento adresář není povinný, vytvořili jsme ho pro vlastní potřebu.
 \item[res/] je adresář obsahující externí zdroje Android aplikace, které jsou pak přístupné ve zdrojovém kódu díky souboru R.java.
 \item[res/drawable] je skladiště obrázků používaných v aplikaci. V některých případech mohou přítomny adresáře s příponou -ldi, -mdi a -hdi, které pak obsahují mutace zdrojů podle rozlišení.
 \item[res/layout] obsahuje XML soubory s definicemi šablon pro jednotlivé aktivity. Jeden soubor obsahuje vždy jednu šablonu.
 \item[res/menu] obsahuje šablony pro kontextové menu.
-\item[res/values] obsahuje XML soubory s texty, barvami atp. Důvodem pro jejich externí skladování je pak snadnější internacionalizace \ref{i18n}.
+\item[res/values] obsahuje XML soubory s texty, barvami atp. Důvodem pro jejich externí skladování je pak snadnější internacionalizace \cite{android_i18n}.
 \item[src/] je poslední a nejdůležitější složka, jsou v ní totiž obsaženy veškeré zdrojové kódy aplikace.
+\item[src/com.roscopeco.ormdroid] obsahuje zdrojové kódy knihovny pro ORM přístup k databázi.
+\item[src/cz.cvut.fel] obsahuje zdrojové kódy naší aplikace.
+\item[src/cz.cvut.fel/listeners] obsahuje všechny definované Listenery, které naše aplikace využívá.
+\item[src/cz.cvut.fel/managers] obsahuje všechny definované Managery, které naše aplikace využívá.
+\item[src/cz.cvut.fel/models] obsahuje modely mapované na Entity v databázi.
+\item[src/cz.cvut.fel/models/log] obsahuje Entity logovacích záznamů.
+\item[src/cz.cvut.fel/models/periodic] obsahuje Entity nalezených pravidelných aktivit.
+\item[src/mobi.intuitit.android] je adresář se soubory Launcheru, který pro naše účely využíváme.
 \end{description}
 
 Specifikace a vysvětlení struktury projektu naší aplikace je důležité z hlediska pochopení následujících podkapitol, kde se na některé výše zmíněné adresáře odkazujeme.
 
 \section{Databáze}
-Android poskytuje pro potřeby běhu aplikací API pro správu a přístup k databázovému stroji SQLite. Nicméně toto rozhraní se nám, po shlédnutí několika tutoriálů a následném letmém ozkoušení, zdálo přinejmenším zbytečně složité. Co nás v dnešní době velmi překvapilo, je úplná absence nativního přístupu k databázi pomocí ORM. Rozhodli jsme se vyhledat některou alternativu, která by nám tento přístup umožnila. Přímo pro projekty v Androidu se nám podařilo nalézt více knihoven, mezi nimi ActiveRecord\cite{active_record}, OrmLite\cite{ormlite}, ORMDroid\cite{ormdroid} a greenDAO\cite{greendao}. Všechny tyto knihovny zapouzdřují veškerou komunikaci s databází a programátorovi dávájí k dispozici velmi příjemné rozhraní s ORM přístupem k databázi. Pro potřeby naší implementace jsme nakonec zvolili knihovnu ORMDroid ref{ormdroid}, především z důvodu její jednoduchosti a minimalističnosti ve spojení s vyhovující funkcionalitou.
+Android poskytuje pro potřeby běhu aplikací API pro správu a přístup k databázovému stroji SQLite. Nicméně toto rozhraní se nám, po shlédnutí několika tutoriálů a následném letmém ozkoušení, zdálo přinejmenším zbytečně složité. Co nás v dnešní době velmi překvapilo, je úplná absence nativního přístupu k databázi pomocí ORM. Rozhodli jsme se vyhledat některou alternativu, která by nám tento přístup umožnila. Přímo pro projekty v Androidu se nám podařilo nalézt více knihoven, mezi nimi ActiveRecord\cite{active_record}, OrmLite\cite{ormlite}, ORMDroid\cite{ormdroid} a greenDAO\cite{greendao}. Všechny tyto knihovny zapouzdřují veškerou komunikaci s databází a programátorovi dávájí k dispozici velmi příjemné rozhraní s ORM přístupem k databázi. Pro potřeby naší implementace jsme nakonec zvolili knihovnu ORMDroid \ref{ormdroid}, především z důvodu její jednoduchosti a minimalističnosti ve spojení s vyhovující funkcionalitou.
 
 \section{Launcher}
-Hlavním viditelným prvkem našeho projektu je aplikace zvaná Launcher. Variant, které si mohou uživatelé Google Android nainstalovat existuje mnoho\cite{launchers_list}. Z tohoto seznamu jsou pro nás důležité sloupce \uv{Free} a především \uv{Opensource}, který značí, že jeho zdrojový kód je k dispozici (je možné ho tedy použít i v naší aplikaci), protože náš projekt smeřujeme k opensource řešení a nezpoplatněné distribuci. Těmto kriteriím odpovídají pouze tři záznamy, které bylo potřeba otestovat prostřednictvím simulátoru, a to ADW.Launcher, Android Launcher Plus a Trebuchet Launcher.
+Hlavním viditelným prvkem našeho projektu je aplikace zvaná Launcher. Variant, které si mohou uživatelé operačního systému Google Android nainstalovat, existuje mnoho\cite{launchers_list}. Z uvedeného seznamu jsou pro nás důležité sloupce \uv{Free} a především \uv{Opensource}, který značí, že je jeho zdrojový kód k dispozici a je tedy možné ho dále legálně upravovat. Zároveň tím pádem nejsme nijak svázáni a můžeme náš projekt směřovat k opensource řešení a nezpoplatněné distribuci. Zmíněným kriteriím odpovídají pouze tři záznamy, které bylo potřeba otestovat prostřednictvím simulátoru, a to ADW.Launcher, Android Launcher Plus a Trebuchet Launcher.
 
 \subsection{ADW.Launcher}
-ADW Launcher vypadal na první pohled ze všech možností nejslibněji. Zasloužily se o to zajímavé recenze uživatelů i jeho zařazení do některých osvědčených modifikací. Bohužel, dostupné zdrojové kódy využívají privátní API, které není dostupné v oficiálním SDK, a z důvodu této provázanosti není možné jeho využití v rámci našeho projektu.
+ADW Launcher vypadá na první pohled ze všech možností nejslibněji. Zasluhují se o to zajímavé recenze uživatelů i jeho zařazení do některých osvědčených modifikací. Bohužel, dostupné zdrojové kódy využívají privátní API, které není dostupné v oficiálním SDK, a z důvodu této provázanosti není možné jeho využití v rámci našeho projektu.
 
 Po naimportování do Eclipse IDE jsme se snažili o odstranění těchto závislostí, nicméně se ukázalo, že se jedná o tak komplexní úkol, že nebylo možné ho úspěšně dokončit. Povedlo se nám sice zdrojový kód zkompilovat a spustit v simulátoru (za cenu značných modifikací), jeho výsledná funkcionalita však nebyla úplná. Zdrojové kódy k samostatné verzi (bez závislostí na privátní API) se nám nepodařilo nalézt a tudíž ani vyzkoušet.
 
@@ -783,13 +796,44 @@ Během testování tohoto launcheru jsme zaregistrovali jeho nekompatibilitu s v
 
 \subsection{Trebuchet Launcher}
 Tato aplikace byla poslední volbou, kterou jsme mohli uvažovat. Podařilo se nám vyhledat několik verzí zdrojových kódů, nicméně ani jeden se nám nepodařilo zprovoznit. Klasická verze opět využívá privátní API, která není součástí SDK. Upravená samostatná verze je sice této provázanosti zbavena, nicméně funkční je pouze pro Google Android 4.1 a vyšší, což nesplňuje naše požadavky na verzi systému.
-
+\\\\
 Z výše uvedeného výčtu aplikací je zřejmé, že požadavky na bezproblémový import do Eclipse IDE i spustitelnost splnil pouze Android Launcher Plus a proto jsme se rozhodli postavit naši aplikaci právě na něm. Do budoucna však bude nutné ho upravit tak, aby byl bezproblémově spustitelný i na verzích operačního systému Google Android 4.0.x a vyšších.
+
+\section{Zobrazení a řazení aplikací}
+Jednou z větších modifikací kódu použitého Launcheru byla nutnost zobrazit řazený seznam aplikací. Vzhledem k praktické absenci jakékoliv dokumentace se tato operace ukázala jako netriviální, když jsme museli přepsat výchozí chování jedné z obrazovek. Na ní se obyčejně zobrazují odkazy na aplikace, widgety a složky, které jsou zároveň persistentně uloženy v databázi a které si tam uživatel sám vložil. Pro naše potřeby jsme využili mírně modifikovanou stávající funkcionalitu pro vkládání odkazů na aplikace. Především jsme museli zajistit, aby se námi vložené položky neukládaly do databáze, čehož jsme docílili přidáním parametru saveToDatabase funkci
+
+\begin{verbatim}
+private void onDropExternal(int x, int y, Object dragInfo, 
+    CellLayout cellLayout,
+    boolean insertAtFirst, boolean saveToDatabase)
+\end{verbatim}
+v souboru mobi.intuitit.android.p.launcher/Workspace.java:
+
+\begin{verbatim}
+if(saveToDatabase){
+    LauncherModel.addOrMoveItemInDatabase(mLauncher, info,
+        LauncherSettings.Favorites.CONTAINER_DESKTOP, 
+        mCurrentScreen, lp.cellX, lp.cellY);
+}
+\end{verbatim}
+
+Díky tomu máme zaručeno, že naše pravidelné změny nebudou zbytečně operovat s přístupem k databázi. Je patrné, že v současné chvíli dochází pouze k překrytí uživatelsky vložených persistentních položek (pokud se nějaké na námi upravované obrazovce objevují) a ne vymazání z databáze. Domníváme se, že se nejedná o tak závažný problém a proto jsme se rozhodli ho neřešit vzhledem k tomu, že do budoucna bude pravděpodobně pro zobrazení aplikací použit prvek, který je lépe dostupný pro zrakově postižené uživatele (vyvíjen také na katedře počítačové grafiky a interakce, ČVUT FEL).
+
+Jelikož se ikony na obrazovce zobrazují v mřížce 4x4, rozhodli jsme se pro zajištění většího komfortu při pohybu seznamem řadit jednotlivé položky ne zleva doprava, ale do podoby jakéhosi hada - liché řádky zleva doprava a sudé zprava doleva. Nevidomý uživatel tak při procházení seznamu nebude muset opouštět prostor dotykového displaye.
+
+Rádi bychom ještě zmínili praktické řešení výpočtu priority aplikací v seznamu. V kapitole \ref{app_list} na straně \pageref{app_list} jsme si uvedli, že budeme využívat generování priorit z vlastností, které jednotlivé pravidelnosti obsahují (v současné chvíli pouze určité časové rozpětí). Využijeme k tomu obyčejnou převrácenou hodnotu z rozdílu začátku a konce (doby trvání):
+
+\begin{verbatim}
+Aplikace je pravidelně spouštěna od 8:00 do 9:00.
+9:00 - 8:00 = 60 minut => priorita = 1/60
+\end{verbatim}
+
+Z uvedeného příkladu jasně vidíme, že kratší časové období bude mít vyšší prioritu než delší, což je přesně výsledek, který požadujeme.
 
 \section{Externí knihovny}
 V této podkapitole si blíže popíšeme všechny externí knihovny použité v naší aplikaci. Jednotlivé projekty se zdají být udržované a především využívané širokou komunitou vývojářů. Tento fakt nám dává určitou dávku jistoty, že tomu tak bude i do budoucna. Čím více koncových aplikací danou knihovnu používá a spoléhá se na ni, tím větší je pravděpodobnost, že její tvůrci budou pokračovat ve vývoji nebo ji budou alespoň udržovat na kvalitní úrovni. Díky tomu také vývojáři dokáží vytvořit tlak (v dobrém slova smyslu) na tvůrce ve smyslu řešení problémů a zjištěných chyb.
 
-\subsection{OMRDroid}
+\subsection{OMRDroid}\label{ormdroid}
 ORMDroid je knihovna umožňující mapování tříd programovacího jazyka na entity v databázi pomocí principu zvaného ORM. Je vyvíjena speciálně pro projekty vytvářené na platformě Android a její operace pokryjí základní práci s SQLite databází (CRUD). Poskytuje automatické vytváření tabulek podle struktury tříd v Javě. Pro práci s daty není nutné psát jakékoliv SQL příkazy, což nám poskytuje větší komfort při vývoji a zároveň se tím zmenšuje riziko programátorské chyby.
 
 \begin{conclusion}

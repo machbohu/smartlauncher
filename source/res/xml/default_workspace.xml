@@ -12,10 +12,13 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
+     
+     TODO change notification
 -->
 
 <favorites xmlns:launcher="http://schemas.android.com/apk/res/mobi.intuitit.android.p.launcher">
 
+    <!--
     <search
         launcher:screen="1"
         launcher:x="0"
@@ -63,4 +66,5 @@
         launcher:x="3"
         launcher:y="2" />
 
+	-->
 </favorites>
