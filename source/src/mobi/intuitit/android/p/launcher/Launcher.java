@@ -31,6 +31,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import mobi.intuitit.android.content.LauncherIntent;
 import mobi.intuitit.android.content.LauncherMetadata;
@@ -96,6 +97,7 @@ import android.widget.GridView;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
+import cz.cvut.fel.managers.Interpreter;
 import cz.cvut.fel.managers.LaunchManager;
 
 /**
@@ -453,6 +455,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     }
     
     /**
+     * [SmartLauncher]
      * Iterate over given applications names and add them to the screen
      * according to order in List<String>. Items are not stored permanently.
      * 
@@ -463,18 +466,13 @@ public final class Launcher extends Activity implements View.OnClickListener, On
      */
     private void rewriteDefaultScreen(){
     	final int COLUMN_CNT = 4;
-        List<String> appNames = new LinkedList<String>();
-        appNames.add("com.android.contacts");
-        appNames.add("com.android.email");
-        appNames.add("com.android.mms");
-        appNames.add("com.android.settings");
-        appNames.add("com.android.contacts");
+    	Set<String> appNames = Interpreter.getCorrespondingApps();
 
     	// Get default screen number (index)
-    	int defaultScreen = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
+    	final int defaultScreen = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(getString(R.string.key_default_screen), "2"))-1;
     	// Remove old application icons (or saved widgets, icons etc.)
-    	// Permanently added to database won't be removed from database!
+    	// Items permanently added to database won't be removed from database!
         CellLayout defaultWorkspace = (CellLayout)mWorkspace.getChildAt(defaultScreen);
         defaultWorkspace.removeAllViewsInLayout();
         
@@ -530,8 +528,10 @@ public final class Launcher extends Activity implements View.OnClickListener, On
 	    	i.screen = defaultScreen;
 	    	
 	    	x += offset;
+	    	
 	    	if(x==COLUMN_CNT){
 	    		offset *= -1;
+	    		x += offset;
 	    		y++;
 	    	}
 	    	
@@ -1971,7 +1971,7 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         try {
             startActivity(intent);
             
-            // Notify LaunchManager about application launch
+            // [SmartLauncher] Notify LaunchManager about application launch
             LaunchManager.onAppLaunch(intent);
             if (BuildConfig.DEBUG) {
             	Log.d(LOG_TAG, "Launched app: " + intent.getComponent().toShortString());

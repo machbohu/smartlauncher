@@ -17,6 +17,7 @@ public class SmartLocationManager {
 	
 	public static Location getLocation(){
 		// TODO better solution - what about old values? Maybe we should listen to loc changes?
+		// http://stackoverflow.com/questions/6181704/good-way-of-getting-the-users-location-in-android
 		List<String> providers = locationManager.getProviders(true);
 
 		// Loop over the providers backwards, and if you get an accurate location, then break out the loop

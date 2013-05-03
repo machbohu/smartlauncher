@@ -11,9 +11,9 @@ import cz.cvut.fel.managers.PhoneStateManager;
 public class PhoneSettings extends Entity implements LogListener {
 	public int id;
 	public int profile;
-	public Boolean gpsOn;
-	public Boolean wifiOn;
-	public Boolean airplaneModeOn;
+	public boolean gpsOn;
+	public boolean wifiOn;
+	public boolean airplaneModeOn;
 	
 	@Override
 	public List<Entity> onLogSave(LogRecord lr) {
@@ -33,7 +33,7 @@ public class PhoneSettings extends Entity implements LogListener {
 		return null;
 	}
 	
-	public static PhoneSettings get(int profile, Boolean gpsOn, Boolean wifiOn, Boolean airplaneModeOn){
+	public static PhoneSettings get(int profile, boolean gpsOn, boolean wifiOn, boolean airplaneModeOn){
 		return Entity.query(PhoneSettings.class).where(
 				Query.and(Query.and(Query.eql("profile", profile), Query.eql("gpsOn", gpsOn)),
 				Query.and(Query.eql("wifiOn", wifiOn), Query.eql("airplaneModeOn", airplaneModeOn)))).execute();

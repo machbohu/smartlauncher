@@ -55,4 +55,7 @@ public class LogApp extends Entity implements LogListener {
 		return logApps;
 	}
 	
+	public static List<LogApp> filter(String col, Object val){
+		return Query.query(LogApp.class).where(Query.eql(col, val)).executeMulti();
+	}
 }

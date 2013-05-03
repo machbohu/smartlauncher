@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * TODO modified
+ * TODO change notice!
  */
 
 package mobi.intuitit.android.p.launcher;
@@ -24,17 +24,13 @@ import android.util.Log;
 
 import com.roscopeco.ormdroid.ORMDroidApplication;
 
+import cz.cvut.fel.managers.Interpreter;
 import cz.cvut.fel.managers.LaunchManager;
 import cz.cvut.fel.managers.LogManager;
 import cz.cvut.fel.managers.NetworkManager;
+import cz.cvut.fel.managers.PeriodicActivityManager;
 import cz.cvut.fel.managers.PhoneStateManager;
 import cz.cvut.fel.managers.SmartLocationManager;
-import cz.cvut.fel.managers.TimeManager;
-import cz.cvut.fel.models.log.BTS;
-import cz.cvut.fel.models.log.LocationL;
-import cz.cvut.fel.models.log.LogApp;
-import cz.cvut.fel.models.log.LogWifi;
-import cz.cvut.fel.models.log.PhoneSettings;
 import dalvik.system.VMRuntime;
 
 public class LauncherApplication extends Application {
@@ -44,20 +40,26 @@ public class LauncherApplication extends Application {
     public void onCreate() {
         VMRuntime.getRuntime().setMinimumHeapSize(4 * 1024 * 1024);
         
+        // [SmartLauncher] initializing
         initDB();
         initManagers();
         
         super.onCreate();
     }
     
+    /**
+     * Initialize ORMDroid library
+     */
     private void initDB(){
-        // Initialize ORMDroid library
         ORMDroidApplication.initialize(getApplicationContext());
         if (BuildConfig.DEBUG) {
         	Log.d(LOG_TAG, "DB init");
         }
     }
     
+    /**
+     * Initialize Managers and add Listeners
+     */
     private void initManagers(){
     	Context c = getApplicationContext();
         // Initiate NetworkManager
@@ -68,18 +70,12 @@ public class LauncherApplication extends Application {
         SmartLocationManager.init(c);
         // Initiate LaunchManager
         LaunchManager.init(c);
-        // Initiate LogManager for events listening
-        LogManager logm = new LogManager();
-        LaunchManager.addListener(logm);
-//        TimeManager.addListener(logm, 1);
-        
-        // Add LogListener classes for future instantiating 
-        // and listening on LogManager's events
-        logm.addListener(BTS.class);
-        logm.addListener(LocationL.class);
-        logm.addListener(LogApp.class);
-        logm.addListener(LogWifi.class);
-        logm.addListener(PhoneSettings.class);
-        
+        // Initiate LogManager
+//        LogManager logm = LogManager.getInstance();
+//        logm.init();
+        // Initialize Interpreter
+        Interpreter.init();
+        // Initialize PeriodicActivityManager
+        PeriodicActivityManager.init();
     }
 }

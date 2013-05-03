@@ -625,7 +625,7 @@ obsahuje informace o odeslaných textových zprávách. V případě konkrétní
 obsahuje informace o aktuálním nastavení telefonu. Jedná se o profil, stav GPS senzoru, WiFi senzoru a Airplane módu. V případě konkrétního záznamu se uchovává, zda je zapnut zvuk a/nebo vibrace a zda jsou senzory zapnuty či nikoliv.
 
 \item[Timestamp]
-obsahuje informace o aktuálním času, při kterém je pořízen záznam do tabulky LogRecord. V případě konkrétního záznamu se uchovává datum, čas a název dne.
+obsahuje informace o aktuálním času, při kterém je pořízen záznam do tabulky LogRecord. V případě konkrétního záznamu se uchovává datum (počet sekund od začátku epochy (1.1.1970)), čas (počet sekund od půlnoci), název dne a perioda.
 
 \item[BatteryState]
 obsahuje informace o aktuálním stavu baterie telefonu. V případě konkrétního záznamu se uchovává stav (v procentech).
@@ -657,17 +657,17 @@ obsahuje informace o dnech, ve kterých docházelo k pravidelnému spouštění 
 obsahuje informace o části dne, ve které docházelo k pravidelnému spouštění dané aplikace. V případě konkrétního záznamu se uchovává jeho jméno.
 
 \item[Time]
-obsahuje informace o čase. Můžeme si zde všimnout dvou vazeb s tabulkou App pojmenovaných “from” a “to”. Tímto způsobem pokrýváme určité časové období, během kterého byla daná aplikace pravidelně spouštěna (nelze se spoléhat na fakt, že uživatel bude spouštět aplikace přesně v pevně daný čas, ale musíme se vyrovnat s jistou flexibilitou). V případě konkrétního záznamu se uchovává časový údaj.
+obsahuje informace o čase. Můžeme si zde všimnout dvou vazeb s tabulkou App pojmenovaných “from” a “to”. Tímto způsobem pokrýváme určité časové období, během kterého byla daná aplikace pravidelně spouštěna (nelze se spoléhat na fakt, že uživatel bude spouštět aplikace přesně v pevně daný čas, ale musíme se vyrovnat s jistou flexibilitou). V případě konkrétního záznamu se uchovává časový údaj (počet sekund od půlnoci).
 
 \item[Location\_p]
 obsahuje informace o poloze, ve které docházelo k pravidelnému spouštění dané aplikace. V případě konkrétního záznamu se uchovává její zeměpisná šířka a délka. Tento údaj (podobně jako čas) nelze brát dogmaticky, jelikož uživatel nebude stát vždy na tom samém místě, je tedy potřeba v rámci interpretace počítat s jistou, dopředu stanovenou, kruhovou odchylkou.
 \end{description}
 
-\section{Správa datových zdrojů}
+\section{Správa datových zdrojů}\label{data_sources_management}
 V případě spravování datových zdrojů jsme se rozhodli pro podobný princip jaký preferuje Google Android například v případě získávání informací o poloze\cite{android_location}. V zásadě se v tomto modelu setkáme se dvěmi součástmi, které si v následujícím textu blíže rozebereme. Kromě toho si detailně popíšeme vzájemnou spolupráci těchto součástí a také vlastnosti, které takto definovaná struktura má.
 
 \subsection{Manager}
-Manager (LocationManager\cite{android_location_manager}) je definován jako třída\cite{class} a slouží k poskytování veškerých informací v rámci konkrétního zdroje stejně jako registraci modulů, které chtějí být upozorněny v případě nastalých změn. V našem případě může být celkové pojetí již definovaných Managerů (LocationManager, WifiManager atp.) zbytečně komplikované a naopak některou doplňkovou funkcionalitu nemusí obsahovat. Proto jsme se rozhodli toto rozhraní co nejvíce zjednodušit pomocí TODO (dedicnost, predprvek), což nám omožní i dodatečné úpravy tak, abychom dosáhli požadovaného chování. Aby mohl být vývojáři definovaný modul registrován pro odběr změn, musí splňovat definované požadavky. Zde přichází ke slovu druhá součást a tou je Listener.
+Manager (LocationManager\cite{android_location_manager}) je definován jako třída\cite{class} a slouží k poskytování veškerých informací v rámci konkrétního zdroje stejně jako registraci modulů, které chtějí být upozorněny v případě nastalých změn. V našem případě může být celkové pojetí již definovaných Managerů (LocationManager, WifiManager atp.) zbytečně komplikované a naopak některou doplňkovou funkcionalitu nemusí obsahovat. Proto jsme se rozhodli toto rozhraní co nejvíce zjednodušit pomocí předsunutého prvku, který nám umožní i dodatečné úpravy tak, abychom dosáhli požadovaného chování. Aby mohl být vývojáři definovaný modul registrován pro odběr změn, musí splňovat definované požadavky. Zde přichází ke slovu druhá součást a tou je Listener.
 
 \subsection{Listener}
 Listener (LocationListener\cite{android_location_listener}) je definován jako interface\cite{interface}, který musí každý modul, usilující o registraci, implementovat. Díky tomu máme jistotu, že jsme nad všemi registrovanými moduly (listenery) schopni zavolat potřebné metody (například metodu spojenou s akcí “nastala změna pozice”). Zároveň tento způsob poskytuje dostatečnou volnost vývojářům, kteří mohou na nastalou situaci reagovat vlastní implementací těchto definovaných metod.
@@ -693,9 +693,16 @@ Požadavkem pro efektivní ukládání logovacích záznamů je dodržení flexi
 
 Podíváme-li se na diagram \ref{fig:manager_listener} na straně \pageref{fig:manager_listener}, nejsou zde na první pohled zřejmé žádné procesní změny. Listenery se registrují obvyklým způsobem, mírně rozdílný je však postup při ohlášení změny. LogManager má přímý odkaz na hlavní databázovou entitu LogRecord, která v sobě obsahuje odkazy na mnoho dalších entit, které je potřeba společně uložit do databáze. Aby mohl LogManager entitu LogRecord naplnit, musel by vlastnit odkazy na všechny relevantní entity v databázi. Tento postup by ale odporoval požadavkům na nízkou provázanost a flexibilitu, proto jsme zvolili odlišný algoritmus.
 
-Ve chvíli, kdy LogManager obdrží informaci o změně, vytvoří novou instanci entity LogRecord a tu rozešle všem svým Listenerům (ostatním entitám), kterých v současné chvíli evidujeme dva druhy. První určitým způsobem modifikuje LogRecord a to tak, že mu předá odkaz na svou instanci a LogManageru vrací prázdný odkaz (null). Druhý vytvoří instanci spojovací tabulky (nutné pro vazby many-to-many, například vazba LogRecord - RunningApp), vloží do ní odkaz na obě entity a vrací odkaz na svou vlastní instanci. Neprázdné odkazy si LogManager uchovává a po projití registrovaných Listenerů uloží všechny nashromážděné entity najednou, včetně LogRecordu. Díky tomuto procesu je zaručeno, že do databáze se budou ukládat pouze korektně provázané a úplné záznamy.
+Ve chvíli, kdy LogManager obdrží informaci o změně, vytvoří novou instanci entity LogRecord a tu rozešle všem svým Listenerům (ostatním entitám), kterých v současné chvíli evidujeme dva druhy. První určitým způsobem modifikuje LogRecord a to tak, že mu předá odkaz na svou instanci a LogManageru vrací prázdný odkaz (null). Druhý vytvoří instance spojovacích tabulek (nutné pro vazby many-to-many, například vazba LogRecord - RunningApp), vloží do nich odkaz na obě entity a vrací odkaz na seznam svých vlastních instancí (pokud chceme k LogRecordu evidovat tři běžící aplikace, potřebujeme tři vazby LogRecord - RunningApp). Neprázdné odkazy si LogManager uchovává a po projití registrovaných Listenerů uloží všechny nashromážděné entity najednou, včetně LogRecordu. Díky tomuto procesu je zaručeno, že do databáze se budou ukládat pouze korektně provázané a úplné záznamy.
 
-Je zřejmé, že než dojde k uložení jednotlivých instanciovaných entit, je potřeba je naplnit relevantními daty. K tomu využijeme již nadefinované moduly z kapitoly [Správa datových zdrojů], které kromě registrace k odběru změn poskytují zároveň přístup k relevantním datům.
+Je zřejmé, že než dojde k uložení jednotlivých instanciovaných entit, je potřeba je naplnit relevantními daty. K tomu využijeme již nadefinované moduly z kapitoly \ref{data_sources_management} na straně \pageref{data_sources_management}, které kromě registrace k odběru změn poskytují zároveň přístup k relevantním datům.
+
+\section{Vyhledávání pravidelností}
+
+\section{Filtrování pravidelností}
+Abychom mohli uživateli v daný okamžik nabídnout co nejlepší seznam aplikací, musíme provádět určitou formu selekce dostupných pravidelných záznamů. Abychom zachovali nízkou provázanost a do budoucna zvýšili komfort rozšiřování, vytvořili jsme interface Filter, který implementují všechny třídy, které umožňují filtraci seznamu aplikací (ten je jim předán jako parametr). PeriodicActivityManager uchovává jejich seznam, který pokaždé prochází a u každého spouští metodu zodpovědnou za provedení odpovídající úlohy.
+
+Jednotlivé filtry si tak odvedou svou práci, aniž by PeriodicActivityManager musel vědět, jaký vlastně spouští. Navíc na sobě musí být zcela nezávislé a z toho důvodu ponechávají v seznamu jednak aplikace, které odpovídají jejich kriteriím, ale zároveň ty, které nemají žádnou informaci o filtrovaném atributu (to znamená, že na tomto atributu nezáleží). Pokud tedy například filtr aktivních Wi-Fi připojení zjistí, že hodnota odpovídá aktuálnímu kontextu, aplikaci v seznamu ponechá, stejně jako tu, která ji má blíže nespecifikovanou (typicky null). Díky tomu je zajištěno, že ze seznamu nebudou odstraněny aplikace závislé na jiných kriteriích.
 
 \section{Uživatelské rozhraní}
 Během implementace našeho projektu se z časových důvodů a vzhledem ke stanoveným cílům nebudeme zabývat hlavní viditelnou součástí, kterou je Launcher. Existuje několik jeho v principu podobných verzí s dostupným zdrojovým kódem, ze kterých vybereme tu nejvhodnější a využijeme ji v našem projektu. Nám tato volba ušetří čas a umožní se soustředit na hlavní cíle projektu, navíc díky tomu bude zaručeno, že nebudeme znovu vynalézat kolo a nutit uživatele zvykat si na něco jiného než co poměrně důvěrně zná a již se s tím naučil pracovat. Jak budeme zobrazovat seznam relevantních aplikací a komunikovat s uživatelem si popíšeme v následujících kapitolách.
@@ -723,7 +730,7 @@ Toto provedení pravděpodobně nebude ideální, i když vezmeme v úvahu, že 
 \chapter{Realizace}
 V předešlých kapitolách tohoto dokumentu jsme si definovali čím se bude tato práce zabývat, stanovili jsme si cíle, kterých bychom chtěli dosáhnout, vybrali nejvhodnější platformu, vytvořili návrh a specifikovali řešení nejdůležitějších oblastí, které se budou v naší aplikaci vyskytovat. Nyní se nacházíme ve fázi, kdy přecházíme k samotnému popisu implementace, který by ale nebyl možný bez předchozí práce. Bez důkladně provedeného návrhu řešení a analýzy by tato kapitola byla naprosto bezpředmětná a celkový projekt by mohl snadno skončit zbytečným neúspěchem. 
 
-V této kapitole si přiblížíme některé zajímavé části implementace naší aplikace. Vysvětlíme si strukturu Android projektu tak, jak ho generuje Eclipse IDE. Probereme komunikaci s databází a výběr vhodného Launcheru. Na závěr celé kapitoly si uvedeme, které externí knihovny jsme použili pro řešení typických implementačních problémů.
+V této kapitole si přiblížíme některé zajímavé části implementace naší aplikace. Vysvětlíme si strukturu Android projektu tak, jak ho generuje Eclipse IDE. Probereme komunikaci s databází, výběr vhodného Launcheru a zmíníme některé zajímavé části implementace. Na závěr celé kapitoly si uvedeme, které externí knihovny jsme použili pro řešení typických implementačních problémů.
 
 \section{Adresářová struktura}
 Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu \cite{android_project_structure} tak, jak je generován při založení nového projektu v Eclipse IDE (diagram \ref{fig:android_project_structure} na straně \pageref{fig:android_project_structure}) a zároveň se zaměříme na popis struktury adresářů naší aplikace.
@@ -736,18 +743,22 @@ Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu 
 		.1 doc.
 		.1 gen.
 		.1 res.
+		.2 anim.
+		.2 color.
 		.2 drawable.
 		.2 layout.
-		.2 menu.
 		.2 values.
 		.1 src.
 		.2 com.roscopeco.ormdroid.
 		.2 cz.cvut.fel.
+		.3 filters.
+		.3 globals.
 		.3 listeners.
 		.3 managers.
 		.3 models.
 		.4 log.
 		.4 periodic.
+		.3 periodicseekers.
 		.2 mobi.intuitit.android.
 	}
 \caption{Adresářová struktura Google Android projektu}
@@ -761,18 +772,22 @@ Jak nadpis podkapitoly napovídá, popíšeme si zde strukturu Android projektu 
 \item[doc/] obsahuje vygenerovanou dokumentaci pomocí nástroje Javadoc
 \item[gen/] obsahuje soubor R.java, který je generován automaticky a jsou v něm ukládány odkazy na externí zdroje uložené v res.
 \item[res/] je adresář obsahující externí zdroje Android aplikace, které jsou pak přístupné ve zdrojovém kódu díky souboru R.java.
+\item[res/anim] je adresář s XML soubory obsahujícími definici animací.
+\item[res/color] je adresář s XML soubory obsahujícími definici barev.
 \item[res/drawable] je skladiště obrázků používaných v aplikaci. V některých případech mohou přítomny adresáře s příponou -ldi, -mdi a -hdi, které pak obsahují mutace zdrojů podle rozlišení.
 \item[res/layout] obsahuje XML soubory s definicemi šablon pro jednotlivé aktivity. Jeden soubor obsahuje vždy jednu šablonu.
-\item[res/menu] obsahuje šablony pro kontextové menu.
 \item[res/values] obsahuje XML soubory s texty, barvami atp. Důvodem pro jejich externí skladování je pak snadnější internacionalizace \cite{android_i18n}.
 \item[src/] je poslední a nejdůležitější složka, jsou v ní totiž obsaženy veškeré zdrojové kódy aplikace.
 \item[src/com.roscopeco.ormdroid] obsahuje zdrojové kódy knihovny pro ORM přístup k databázi.
 \item[src/cz.cvut.fel] obsahuje zdrojové kódy naší aplikace.
+\item[src/cz.cvut.fel/filters] obsahuje filtry používané Interpreterem, které mu umožňují vyfiltrovat pouze adekvátní aplikace, které mají být následně zobrazeny na hlavní obrazovce.
+\item[src/cz.cvut.fel/globals] obsahuje globální atributy aplikace (především konstanty).
 \item[src/cz.cvut.fel/listeners] obsahuje všechny definované Listenery, které naše aplikace využívá.
 \item[src/cz.cvut.fel/managers] obsahuje všechny definované Managery, které naše aplikace využívá.
 \item[src/cz.cvut.fel/models] obsahuje modely mapované na Entity v databázi.
 \item[src/cz.cvut.fel/models/log] obsahuje Entity logovacích záznamů.
 \item[src/cz.cvut.fel/models/periodic] obsahuje Entity nalezených pravidelných aktivit.
+\item[src/cz.cvut.fel/periodicseekers] obsahuje třídy, které využívá PeriodicActivityManager pro hledání pravidelností v logovacích záznamech.
 \item[src/mobi.intuitit.android] je adresář se soubory Launcheru, který pro naše účely využíváme.
 \end{description}
 
@@ -817,11 +832,11 @@ if(saveToDatabase){
 }
 \end{verbatim}
 
-Díky tomu máme zaručeno, že naše pravidelné změny nebudou zbytečně operovat s přístupem k databázi. Je patrné, že v současné chvíli dochází pouze k překrytí uživatelsky vložených persistentních položek (pokud se nějaké na námi upravované obrazovce objevují) a ne vymazání z databáze. Domníváme se, že se nejedná o tak závažný problém a proto jsme se rozhodli ho neřešit vzhledem k tomu, že do budoucna bude pravděpodobně pro zobrazení aplikací použit prvek, který je lépe dostupný pro zrakově postižené uživatele (vyvíjen také na katedře počítačové grafiky a interakce, ČVUT FEL).
+Díky tomu máme zaručeno, že naše pravidelné změny nebudou zbytečně operovat s přístupem k databázi. Je patrné, že v současné chvíli dochází pouze k překrytí uživatelsky vložených persistentních položek (pokud se nějaké na námi upravované obrazovce objevují) a ne vymazání z databáze. Domníváme se, že se nejedná o tak závažný problém a proto jsme se rozhodli ho neřešit vzhledem k tomu, že do budoucna budou pravděpodobně prováděny operace vedoucí k nahrazení stávajícího zobrazení prvkem, který je lépe dostupný pro zrakově postižené uživatele (vyvíjen také na katedře počítačové grafiky a interakce, ČVUT FEL).
 
 Jelikož se ikony na obrazovce zobrazují v mřížce 4x4, rozhodli jsme se pro zajištění většího komfortu při pohybu seznamem řadit jednotlivé položky ne zleva doprava, ale do podoby jakéhosi hada - liché řádky zleva doprava a sudé zprava doleva. Nevidomý uživatel tak při procházení seznamu nebude muset opouštět prostor dotykového displaye.
 
-Rádi bychom ještě zmínili praktické řešení výpočtu priority aplikací v seznamu. V kapitole \ref{app_list} na straně \pageref{app_list} jsme si uvedli, že budeme využívat generování priorit z vlastností, které jednotlivé pravidelnosti obsahují (v současné chvíli pouze určité časové rozpětí). Využijeme k tomu obyčejnou převrácenou hodnotu z rozdílu začátku a konce (doby trvání):
+Nakonec bychom ještě zmínili praktické řešení výpočtu priorit aplikací v seznamu. V kapitole \ref{app_list} na straně \pageref{app_list} jsme si uvedli, že budeme využívat generování priorit z vlastností, které jednotlivé pravidelnosti obsahují (v současné chvíli pouze určité časové rozpětí). Využijeme k tomu obyčejnou převrácenou hodnotu z rozdílu začátku a konce (doby trvání):
 
 \begin{verbatim}
 Aplikace je pravidelně spouštěna od 8:00 do 9:00.
@@ -831,10 +846,17 @@ Aplikace je pravidelně spouštěna od 8:00 do 9:00.
 Z uvedeného příkladu jasně vidíme, že kratší časové období bude mít vyšší prioritu než delší, což je přesně výsledek, který požadujeme.
 
 \section{Externí knihovny}
-V této podkapitole si blíže popíšeme všechny externí knihovny použité v naší aplikaci. Jednotlivé projekty se zdají být udržované a především využívané širokou komunitou vývojářů. Tento fakt nám dává určitou dávku jistoty, že tomu tak bude i do budoucna. Čím více koncových aplikací danou knihovnu používá a spoléhá se na ni, tím větší je pravděpodobnost, že její tvůrci budou pokračovat ve vývoji nebo ji budou alespoň udržovat na kvalitní úrovni. Díky tomu také vývojáři dokáží vytvořit tlak (v dobrém slova smyslu) na tvůrce ve smyslu řešení problémů a zjištěných chyb.
+V této podkapitole si blíže popíšeme všechny externí knihovny použité v naší aplikaci. Jednotlivé projekty se zdají být udržované a především využívané širokou komunitou vývojářů. Tento fakt nám dává určitou dávku jistoty, že tomu tak bude i do budoucna. Čím více koncových aplikací danou knihovnu používá a spoléhá se na ni, tím větší je pravděpodobnost, že její tvůrci budou pokračovat ve vývoji nebo ji budou alespoň udržovat na kvalitní úrovni. Díky tomu také vývojáři dokáží vytvořit tlak (v dobrém slova smyslu) na tvůrce, kteří tím spíše neustanou v řešení problémů a zjištěných chyb.
 
 \subsection{OMRDroid}\label{ormdroid}
 ORMDroid je knihovna umožňující mapování tříd programovacího jazyka na entity v databázi pomocí principu zvaného ORM. Je vyvíjena speciálně pro projekty vytvářené na platformě Android a její operace pokryjí základní práci s SQLite databází (CRUD). Poskytuje automatické vytváření tabulek podle struktury tříd v Javě. Pro práci s daty není nutné psát jakékoliv SQL příkazy, což nám poskytuje větší komfort při vývoji a zároveň se tím zmenšuje riziko programátorské chyby.
+
+\section{Projektový repositář}
+Běžnou rutinou každého programátora je zajištění ochrany kódu před poškozením nebo ztrátou. Z toho důvodu jsme se rozhodli využít služeb některého z dostupných repositářů, konkrétně GitHub\cite{github}, jejichž další výhodou je jednoduchost sdílení zdrojového kódu mezi vývojáři, snadné \uv{mergování} (spojování) a \uv{verzování} (uchovávání starších verzí pro snadnou obnovu) jednotlivých úprav.
+
+Naším požadavkem bylo využívání Gitu\cite{git} vzhledem k tomu, že nabízí o mnoho více možností správy zdrojového kódu než jeho konkurent Subversion\cite{svn}, který je navíc v dnešní době mírně na ústupu. Vzhledem k tomu, že náš projekt není ničím tajným, nevidíme problém ve využití veřejného webového nástroje GitHub\cite{github}, který nám zdarma zajišťuje serverovou část. Podmínkou je však zobrazení repositáře ostatním uživatelům v módu read-only (jen ke čtení). Náš projekt na serveru GitHub\cite{github_project}.
+
+\chapter{Budoucí práce}
 
 \begin{conclusion}
 	%sem napište závěr Vaší práce

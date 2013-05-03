@@ -11,10 +11,10 @@ import cz.cvut.fel.managers.SmartLocationManager;
 
 public class LocationL extends Entity implements LogListener {
 	public int id;
-	public Double latitude;
-	public Double longitude;
+	public double latitude;
+	public double longitude;
 	public float speed;
-	public Double elevation;
+	public double elevation;
 	public float accuracy;
 	
 	@Override

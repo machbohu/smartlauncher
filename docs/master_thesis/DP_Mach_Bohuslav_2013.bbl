@@ -132,6 +132,14 @@
 \newblock [cit. 22.4.2013] \\
   http://allaboutwindowsphone.com/flow/item/15887\_Ease\_of\_access\_settings\_improv.php.
 
+\bibitem{git}
+{\em Git version control system}.
+\newblock [cit. 29.4.2013] \\ http://git-scm.com/.
+
+\bibitem{github}
+{\em GitHub}.
+\newblock [cit. 29.4.2013] \\ https://github.com/.
+
 \bibitem{android_location}
 {\em Google Android: Location Strategies}.
 \newblock [cit. 22.4.2013] \\
@@ -227,6 +235,10 @@
 \newblock [cit. 22.4.2013] \\
   http://wmpoweruser.com/nokia-talks-accessibility-confirms-there-is-no-screen-reader-for-windows-phone-8/.
 
+\bibitem{github_project}
+{\em Náš projekt SmartLauncher na serveru GitHub}.
+\newblock [cit. 22.4.2013] \\ https://github.com/machbohu/smartlauncher.
+
 \bibitem{ormdroid}
 {\em ORMDroid}.
 \newblock [cit. 22.4.2013] \\ https://github.com/roscopeco/ormdroid.
@@ -265,6 +277,10 @@
 {\em Struktura Google Android projektu}.
 \newblock [cit. 23.4.2013] \\
   http://developer.android.com/tools/projects/index.html.
+
+\bibitem{svn}
+{\em Subversion version control system}.
+\newblock [cit. 22.4.2013] \\ http://subversion.apache.org/.
 
 \bibitem{iphone_inside}
 {\em V útrobách jednoho iPhonu}.
@@ -313,7 +329,8 @@
 \bibitem{win_location}
 {\em Windows Phone: GeoCoordinateWatcher.Status Property}.
 \newblock [cit. 22.4.2013] \\
-  http://msdn.microsoft.com/en-us/library/windowsphone/develop/system.device.location.geocoordinatewatcher.status(v=vs.105).aspx.
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/
+  system.device.location.geocoordinatewatcher.status(v=vs.105).aspx.
 
 \bibitem{win_sdk}
 {\em Windows Phone SDK}.
@@ -327,7 +344,9 @@
 \bibitem{win_wifi}
 {\em WindowsPhone: DeviceNetworkInformation.IsWiFiEnabled Property}.
 \newblock [cit. 22.4.2013] \\
-  http://msdn.microsoft.com/en-us/library/windowsphone/develop/microsoft.phone.net.networkinformation.devicenetworkinformation.iswifienabled(v=vs.105).aspx.
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/
+  microsoft.phone.net.networkinformation.devicenetworkinformation
+  .iswifienabled(v=vs.105).aspx.
 
 \bibitem{touch_yes_or_no}
 {\em Úvaha: nevidomí a dotykové telefony, bezradní či ne?}

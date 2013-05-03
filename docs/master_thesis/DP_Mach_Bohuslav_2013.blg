@@ -71,45 +71,49 @@ Warning--to sort, need author, organization, or key in ormlite
 Warning--to sort, need author, organization, or key in ormdroid
 Warning--to sort, need author, organization, or key in greendao
 Warning--to sort, need author, organization, or key in launchers_list
-You've used 68 entries,
+Warning--to sort, need author, organization, or key in github
+Warning--to sort, need author, organization, or key in git
+Warning--to sort, need author, organization, or key in svn
+Warning--to sort, need author, organization, or key in github_project
+You've used 72 entries,
             2118 wiz_defined-function locations,
-            701 strings with 13883 characters,
-and the built_in function-call counts, 9816 in all, are:
-= -- 952
-> -- 68
+            713 strings with 14210 characters,
+and the built_in function-call counts, 10392 in all, are:
+= -- 1008
+> -- 72
 < -- 0
-+ -- 69
++ -- 73
 - -- 0
-* -- 478
-:= -- 1167
-add.period$ -- 136
-call.type$ -- 68
-change.case$ -- 136
+* -- 506
+:= -- 1235
+add.period$ -- 144
+call.type$ -- 72
+change.case$ -- 144
 chr.to.int$ -- 0
-cite$ -- 136
-duplicate$ -- 544
-empty$ -- 1293
+cite$ -- 144
+duplicate$ -- 576
+empty$ -- 1369
 format.name$ -- 0
-if$ -- 2313
+if$ -- 2449
 int.to.chr$ -- 0
-int.to.str$ -- 68
+int.to.str$ -- 72
 missing$ -- 0
-newline$ -- 275
+newline$ -- 291
 num.names$ -- 0
-pop$ -- 272
+pop$ -- 288
 preamble$ -- 1
-purify$ -- 136
+purify$ -- 144
 quote$ -- 0
-skip$ -- 407
+skip$ -- 431
 stack$ -- 0
-substring$ -- 341
-swap$ -- 68
+substring$ -- 361
+swap$ -- 72
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 272
-warning$ -- 68
+type$ -- 288
+warning$ -- 72
 while$ -- 0
-width$ -- 70
-write$ -- 478
-(There were 68 warnings)
+width$ -- 74
+write$ -- 506
+(There were 72 warnings)

@@ -14,7 +14,7 @@ import cz.cvut.fel.managers.NetworkManager;
 
 public class LogWifi extends Entity implements LogListener {
 	public int id;
-	public WifiNetwork wifi;
+	public WifiNetworkL wifi;
 	public LogRecord log;
 	
 	@Override
@@ -25,11 +25,11 @@ public class LogWifi extends Entity implements LogListener {
 		if(wifis != null){
 			for(ScanResult sr : wifis){
 				LogWifi lw = new LogWifi();
-				Boolean connected = NetworkManager.isWifiConnected(sr);
-				WifiNetwork wn = WifiNetwork.get(sr.SSID, sr.BSSID, connected); 
+				boolean connected = NetworkManager.isWifiConnected(sr);
+				WifiNetworkL wn = WifiNetworkL.get(sr.SSID, sr.BSSID, connected); 
 				
 				if(wn == null){
-					wn = new WifiNetwork();
+					wn = new WifiNetworkL();
 					wn.ssid = sr.SSID;
 					wn.bssid = sr.BSSID;
 					wn.connected = connected;
@@ -44,4 +44,7 @@ public class LogWifi extends Entity implements LogListener {
 		return logWifis;
 	}
 	
+	public static List<LogWifi> filter(String col, Object val){
+		return Query.query(LogWifi.class).where(Query.eql(col, val)).executeMulti();
+	}
 }

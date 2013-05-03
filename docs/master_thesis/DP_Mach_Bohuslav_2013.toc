@@ -43,27 +43,31 @@
 \contentsline {section}{\numberline {1.5}Model datov\IeC {\'e}ho skladu (ER model)}{29}{section.1.5}
 \contentsline {subsection}{\numberline {1.5.1}Pln\IeC {\v e}n\IeC {\'\i } a spr\IeC {\'a}va datov\IeC {\'e}ho skladu}{30}{subsection.1.5.1}
 \contentsline {subsection}{\numberline {1.5.2}P\IeC {\v r}ehled tabulek datov\IeC {\'e}ho skladu}{34}{subsection.1.5.2}
-\contentsline {section}{\numberline {1.6}Spr\IeC {\'a}va datov\IeC {\'y}ch zdroj\IeC {\r u}}{36}{section.1.6}
+\contentsline {section}{\numberline {1.6}Spr\IeC {\'a}va datov\IeC {\'y}ch zdroj\IeC {\r u}}{37}{section.1.6}
 \contentsline {subsection}{\numberline {1.6.1}Manager}{37}{subsection.1.6.1}
 \contentsline {subsection}{\numberline {1.6.2}Listener}{37}{subsection.1.6.2}
 \contentsline {subsection}{\numberline {1.6.3}Princip}{37}{subsection.1.6.3}
 \contentsline {section}{\numberline {1.7}Ukl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } log\IeC {\r u}}{39}{section.1.7}
-\contentsline {section}{\numberline {1.8}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{40}{section.1.8}
-\contentsline {subsection}{\numberline {1.8.1}Seznam aplikac\IeC {\'\i }}{40}{subsection.1.8.1}
-\contentsline {subsection}{\numberline {1.8.2}Komunikace s u\IeC {\v z}ivatelem}{41}{subsection.1.8.2}
-\contentsline {chapter}{\chapternumberline {2}Realizace}{43}{chapter.2}
-\contentsline {section}{\numberline {2.1}Adres\IeC {\'a}\IeC {\v r}ov\IeC {\'a} struktura}{43}{section.2.1}
-\contentsline {section}{\numberline {2.2}Datab\IeC {\'a}ze}{45}{section.2.2}
-\contentsline {section}{\numberline {2.3}Launcher}{46}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}ADW.Launcher}{46}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Android Launcher Plus}{46}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Trebuchet Launcher}{47}{subsection.2.3.3}
-\contentsline {section}{\numberline {2.4}Zobrazen\IeC {\'\i } a \IeC {\v r}azen\IeC {\'\i } aplikac\IeC {\'\i }}{47}{section.2.4}
-\contentsline {section}{\numberline {2.5}Extern\IeC {\'\i } knihovny}{48}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}OMRDroid}{49}{subsection.2.5.1}
-\contentsline {chapter}{Z{\' a}v{\v e}r}{51}{chapter*.27}
-\contentsline {chapter}{Literatura}{53}{section*.29}
-\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{59}{appendix.A}
-\contentsline {appendix}{\chapternumberline {B}Seznam ostatn\IeC {\'\i }ch p\IeC {\v r}\IeC {\'\i }loh}{61}{appendix.B}
-\contentsline {section}{\numberline {B.1}Tyflonet - dota\IeC {\v c}n\IeC {\'\i } politika}{61}{section.B.1}
-\contentsline {appendix}{\chapternumberline {C}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{65}{appendix.C}
+\contentsline {section}{\numberline {1.8}Vyhled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } pravidelnost\IeC {\'\i }}{40}{section.1.8}
+\contentsline {section}{\numberline {1.9}Filtrov\IeC {\'a}n\IeC {\'\i } pravidelnost\IeC {\'\i }}{40}{section.1.9}
+\contentsline {section}{\numberline {1.10}U\IeC {\v z}ivatelsk\IeC {\'e} rozhran\IeC {\'\i }}{40}{section.1.10}
+\contentsline {subsection}{\numberline {1.10.1}Seznam aplikac\IeC {\'\i }}{41}{subsection.1.10.1}
+\contentsline {subsection}{\numberline {1.10.2}Komunikace s u\IeC {\v z}ivatelem}{42}{subsection.1.10.2}
+\contentsline {chapter}{\chapternumberline {2}Realizace}{45}{chapter.2}
+\contentsline {section}{\numberline {2.1}Adres\IeC {\'a}\IeC {\v r}ov\IeC {\'a} struktura}{45}{section.2.1}
+\contentsline {section}{\numberline {2.2}Datab\IeC {\'a}ze}{48}{section.2.2}
+\contentsline {section}{\numberline {2.3}Launcher}{48}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}ADW.Launcher}{48}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Android Launcher Plus}{49}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Trebuchet Launcher}{49}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}Zobrazen\IeC {\'\i } a \IeC {\v r}azen\IeC {\'\i } aplikac\IeC {\'\i }}{49}{section.2.4}
+\contentsline {section}{\numberline {2.5}Extern\IeC {\'\i } knihovny}{51}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}OMRDroid}{51}{subsection.2.5.1}
+\contentsline {section}{\numberline {2.6}Projektov\IeC {\'y} reposit\IeC {\'a}\IeC {\v r}}{51}{section.2.6}
+\contentsline {chapter}{\chapternumberline {3}Budouc\IeC {\'\i } pr\IeC {\'a}ce}{53}{chapter.3}
+\contentsline {chapter}{Z{\' a}v{\v e}r}{55}{chapter*.27}
+\contentsline {chapter}{Literatura}{57}{section*.29}
+\contentsline {appendix}{\chapternumberline {A}Seznam pou\IeC {\v z}it\IeC {\'y}ch zkratek}{63}{appendix.A}
+\contentsline {appendix}{\chapternumberline {B}Seznam ostatn\IeC {\'\i }ch p\IeC {\v r}\IeC {\'\i }loh}{65}{appendix.B}
+\contentsline {section}{\numberline {B.1}Tyflonet - dota\IeC {\v c}n\IeC {\'\i } politika}{65}{section.B.1}
+\contentsline {appendix}{\chapternumberline {C}Obsah p\IeC {\v r}ilo\IeC {\v z}en\IeC {\'e}ho CD}{69}{appendix.C}
