@@ -7,6 +7,9 @@
 
 \documentclass[thesis=M,czech]{FITthesis}[2012/06/26]
 
+\hypersetup{unicode}
+\usepackage{cmap}
+
 \usepackage[utf8]{inputenc} % LaTeX source encoded as UTF-8
 
 \usepackage{graphicx} %graphics files inclusion
@@ -34,19 +37,21 @@
 \authorWithDegrees{Bc. Bohuslav Mach} %jméno autora včetně současných akademických titulů
 \supervisor{Ing. Zdeněk Míkovec, Ph.D.}
 \acknowledgements{
-Rád bych poděkoval především vedoucímu práce panu Ing. Zdeňku Míkovcovi, Ph.D. za jeho rady a pomoc při tvorbě tohoto textu a panu Ing. Janu Balatovi za jeho vstřícnost a umožnění uživatelských rozhovorů. Dále bych rád poděkoval svým blízkým a přátelům za velkou podporu, kterou mi projevovali po celou dobu mého studia.
+Rád bych poděkoval především vedoucímu práce panu Ing. Zdeňku Míkovcovi, Ph.D. za jeho rady a pomoc při tvorbě tohoto textu, oponentovi Ing. Pavlu Žikovskému, Ph.D. a panu Ing. Janu Balatovi za jeho vstřícnost a umožnění uživatelských rozhovorů. Dále bych rád poděkoval svým blízkým a přátelům za velkou podporu, kterou mi projevovali po celou dobu mého studia.
 }
 \abstractCS{
-Tato práce se zabývá problematikou tvorby mobilní platformy pro efektivní spouštění aplikací v závislosti na 
-pravidelným aktivitách. Cílem je vytvořit aplikaci pro mobilní zařízení, která přináší inovativní vylepšení stávajících řešení, se zaměřením na limitované uživatele (především zrakově postižené).
+Tato práce se zabývá problematikou tvorby speciální platformy pro efektivní spouštění aplikací v závislosti na 
+pravidelným aktivitách. Cílem je rozpracovat návrh aplikace pro mobilní zařízení, která přináší inovativní vylepšení stávajících řešení se zaměřením na limitované uživatele (především zrakově postižené) a jejich opakované činnosti.
 }
 \abstractEN{
 Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.
 }
 \placeForDeclarationOfAuthenticity{V~Praze}
 \declarationOfAuthenticityOption{1} %volba Prohlášení
-\keywordsCS{Launcher, Accessibility, Kontext, Mobilita, Android}
+\keywordsCS{Launcher, Accessibility, Kontext, Mobilní zařízení, Google Android, Zrakově postižení}
 \keywordsEN{Nahraďte seznamem klíčových slov v angličtině oddělených čárkou.}
+
+\setcounter{tocdepth}{2}
 
 \begin{document}
 
@@ -54,15 +59,15 @@ Sem doplňte ekvivalent abstraktu Vaší práce v~angličtině.
 % \newacronym{FIT}{FIT}{Fakulta informa{\v c}n{\' i}ch technologi{\' i}}
 
 \begin{introduction}
-Mobilní zařízení se v posledních letech stala nedílnou součástí našich životů a není nadsázkou, řekneme-li, že si svůj běžný den bez těchto moderních vymožeností nedokážeme představit. Obyčejné aktivity, jako zasílání textových zpráv nebo uskutečňování a přijímání hovorů, si už ani neuvědomujeme. Vyřizování emailů, hledání spojení nebo rezervaci oblíbené restaurace můžeme pohodlně realizovat prostřednictvím mobilních aplikací, rychle a jednoduše. Díky tomu mnoho uživatelů již nepotřebuje osobní počítač a všechny potřebné úkony vyřídí přes svůj mobilní telefon nebo tablet.
+Mobilní zařízení se v posledních letech stala nedílnou součástí našich životů a není nadsázkou, když řekneme, že si svůj běžný den bez těchto moderních vymožeností nedokážeme představit. Obyčejné aktivity, jako zasílání textových zpráv nebo uskutečňování a přijímání hovorů, si už ani neuvědomujeme. Vyřizování emailů, hledání spojení nebo rezervaci oblíbené restaurace můžeme pohodlně realizovat prostřednictvím mobilních aplikací rychle a jednoduše. Díky tomu mnoho uživatelů již nepotřebuje osobní počítač a všechny požadované úkony vyřídí přes svůj mobilní telefon nebo tablet.
 
-Počet aplikací se každým dnem zvyšuje a my objevujeme stále více takových, které nám usnadní každodenní úkony. Jejich instalace je díky specializovaným internetovým obchodům velmi jednoduchá a proto nikdo z nás nepřemýšlí nad tím, kolik jich vlastně v telefonu má. S rostoucím počtem nainstalovaných aplikací se stává hlavní menu čím dál tím víc nepřehledné a hledání zdlouhavější a obtížnější. Určitou formou řešení může být sdružení podobných/oblíbených aplikací do složek, čímž časovou ztrátu při hledání zmenšíme. Méně zkušení uživatelé však nemusí být s těmito možnostmi obeznámeni a jakékoliv složitější operace je mohou odradit.
+Počet aplikací se každým dnem zvyšuje a my objevujeme stále více takových, které nám usnadní každodenní úkony. Jejich instalace je díky specializovaným internetovým obchodům velmi jednoduchá a proto běžný uživatel nepřemýšlí nad tím, kolik jich vlastně v telefonu má. S rostoucím počtem nainstalovaných aplikací se stává hlavní menu čím dál tím víc nepřehledné a hledání zdlouhavější a obtížnější. Drtivá většina dnešních operačních systémů určitou formu řešení nabízí a to především prostřednictvím sdružení podobných/oblíbených aplikací do složek, čímž časovou ztrátu při hledání zmenšíme (díky rozdělení do sekcí). Méně zkušení uživatelé však nemusí být s těmito možnostmi obeznámeni a jakékoliv složitější operace je mohou odradit.
 
-Je tu však další skupina, které tento způsob nemusí tak úplně vyhovovat. Představme si uživatele, který se z nějakého důvodu nachází v časové tísni. Potřebuje otevřít aplikaci ihned a nemůže mobilnímu zařízení věnovat příliš mnoho času. Do takových situací se pravidelně dostávají například řidiči a ačkoliv se to na první pohled nezdá, tak do této skupiny patří určitým způsobem i zrakově postižení. Při práci s mobilním zařízením nejsou běžné operace pro vidícího člověka žádný problém. Proto například vybrat položku v menu nezabere díky vizuálnímu vjemu zdaleka tolik času, jako kdybychom všechny položky museli projít jednu po druhé.
+Je tu však další skupina, které tento způsob nemusí tak úplně vyhovovat. Představme si uživatele, který se z nějakého důvodu nachází v časové tísni. Potřebuje otevřít aplikaci ihned a nemůže mobilnímu zařízení věnovat příliš mnoho času. Do takových situací se pravidelně dostávají například řidiči a ačkoliv se to na první pohled nezdá, rovněž do této skupiny patří určitým způsobem i zrakově postižení. Při práci s mobilním zařízením nepředstavují běžné operace pro vidícího člověka žádný problém. Proto například vybrat položku v menu nezabere díky vizuálnímu vjemu zdaleka tolik času, jako kdybychom všechny položky museli projít jednu po druhé.
 
-Tímto způsobem však musí se seznamy pracovat každý zrakově postižený uživatel. Díky tomu se může dostat do časové tísně daleko snáze, protože operace, která vidícím uživatelům zabere pět minut, trvá této skupině zpravidla několikrát déle. Proč bychom tedy nemohli pravidelně vyhledávané položky řadit na začátek seznamu a nejlépe ty, které by mohl uživatel potřebovat právě v tuto chvíli (v aktuálním kontextu)? Převedeme-li tento požadavek na problém vyhledávání a spouštění aplikací, tak by uživateli v ideálním případě stačilo projet prvních několik položek, ve kterých by našel požadovanou volbu. Časová úspora by tak mohla být velmi znatelná. Samozřejmostí je, že by tento způsob byl efektivní i pro ostatní uživatele, kteří by tak měli vhodné aplikace ihned na očích a nemuseli by zdlouhavě projíždět menu nebo sdružovat aplikace do složek.
+Tímto způsobem však musí se seznamy pracovat každý zrakově postižený uživatel. Díky tomu se může dostat do časové tísně daleko snáze, protože operace, která vidícím uživatelům zabere pět minut, trvá této skupině zpravidla několikrát déle. Proč bychom tedy nemohli pravidelně vyhledávané položky řadit na začátek seznamu a nejlépe ty, které by mohl uživatel potřebovat právě v tuto chvíli (v aktuálním kontextu)? Převedeme-li tento požadavek na problém vyhledávání a spouštění aplikací, tak by uživateli v ideálním případě stačilo prozkoumat prvních několik položek, ve kterých by našel požadovanou volbu. Časová úspora by tak mohla být velmi znatelná. Samozřejmostí je, že by tento způsob byl efektivní i pro ostatní uživatele, kteří by tak měli vhodné aplikace ihned na očích a nemuseli by zdlouhavě projíždět menu nebo sdružovat aplikace do složek.
 
-Jak vyplývá z předchozích odstavců, tak aplikace, která by nahradila klasickou domácí obrazovku její chytřejší verzí, by usnadnila práci a ušetřila čas širokému spektru uživatelů, především pak těm, kteří se potýkají s některou formou limitace. V následujícím textu se tedy budeme zabývat návrhem a implementací takového systému, který by měl být pro uživatele maximálně komfortní a přívětivý.
+Jak vyplývá z předchozích odstavců, tak aplikace, která by nahradila klasickou domácí obrazovku její chytřejší verzí, by usnadnila práci a ušetřila čas širokému spektru uživatelů, především pak těm, kteří se potýkají s některou formou celoživotní nebo dočasné limitace. V následujícím textu se tedy budeme zabývat návrhem a implementací popisovaného systému, který by měl vynikat jednoduchostí a pro uživatele být maximálně komfortní a přívětivý.
 
 \section{Popis problému, specifikace cíle}
 
@@ -76,7 +81,7 @@ Na základě těchto údajů se pokusíme navrhnout platformu využívající ak
 
 \subsection{Definice pojmů}
 
-Vytvoření definice pojmů, který bude shrnovat nejčastější pojmy spojené s vývojem aplikace, je velmi důležité z důvodu lepší a snadnější orientace čtenáře v celém textu. Jedná se vlastně o formu výkladového slovníku, jenž pomůže především těm, kteří jsou méně znalí dané problematiky. Pro tuto skupinu by se totiž výsledná práce mohla stát matoucí a těžko uchopitelnou.
+Vytvoření seznamu definic pojmů, který bude zahrnovat ty nejčastěji zmiňované ve spojení s vývojem aplikace, je velmi důležité z důvodu lepší a snadnější orientace čtenáře v celém textu. Jedná se vlastně o formu výkladového slovníku, jenž pomůže především těm, kteří jsou méně znalí dané problematiky. Pro tuto skupinu by se totiž výsledná práce mohla stát matoucí a těžko uchopitelnou.
 
 \begin{description}
 \item[Uživatel] je entita, která nějakým způsobem interaguje s naší aplikací a využívá ji.
@@ -88,21 +93,23 @@ Vytvoření definice pojmů, který bude shrnovat nejčastější pojmy spojené
 \item[Accessibility] definuje míru dostupnosti určitého produktu definované skupině uživatelů. V našem případě se s tímto pojmem setkáváme především ve spojení se zrakově postiženými uživateli.
 \item[Aktivity] jsou uživatelská činnosti, které budeme monitorovat a ve kterých se budeme snažit hledat pravidelnosti a šablony.
 \item[Kontext] vyjadřuje aktuální stav, ve kterém se nachází mobilní zařízení a prostředí okolo něj.
+\item[Log/Logovací záznam] obsahuje informace o aktuálním stavu mobilního zařízení a jeho okolí. V podstatě se jedná o snímek kontextu, který je uložen v databázi.
 \end{description}
 
-Takto zadefinované pojmy nám pomohou lépe se orientovat v probírané problematice a předejít případným záměnám a omylům.
+Takto zadefinované pojmy nám pomohou lépe se orientovat v probírané problematice a předejít případným nejasnostem a omylům.
 
 \subsection{Vymezení cílů práce}
-Jednotlivé cíle práce jsme v širším pohledu zmínili již v předchozích kapitolách. Během návrhu a vývoje aplikace chceme klást důraz na reflektování potřeb a zachycení pravidelného režimu specifických skupin uživatelů (zrakově postižení). Na jejich základě vybrat nejvhodnější budoucí platformu, která by jim i vývojářům poskytovala co nejkomfortnější služby, a detailně analyzovat vnitřek budoucího systému s důrazem na nízkou provázanost, vysokou flexibilitu a jednoduchou rozšiřitelnost vzhledem k předpokládané další práci.
+Vzhledem k povaze řešeného problému je nepraktické vytyčit si cíle prostřednictvím funkčních nebo nefunkčních požadavků, které by dle našeho názoru nedostatečně pokrývaly výsledný záměr. Především také díky tomu, že klasická aplikace, se kterou bude uživatel interagovat, již existuje a my se na ni chceme podívat z trochu jiného úhlu. V zásadě se budeme potýkat se známým problémem, který bychom ale rádi řešili inovativním způsobem a nabídli tak uživateli větší užitek a efektivitu při používání výsledného produktu.
 
-V zásadě se budeme potýkat se známým problémem, který bychom ale rádi řešili inovativním způsobem a nabídli tak uživateli větší užitek a efektivitu při používání výsledného produktu.
+V oficiálním zadání je stanovena cílová skupina, na kterou se budeme zaměřovat. Jelikož chceme, aby tento projekt nebyl slepou uličkou, je nutné vybrat vhodný mobilní operační systém, který bude nejlépe splňovat námi stanovená kriteria a zároveň bude zohledňovat právě potřeby těchto koncových uživatelů. Na jeho základě pak budeme schopni vybrat Launcher, který nám bude poskytovat potřebnou funkcionalitu, s důrazem na chování, jenž je pro uživatele dotykových zařízení a vybraného operačního systému dobře známé. Ve chvíli, kdy budeme mít specifikovanou cílovou skupinu, je nutné zaměřit se na vytvoření prototypu jejího pravidelného režimu, který nejlépe vypozorujeme z uživatelských rozhovorů provedených na základě jednoduché osnovy.
 
-Rozepsat v analyze funkcni nefunkcni pozadavky? nebo zde sepsat oblasti, ktere je potreba vyresit? (Jak se budou aplikace radit, jak se budou shromazdovat informace atp.)
+Stanovením rámcové architektury systému a z výše získaných poznatků pak budeme schopni definovat oblasti, jenž bude třeba detailně rozpracovat před samotnou realizací. Ze specifikace problému můžeme uvažovat, že bude třeba pokrýt správu datových zdrojů (aktuální stav mobilního zařízení a okolí) a sjednotit přístup k nim stejně jako umožnit registraci k získávání notifikací o změnách. S takto vytvořeným rozhraním bude snadnější navrhnout systém ukládání záznamů o sledovaných aktivitách uživatele (logovací záznamy), ze kterých pak bude potřeba získat jednotlivé pravidelné aktivity, na jejichž základě budeme provádět filtrování aplikací a jejich zobrazení v uživatelském rozhraní (hlavní obrazovka Launcheru). 
 
+Uvážíme-li celkový rozsah výsledného řešení, budeme během vývoje klást důraz především na důkladnou analýzu, která by měla být založena na požadavcích obsahujících pojmy jako nízká provázanost, vysoká flexibilita a jednoduchá rozšiřitelnost jednotlivých částí systému vzhledem k předpokládané další práci.
 \end{introduction}
 
 \chapter{Analýza a návrh}
-Správná a dostatečně detailní analýza projektu bude stěžejní součástí tohoto textu a výsledného produktu. Nejprve se budeme věnovat uživatelskému výzkumu, díky kterému budeme schopni modelovat pravidelný cyklus naší cílové skupiny. Popíšeme si jak by měla vypadat architektura systému a provedeme rešerši mobilních platforem...?
+Správná a dostatečně detailní analýza projektu bude stěžejní součástí tohoto textu a výsledného produktu. Nejprve se budeme věnovat uživatelskému výzkumu, díky kterému budeme schopni modelovat pravidelný cyklus naší cílové skupiny. Provedeme rešerši mobilních platforem a popíšeme si jak by měla vypadat architektura systému, na jejímž základě pak provedeme návrh jednotlivých součástí.
 
 \section{Uživatelský výzkum}
 Stěžejní částí naší práce je uživatelský výzkum uskutečněný ve spolupráci s ČVUT FEL, katedrou počítačové grafiky a interakce. Informace z provedených rozhovorů nám pomohou nahlédnout do světa uživatelů, pro které naši aplikaci vyvíjíme, a pochopit jejich potřeby a požadavky. Výstupním produktem pak bude sestavení pravidelného týdenního cyklu, který nám pomůže odhalit s jakým druhem problému se budeme reálně potýkat.
@@ -110,7 +117,7 @@ Stěžejní částí naší práce je uživatelský výzkum uskutečněný ve sp
 \subsection{Interview}
 Seznam následujících několik otázek, které by nám měly pomoci získat od uživatelů potřebné informace pro další vývoj, sloužil jako volnější osnova v závislosti na směru, kterým se rozhovor ubíral. Výsledný počet položek byl během několika iterací (před započetím rozhovorů) redukován a jejich znění mírně upravováno vzhledem k tomu, že na jednotlivé rozhovory bylo vymezeno časové rozhraní cca 10-15 minut.
 
-Dotazy nebyly omezeny pouze na mobilní zařízení, ale brali jsme v potaz i osobní počítač, jelikož mnoho dotazovaných používá různé počítačové programy, jejichž funkcionalitu ale dokáží plnohodnotně zastat i aplikace pro mobilní telefony/tablety.
+Dotazy nebyly omezeny pouze na mobilní zařízení, ale brali jsme v potaz i osobní počítač, jelikož mnoho dotazovaných používá různé počítačové programy, jejichž funkcionalitu ale dokáží plnohodnotně zastat i aplikace pro mobilní telefony/tablety. Celkově bylo uskutečněno sedm rozhovorů s participanty z různých věkových kategorií.
 
 \begin{enumerate}
 \item Jakého druhu je Vaše limitace?
@@ -248,110 +255,6 @@ V tomto scénáři se pokusíme namodelovat prototyp pravidelného rytmu nevidom
 \end{itemize}
 \end{itemize}
 
-\section{Architektura systému}
-Architektura systému bude obsahovat několik nezbytných vrstev. Její hrubý nástin se bude sestávat nejspíše z těchto prvků:
-
-\begin{itemize}
-\item    Senzory
-\item    Data ze senzorů a Aktivita OS
-\item    Sémantika dat
-\item    Interpretace dat
-\end{itemize}
-
-Jednotlivé vrstvy budou propojeny procesy a vznikne nám tak stromová struktura, jejímž kořenem je vrstva \uv{Interpretace dat}. Ta bude pro svoji funkčnost využívat informace ze dvou podřízených vrstev a to \uv{Data ze senzorů} a \uv{Sémantika dat}. \uv{Data ze senzorů} společně s vrstvou \uv{Aktivita OS} pak budou shromažďovat informace z dostupných senzorů ve vrstvě \uv{Senzory} a stavu operačního systému. Pokud to bude implementace vyžadovat, nemělo by být překážkou přistupování i o více než jedno patro hlouběji ve stromové struktuře.
-
-\subsection{Senzory}
-Seznam uvažovaných senzorů, které bychom mohli v rámci naší aplikace monitorovat, je následující:
-
-\begin{itemize}
-\item    Síť, GPS, Wi-Fi, Bluetooth, Internet
-\item    Akcelerometr, Okolní teplota, Gravitace, Gyroskop, Okolní světlo, Magnetické pole, Okolní tlak, Proximity (\uv{blízkost} objektu, např. přiložení k uchu), Okolní vlhkost, Rotace
-\item    Hovory, SMS, Kalendář, Čas + datum, Spuštěné aplikace
-\item    Klávesnice, Kamera, Mikrofon
-\item    Interakce s displejem
-\item    API
-\end{itemize}
-
-V souvislosti s výše uvedeným seznamem musíme brát na vědomí, že na trhu je v současné době dostupné velké množství zařízení, přičemž každé z nich může mít rozlišné vybavení (senzory). Ty mohou být navíc ne/dostupné v čase, například aplikace nebude schopna získávat informace z modulu GPS v případě, že se bude zařízení nacházet v budově nebo analogicky pro modul Síť, pokud se bude nacházet mimo pokrytí signálem. Všechny tyto aspekty budou ovlivňovat spolehlivost a přesnost následně získaných dat.
-
-Hlavním úkolem této vrstvy proto bude poskytovat informace o aktuálně připojených (dostupných) senzorech (v naší terminologii je budeme vnímat jako připojitelné moduly) a jejich vlastnostech. Nemusí se však nutně jednat o \uv{fyzické} zařízení, data můžeme získávat například z kalendáře, poslaných SMS, uskutečněných hovorů atp.
-
-\subsubsection*{Síť}
-Kvalita informací získaných z tohoto senzoru je závislá na kvalitě signálu a místním pokrytí. Tento senzor zároveň ovlivňuje kvalitu senzoru \uv{Internet} v případě, že není dostupné Wi-Fi připojení. Může tak docházet k absenci internetového připojení na základě nedostupnosti síťového pokrytí nebo jeho zhoršení v případě místní lokace. Například ve velkých městech je mnohonásobně kvalitnější pokrytí a internetové připojení díky dostupnosti lepší generace síťe. Těch existuje několik - v ČR je aktuálně nejlepší možná dostupná síť třetí generace (velká města).
-
-\subsubsection*{API}
-Prostřednictvím bluetooth nebo internetu a nainstalovaných aplikací v našem zařízení bychom mohli docílit rozšíření dostupných interních senzorů o senzory externí, což by nám následně umožnilo přistupovat k informacím mimo \uv{fyzické} senzory aktuálního zařízení. Mohlo by se jednat například o externí zařízení typu výrobní linka, osobní automobil nebo monitor zdravotního stavu. Systém výrobní linky tak může poskytovat informace o
-
-\begin{itemize}
-\item    upozorněních.
-\item    závadách, selháních nebo problémech.
-\item    místě výskytu některé události.
-\item    zaměstnancích.
-\item    servisních kontrolách.
-\end{itemize}
-Systém osobního automobilu může poskytovat informace o
-\begin{itemize}
-\item    okolní teplotě.
-\item    stavu nádrže.
-\item    dojezdu.
-\item    aktuální spotřebě.
-\end{itemize}
-Monitor zdravotního stavu může poskytovat informace o
-\begin{itemize}
-\item    systolickém a diastolickém tlaku.
-\item    hodnotách srdečního tepu.
-\end{itemize}
-
-\subsection{Aktivita OS}
-Pokud bychom byli schopni sledovat aktivitu operačního systému, pomohlo by nám to upřesnit získaná data ze senzorů. V případě, že zařízení nedokáže detekovat dostupné Wi-Fi sítě, z nastavení systému jsme schopni vydedukovat, zda nejsou žádné v dosahu nebo uživatel manuálně vypnul Wi-Fi senzor. Důležité jsou pro nás především tyto oblasti:
-
-\begin{itemize}
-\item    Životní cyklus běžících aplikací
-\item    Nastavení systému
-\item    Aktuální stav OS (stav baterie, síla signálu)
-\end{itemize}
-
-Možnosti získávání potřebných dat jsou však silně závislé od operačního systému, který zvolíme pro budoucí implementaci. Z tohoto důvodu nejsme nyní schopni určit, zda se nám podaří jednotlivé položky nějakým způsobem monitorovat.
-
-\subsection{Data ze senzorů}
-Na základě informací z dostupných senzorů a z aktivit OS budeme schopni získat data pro další zpracování, například:
-
-\begin{itemize}
-\item    Poloha
-\item    Pohyb
-\item    Činnosti + pravidelnost
-\item    Spouštěné aplikace
-\item    Umístění zařízení (kapsa/taška/batoh atp.)
-\item    Okolní prostředí (venku/vevnitř, světlo, hluk, teplota, vlhkost)
-\item    Aktuální činnosti
-\item    Zdravotní stav
-\end{itemize}
-
-Každá z výše uvedených položek bude přistupovat k informacím z několika odpovídajících senzorů a poskytovat je aplikaci. V závislosti na tom, kolik z nich bude aktuálně dostupných, jaká bude jejich spolehlivost a přesnost, pak bude aplikace vyhodnocovat, v jakém rozsahu se na tato data může spoléhat a jak s nimi dále pracovat (a případně je i archivovat pro pozdější využití).
-
-Jak jsme si nastínili v předchozím odstavci, v rámci naší aplikace nás budou zajímat dva druhy dat. Zaprvé jsou to aktuálně reportované informace ze senzorů a zadruhé je nutné brát v potaz i informace dlouhodobého rázu (především periodicita). Jedná se tedy například o opakované činnosti/aktivity, přičemž data mohou pocházet ze záznamů v kalendáři, ale také ze zaznamenaných a pravidelně se opakujících činností/aktivit.
-
-Takto získaná data bude následně popisovat vrstva \uv{Sémantika dat}. Z tohoto důvodu musí být data popsána nějakým formálním jazykem, pro který budeme schopni tuto vrstvu definovat (například XML). Do budoucna musíme rozhodnout, jak ji budeme realizovat pro data aktuální (nebudou persistentně uložena) a dlouhodobá (budou persistentně uložena).
-
-\subsection{Sémantika dat}
-Popis (neboli sémantika) dat bude ve spojení s vrstvou \uv{Data ze senzorů} sloužit pro využití vrstvou \uv{Interpretace dat}. Předpokládáme, že se v rámci návrhu budeme muset vypořádat s problémem rozličné fyzické interpretace dat aktuálních a dlouhodobých. Aktuální data v některých případech nebude nutné archivovat a proto musí tato vrstva v souvislosti s vrstvou \uv{Data ze senzorů} popisovat obě formy dat abstraktním způsobem tak, aby se s nimi dalo pracovat co nejuniverzálněji.
-
-Pro samotnou implementaci této vrstvy předběžně počítáme s využitím projektu OWL ve verzi Lite, maximálně DL (jena.apache.org).
-
-\subsection{Interpretace dat}
-Nejvýše postavená vrstva ve stromové struktuře bude sloužit k samotné interpretaci získaných dat a od ostatních vrstev se liší tím, že bude popsaná procedurálním způsobem. Při tomto procesu se pravděpodobně setkáme s problémem, kdy se aplikace bude nacházet v tzv. nulovém bodě (nemáme k dispozici ještě žádná dlouhodobá data). Tento stav se budeme snažit eliminovat tak, aby aplikace mohla efektivně pracovat hned od začátku.
-
-Okamžitě po startu bude aplikace schopná získávat data z dostupných senzorů a ty vyhodnocovat. Jak jsme zmínili výše, budou ji však chybět data dlouhodobá (periodicky se opakující) a pak především ta, která se ze žádného senzoru nedozví, ale která jsou pro fungování aplikace stěžejní. Vyhodnocování informací, získaných ze senzorů, se musí z logiky věci řídit potřebami uživatele a k tomu nám pomůže vytvoření jeho profilu.
-
-Při tomto procesu bude tedy nutné zjistit informace například o omezení, se kterými se uživatel potýká (slepota, hluchota, omezená pohyblivost atp.). Teprve na základě toho pak může aplikace korektně interpretovat získaná data. Uveďme si jednoduchý příklad s okolním prostředím. Uživatel postižený hluchotou bude okolní prostředí považovat za rušivé v případě nepříjemných světelných podmínek (ostré světlo, blikající světla atp.). To ovšem nutně nemusí být rušivé pro někoho, kdo je nevidomý. Tomu může naopak vadit vysoká hladina zvuku nebo nepříjemná frekvence.
-
-Požadovaného výsledku bychom mohli docílit tím, že při prvním spuštění necháme uživatele zodpovědět několik základních otázek, které nám pomohou se \uv{odpíchnout} a vytvoříme tak pro aplikaci lepší startovní pozici.
-
-\subsubsection*{Proces interpretace}
-TODO text - ma cenu zde popsat tento proces, vzhledem k tomu, ze tak aplikace nyni nefunguje?
-\\\\
-Graf průběhu interpretace vizte soubor “Proces interpretace” v adresáři “diagrams”.
-
 \section{Rešerše platforem operačních systémů}
 Předtím, než začneme s implementací naší aplikace, je nutné zvolit vhodnou platformu operačního systému. V následujících kapitolách si rozvedeme jednotlivá kriteria, se kterými konfrontujeme předem vytipované platformy a na základě takto získaných poznatků se pak rozhodneme, která z nich bude pro naše účely nejvhodnější.
 
@@ -423,7 +326,7 @@ Abychom si udělali ucelený obraz o trhu a jeho vývoji, je vhodné zanést do 
 
 V případě, že daný operační systém zaznamenává rostoucí tendenci, můžeme se domnívat, že ostatní vývojářské firmy stále vidí v této sekci trhu příležitost a především peníze, tedy potencionální zisk. Samozřejmostí je, že tato domněnka platí u stagnujících počtů dostupných aplikací zcela opačně. Tento fakt může především znamenat, že operační systém přestává být pro vývojáře perspektivní nebo může svědčit o aktuálním nasycení trhu.
 
-Na grafu \ref{fig:apps} na straně \pageref{fig:apps} si můžeme povšimnout viditelně stoupající tendence u všech námi vybraných operačních systémů. Jasně se ale potvrzuje prozatímní dominantní postavení Google Android a Apple iOS, kteří nabízeli v Q2 2012 500000 a 650000 aplikací, přičemž v grafu vidíme, že prvně jmenovaný svého hlavního konkurenta začíná dohánět. Zároveň nás také zaujme vývoj počtu dostupných aplikací u operačního systému Windows Phone, což naznačuje jeho stoupající oblíbenost jak mezi uživateli, tak mezi vývojáři.
+Na grafu \ref{fig:apps} na straně \pageref{fig:apps} si můžeme povšimnout viditelně stoupající tendence u všech námi vybraných operačních systémů. Jasně se ale potvrzuje prozatímní dominantní postavení Google Android a Apple iOS, kteří nabízeli ve druhém kvartálu (Q2) roku 2012 500000 a 650000 aplikací, přičemž v grafu vidíme, že prvně jmenovaný svého hlavního konkurenta začíná dohánět. Zároveň nás také zaujme vývoj počtu dostupných aplikací u operačního systému Windows Phone, což naznačuje jeho stoupající oblíbenost jak mezi uživateli, tak mezi vývojáři.
 
 \begin{figure}\centering
 	\includegraphics[width=0.8\textwidth]{figures/apps_available}
@@ -462,7 +365,7 @@ Hlavním cílem naší aplikace by měla být přímá modifikace výchozího me
 \item    Propojení se základními funkcemi (telefonování, zprávy, kalendář, atd.)
 \end{itemize}
 
-\subsubsection{HW tlačítka}
+\subsubsection*{HW tlačítka}
 Operační systém Apple iOS se vyskytuje (jak jsme si uvedli již dříve) na omezeném množství zařízení. Tím pádem máme celkem přehled o designu všech modelů a také o výhledu do budoucna. V současné době je vzhled jednotlivých zařízení unifikovaný a politika společnosti Apple nenaznačuje, že by se mělo něco radikálně měnit (není tedy pravděpodobné, že by například začala vyrábět zařízení s HW klávesnicí).
 
 Na těle iPhone najdeme celkem 4 fyzická tlačítka (přední strana - tlačítko Home (Domů), levá strana - dvě tlačítka pro ovládání hlasitosti, horní strana - uspávací/vypínací tlačítko) a jeden přepínač (levá strana - dvoupolohový přepínač tichého a hlasitého módu)\cite{iphone}. Hmatnost všech tlačítek a přepínače je zřejmá hned na první pohled a neměl by s ní být žádný problém. Všechny ovládací prvky buď vystupují nebo vytvářejí prohlubeň (tlačítko Home) a mají zároveň jasně namapovanou funkcionalitu\cite{iphone_anatomy}. Tento fakt ovšem nebrání vývojářům si chování některých prvků přemapovat (například aplikace pro fotografování může fotit stiskem tlačítka pro ovládání hlasitosti), ačkoliv je to striktně proti politice společnosti Apple.
@@ -473,42 +376,42 @@ Všechny prvky mají pevně danou funkcionalitu, ovšem problém může nastat n
 
 Windows Phone na tom je podobně jako Google Android. Necílí primárně na jeden typ zařízení a proto dochází k tomu, že se s ním můžeme setkat u více výrobců (prozatím pouze HTC a Nokia). Nicméně se zdá, že si oproti zařízením s výše zmíněným operačním systémem zachovávají jednotné rozložení prvků pod displayem. V ostatních oblastech se prakticky shodují.
 
-\subsubsection{Ozvučení systému}
+\subsubsection*{Ozvučení systému}
 Z našich uživatelských testů a dostupných článků\cite{ipad_blind}\cite{iphone_blind}\cite{iphone_inside} vyplývá, že Apple iOS nabízí svým zrakově postiženým uživatelům vysoký komfort použitelnosti. Ti mohou aktivovat režim zpřístupnění zcela bez pomoci vidící osoby.
 
 Google Android je na tom oproti konkurentovi z předchozího odstavce hůře (verze 2.3.x), i když po jistých úprávách zařízení (které však, narozdíl od Apple iOS, zrakově postižený uživatel sám nezvládne) lze docílit poměrně uspokojivé formy přístupnosti\cite{android_blind}. Na zvýšení tohoto komfortu navíc Google zapracoval a k jeho podstatnému zlepšení dochází s verzí 4.0, která už se velmi přibližuje úrovni, kterou nabízí Apple iOS\cite{android_start}.
 
 Windows Phone si ze všech našich zkoumaných operačních systémů vede patrně nejhůře, což také dokazují mnohé články\cite{touch_yes_or_no}\cite{win8_blind}\cite{win8_blind2} uživatelů zabývající se touto problematikou. Současná situace tedy podle všeho vypadá tak, že pro tuto platformu neexistuje žádný odečítač obrazovky a proto se v současné době jeví jako absolutně nepoužitelná pro uživatele se zrakovým postižením, ačkoliv si firma Microsoft tento fakt zjevně uvědomuje a některé mírné formy zrakového postižení reflektovala v nastavení přístupnosti\cite{win8_no_reader} (které však pro nás prozatím nejsou dostačující). Toto zjištění může být obzvláště nepříjemné pro uživatele předchozího operačního systému od Microsoftu - Windows Mobile. Ten totiž s přístupností problémy neměl a pokud budou chtít přecházet na jeho nástupce, bude to pro ně v současné chvíli znamenat neřešitelný problém.
 
-\subsubsection{Accessibility API}
+\subsubsection*{Accessibility API}
 Apple iOS na svých stránkách pro vývojáře poskytuje detailní informace k problematice přístupnosti pro zrakově postižené\cite{iphone_blind_dev}. Vývojáři jsou předloženy důvody, které by ho měly vést k uvedení těchto principů do praxe a následně zmíněn stručný přehled toho, co může vývojář při svém snažení využít, aby byl finální produkt co nejpřívětivější, v kapitole příznačně nazvané \uv{iPhone Accessibility API and Tools}.
 
 Dokument zabývající se touto problematikou v rámci platformy Google Android poskytuje svým vývojářům prakticky stejné informace jako operační systém zmíněný v prvním odstavci. Za zmíňku jistě stojí kapitola \uv{Accessibility Developer Checklist}, poskytující vývojářům seznam bodů, na základě kterých se ujistí, že je jejich aplikace plně přístupná zrakově postiženým uživatelům.
 
 Vzhledem k celkové absenci odečítače obrazovky na platformě Windows Phone nemůžeme očekávat žádná doporučení a pokyny pro vývoj aplikací dostupných zrakově postiženým uživatelům.
 
-\subsubsection{Vývoj aplikací}
+\subsubsection*{Vývoj aplikací}
 Apple nabízí svým vývojářům návody, jak a proč svou aplikaci udělat přístupnou uživatelům se zrakovým postižením\cite{iphone_blind_dev}. Na problém ovšem narazíme v případě, že se začneme zajímat o způsob, jak aplikace pro Apple iOS vyvíjet. Zjistíme totiž, že budeme potřebovat vývojové prostředí (IDE) nazvané Xcode ve spojení iOS SDK, které je zdarma, ovšem dostupné pouze pro operační systém OS X, což ve spojení s adekvátním hardwarem znamená nezanedbatelné výdaje.
 
 Google v tomto případě samozřejmě nijak nezaostává a svým vývojářům také nabízí oficiální návody, jak zpřístupnit své aplikace zrakově postiženým\cite{android_blind_dev}. Získává ovšem navrch v případě volby vývojového prostředí. Oficiálně podporované je Eclipse IDE s Android SDK, které je multiplatformní\cite{cross_platform} (v současné době dostupné pro Linux, Windows a Mac OS X) a zdarma. Pro ty, kteří z nějakého důvodu nechtějí využívat služeb Eclipse IDE, jsou na oficiálních stránkách pro vývojáře\cite{android_dev} připraveny návody, jak vyvíjet aplikace pomocí jakéhokoliv jiného prostředí.
 
 Vzhledem k tomu, že Windows Phone zatím žádnou větší podporu přístupnosti pro zrakově postižené nenabízí, nedá se ani očekávat, že by pro své vývojáře nabízel doporučení nebo ucelený pohled na tuto problematiku. Pro vývoj aplikací na Windows Phone je zapotřebí stáhnout Windows Phone SDK\cite{win_sdk}, které v sobě obsahuje všechny potřebné nástroje\cite{win8_sdk} (především Microsoft Visual Studio). Krokem kupředu je uvolnění jejich speciálních verzí zcela zdarma, nicméně faktem zůstavá, že k plnohodnotnému vývoji aplikací bude zapotřebí operační systém Microsoft Windows. V případě SDK pro Windows Phone 7.x to jsou Windows 7 / Windows 8 / Windows 8 Pro / Windows Vista, pro Windows Phone 8 pak dochází k zeštíhlení pouze na Windows 8 / Windows 8 Pro.
 
-\subsubsection{Nahrazení/modifikace launcheru}
+\subsubsection*{Nahrazení/modifikace launcheru}
 V současné chvíli není v případě Apple iOS legálně možné modifikovat launcher (Home screen) jako celek. Existují sice aplikace, které určitým způsobem umožňují jeho modifikaci\cite{iphone_shortcuts}, to nám však pro naše účely nestačí. Nahrazení stávajícího launcheru tedy není možné bez operace nazývané jailbreak\cite{ios_jailbreak}, která je ovšem porušením licenční smlouvy koncového uživatele\cite{apple_about_jailbreak}. Po jejím provedení je na toto zařízení možné nahrávat neoficiální aplikace a tím pádem i aplikaci umožňující změnu standardního launcheru\cite{iphone_launcher}.
 
 Naproti tomu Google Android nemá s touto operací žádný problém, jelikož se u něj jedná o nahrazení stávající aplikace (launcheru) aplikací jinou (podobně jako nahrazení standardní klávesnice, emailového klienta atp.) bez jakékoliv jiné úpravy telefonu. Dokonce existuje zdrojový kód standardního launcheru ke stažení a inspiraci\cite{android_launcher} a stejně tak mnoho jiných vývojářských počinů (například ADW Launcher\cite{android_adw_launcher}).
 
 Windows Phone vyznává z hlediska vývoje u svého launcheru (Start screen) podobnou myšlenku jako Google Android, nicméně vzhled je naprosto rozdílný. Zdá se však, že požadovaná modifikace launcheru je v zásadě možná, vzhledem k dostupným aplikacím na Windows Phone Marketplace, které řeší podobný problém\cite{win_launcher}\cite{win_launcher2}.
 
-\subsubsection{Parametrizované spouštění aplikací}
+\subsubsection*{Parametrizované spouštění aplikací}
 Podstatnou úsporou času by mohla být pro uživatele situace, kdy jedním kliknutím spustí aplikaci, které bude při jejím spuštění předán jeden nebo více parametrů. V ideálním případě by tím pádem mohl náš launcher ušetřit uživateli čas, který by strávil v rámci ruční konfigurace, a zjednodušit interakci. Například přehrávači rádií by tak mohla být předána konkrétní stanice, vyhledávači spojení start a cíl nebo aplikaci Skype indetifikátor uživatele.
 
 Apple iOS umožňuje toto realizovat pomocí tzv. URL Scheme\cite{apple_url_scheme}, pomocí kterého se aplikace v operačním systému registrují pro využití ostatními\cite{apple_app_launch} a předat jim parameter\cite{apple_app_launch2}. Podobný postup lze uplatnit také v případě operačního systému Google Android v podobě intentů\cite{android_app_launch}. Windows Phone nabízí podobnou možnost jako oba zmíněné operační systémy v rámci tzv. protocol handlers\cite{win_app_launch}.
 
 Omezujícím faktorem samozřejmě zůstává, že aplikace, které hodláme spouštět, musí tuto funkcionalitu podporovat a korektně se registrovat v rámci operačního systému.
 
-\subsubsection{Propojení se základními funkcemi}
+\subsubsection*{Propojení se základními funkcemi}
 Apple iOS umožňuje vývojáři komunikovat s vestavěným kalendářem a dokonce se registrovat pro přijímání upozornění o změnách\cite{apple_listener}. Nepodařil se nám však dohledat přehled všech možných notifikací, ke kterým se lze v rámci naší aplikace přihlásit. Pravděpodobně to však nebude možné u aplikací spravujících telefonní hovory, textové zprávy nebo emaily, jelikož iOS oficiálně neumožňuje přistupovat k jejich záznamům v logu\cite{apple_history}. Podobně se nám nepodařilo dohledat informace o možném přístupu k nastavení systému (GPS, Wi-Fi atp.).
 
 Google Android také umožňuje komunikaci s vestavěným kalendářem\cite{android_calendar}\cite{android_calendar2}, nicméně registrace pro přijímání upozornění o změnách není příliš komfortní\cite{android_calendar3}\cite{android_calendar4}. Oproti operačnímu systému Apple iOS však vývojáři nabízí přístup k záznamům telefonních hovorů\cite{android_calllog} a neoficiálně i k textovým zprávám, nicméně se jedná o obecně nedoporučovaný způsob, který nemusí zaručovat potřebnou funkcionalitu na všech zařízeních\cite{android_sms} a podobná situace pravděpodobně nastane v případě emailových zpráv. Požadovaného chování vzhledem k zachytávání upozornění o změnách objektů bychom však mohli dosáhnout pomocí tzv. ContentObserverů\cite{android_observer}. Systémové nastavení, například stav přijímače GPS\cite{android_gps}, Wi-Fi\cite{android_wifi} nebo zvukový profil\cite{android_profile}, se dá jednoduše zjistit.
@@ -521,6 +424,116 @@ Ze průzkumu provedeném v předchozích kapitolách bychom měli být nyní sch
 Operační systémy Apple iOS a Google Android jsou velmi vyrovnanými soupeři a rozhodovat mezi nimi tedy budeme na základě specifických kritérií. Apple iOS a jeho zařízení jsou vhodnější pro nevidomé uživatele z pohledu uniformního prostředí, nicméně Google Android jasně vyhrává v pro nás důležitých oblastech, kterými jsou snadná modifikace launcheru a multiplatformní IDE, které díky tomu nevyžaduje externí náklady v podobě zakoupení licence opračního systému (lze vyvíjet i na Linuxu). Neméně důležitá je i oficiální možnost přístupu k informacím o stavu mobilního zařízení.
 
 Na základě výše uvedených argumentů budeme pro následný vývoj naší aplikace favorizovat právě operační systém Google Android.
+
+\section{Architektura systému}\label{architecture}
+Architektura systému bude obsahovat několik nezbytných vrstev. Její hrubý nástin se bude sestávat nejspíše z těchto prvků:
+
+\begin{itemize}
+\item    Senzory
+\item    Data ze senzorů (včetně aktivity OS)
+\item    Sémantika dat
+\item    Interpretace dat
+\end{itemize}
+
+Jednotlivé vrstvy budou propojeny procesy a vznikne nám tak stromová struktura, jejímž kořenem je vrstva \uv{Interpretace dat}. Ta bude pro svoji funkčnost využívat informace ze dvou podřízených vrstev a to \uv{Data ze senzorů} a \uv{Sémantika dat}. \uv{Data ze senzorů} společně s vrstvou \uv{Aktivita OS} pak budou shromažďovat informace z dostupných senzorů ve vrstvě \uv{Senzory} a stavu operačního systému. Pokud to bude implementace vyžadovat, nemělo by být překážkou přistupování i o více než jedno patro hlouběji ve stromové struktuře.
+
+\subsection{Senzory}
+Seznam uvažovaných senzorů, které bychom mohli v rámci naší aplikace monitorovat, je následující:
+
+\begin{itemize}
+\item    Síť, GPS, Wi-Fi, Bluetooth, Internet
+\item    Akcelerometr, Okolní teplota, Gravitace, Gyroskop, Okolní světlo, Magnetické pole, Okolní tlak, Proximity (\uv{blízkost} objektu, např. přiložení k uchu), Okolní vlhkost, Rotace
+\item    Hovory, SMS, Kalendář, Čas + datum, Spuštěné aplikace
+\item    Klávesnice, Kamera, Mikrofon
+\item    Interakce s displejem
+\item    API
+\end{itemize}
+
+V souvislosti s výše uvedeným seznamem musíme brát na vědomí, že na trhu je v současné době dostupné velké množství zařízení, přičemž každé z nich může mít rozlišné vybavení (senzory). Ty mohou být navíc ne/dostupné v čase, například aplikace nebude schopna získávat informace z modulu GPS v případě, že se bude zařízení nacházet v budově nebo analogicky pro modul Síť, pokud se bude nacházet mimo pokrytí signálem. Všechny tyto aspekty budou ovlivňovat spolehlivost a přesnost následně získaných dat.
+
+Hlavním úkolem této vrstvy proto bude poskytovat informace o aktuálně připojených (dostupných) senzorech (v naší terminologii je budeme vnímat jako připojitelné moduly) a jejich vlastnostech. Nemusí se však nutně jednat o \uv{fyzické} zařízení, data můžeme získávat například z kalendáře, poslaných SMS, uskutečněných hovorů atp.
+
+\subsubsection*{Síť}
+Kvalita informací získaných z tohoto senzoru je závislá na kvalitě signálu a místním pokrytí. Tento senzor zároveň ovlivňuje kvalitu senzoru \uv{Internet} v případě, že není dostupné Wi-Fi připojení. Může tak docházet k absenci internetového připojení na základě nedostupnosti síťového pokrytí nebo jeho zhoršení v případě místní lokace. Například ve velkých městech je mnohonásobně kvalitnější pokrytí a internetové připojení díky dostupnosti lepší generace síťe. Těch existuje několik - v ČR je aktuálně nejlepší možná dostupná síť třetí generace (velká města).
+
+\subsubsection*{API}
+Prostřednictvím bluetooth nebo internetu a nainstalovaných aplikací v našem zařízení bychom mohli docílit rozšíření dostupných interních senzorů o senzory externí, což by nám následně umožnilo přistupovat k informacím mimo \uv{fyzické} senzory aktuálního zařízení. Mohlo by se jednat například o externí zařízení typu výrobní linka, osobní automobil nebo monitor zdravotního stavu. Systém výrobní linky tak může poskytovat informace o
+
+\begin{itemize}
+\item    upozorněních.
+\item    závadách, selháních nebo problémech.
+\item    místě výskytu některé události.
+\item    zaměstnancích.
+\item    servisních kontrolách.
+\end{itemize}
+Systém osobního automobilu může poskytovat informace o
+\begin{itemize}
+\item    okolní teplotě.
+\item    stavu nádrže.
+\item    dojezdu.
+\item    aktuální spotřebě.
+\end{itemize}
+Monitor zdravotního stavu může poskytovat informace o
+\begin{itemize}
+\item    systolickém a diastolickém tlaku.
+\item    hodnotách srdečního tepu.
+\end{itemize}
+
+\subsection{Aktivita OS}
+Pokud bychom byli schopni sledovat aktivitu operačního systému, pomohlo by nám to upřesnit získaná data ze senzorů. V případě, že zařízení nedokáže detekovat dostupné Wi-Fi sítě, z nastavení systému jsme schopni vydedukovat, zda nejsou žádné v dosahu nebo uživatel manuálně vypnul Wi-Fi senzor. Důležité jsou pro nás především tyto oblasti:
+
+\begin{itemize}
+\item    Životní cyklus běžících aplikací
+\item    Nastavení systému
+\item    Aktuální stav OS (stav baterie, síla signálu)
+\end{itemize}
+
+Možnosti získávání potřebných dat jsou však silně závislé na operačním systému, který zvolíme pro budoucí implementaci. Z tohoto důvodu nejsme nyní schopni určit, zda se nám podaří jednotlivé položky nějakým způsobem efektivně monitorovat.
+
+\subsection{Data ze senzorů}
+Na základě informací z dostupných senzorů a z aktivit OS budeme schopni získat data pro další zpracování, například:
+
+\begin{itemize}
+\item    Poloha
+\item    Pohyb
+\item    Činnosti + pravidelnost
+\item    Spouštěné aplikace
+\item    Umístění zařízení (kapsa/taška/batoh atp.)
+\item    Okolní prostředí (venku/vevnitř, světlo, hluk, teplota, vlhkost)
+\item    Aktuální činnosti
+\item    Zdravotní stav
+\end{itemize}
+
+Každá z výše uvedených položek bude přistupovat k informacím z několika odpovídajících senzorů a poskytovat je aplikaci. V závislosti na tom, kolik z nich bude aktuálně dostupných, jaká bude jejich spolehlivost a přesnost, pak bude aplikace vyhodnocovat, v jakém rozsahu se na tato data může spoléhat a jak s nimi dále pracovat (a případně je i archivovat pro pozdější využití).
+
+Jak jsme si nastínili v předchozím odstavci, v rámci naší aplikace nás budou zajímat dva druhy dat. Zaprvé jsou to aktuálně reportované informace ze senzorů a zadruhé je nutné brát v potaz i informace dlouhodobého rázu (především periodicita). Jedná se tedy například o opakované činnosti/aktivity, přičemž data mohou pocházet ze záznamů v kalendáři, ale také ze zaznamenaných a pravidelně se opakujících činností/aktivit.
+
+Takto získaná data bude následně popisovat vrstva \uv{Sémantika dat}. Z tohoto důvodu musí být data popsána nějakým formálním jazykem, pro který budeme schopni tuto vrstvu definovat (například XML). Do budoucna musíme rozhodnout, jak ji budeme realizovat pro data aktuální (nebudou persistentně uložena) a dlouhodobá (budou persistentně uložena).
+
+\subsection{Sémantika dat}
+Popis (neboli sémantika) dat bude ve spojení s vrstvou \uv{Data ze senzorů} sloužit pro využití vrstvou \uv{Interpretace dat}. Předpokládáme, že se v rámci návrhu budeme muset vypořádat s problémem rozličné fyzické interpretace dat aktuálních a dlouhodobých. Aktuální data v některých případech nebude nutné archivovat a proto musí tato vrstva v souvislosti s vrstvou \uv{Data ze senzorů} popisovat obě formy dat abstraktním způsobem tak, aby se s nimi dalo pracovat co nejuniverzálněji.
+
+Pro samotnou implementaci této vrstvy předběžně počítáme s využitím projektu OWL ve verzi Lite, maximálně DL (jena.apache.org).
+
+\subsection{Interpretace dat}
+Nejvýše postavená vrstva ve stromové struktuře bude sloužit k samotné interpretaci získaných dat a od ostatních vrstev se liší tím, že bude popsaná procedurálním způsobem. Při tomto procesu se pravděpodobně setkáme s problémem, kdy se aplikace bude nacházet v tzv. nulovém bodě (nemáme k dispozici ještě žádná dlouhodobá data). Tento stav se budeme snažit eliminovat tak, aby aplikace mohla efektivně pracovat hned od začátku.
+
+Okamžitě po startu bude aplikace schopná získávat data z dostupných senzorů a ty vyhodnocovat. Jak jsme zmínili výše, budou ji však chybět data dlouhodobá (periodicky se opakující) a pak především ta, která se ze žádného senzoru nedozví, ale která jsou pro fungování aplikace stěžejní. Vyhodnocování informací, získaných ze senzorů, se musí z logiky věci řídit potřebami uživatele a k tomu nám pomůže vytvoření jeho profilu.
+
+Při tomto procesu bude tedy nutné zjistit informace například o omezení, se kterými se uživatel potýká (slepota, hluchota, omezená pohyblivost atp.). Teprve na základě toho pak může aplikace korektně interpretovat získaná data. Uveďme si jednoduchý příklad s okolním prostředím. Uživatel postižený hluchotou bude okolní prostředí považovat za rušivé v případě nepříjemných světelných podmínek (ostré světlo, blikající světla atp.). To ovšem nutně nemusí být rušivé pro někoho, kdo je nevidomý. Tomu může naopak vadit vysoká hladina zvuku nebo nepříjemná frekvence.
+
+Požadovaného výsledku bychom mohli docílit tím, že při prvním spuštění necháme uživatele zodpovědět několik základních otázek, které nám pomohou se \uv{odpíchnout} a vytvoříme tak pro aplikaci lepší startovní pozici.
+
+\subsubsection*{Proces interpretace}
+Při pohledu na diagram \ref{fig:interpreter} nacházející se na straně \pageref{fig:interpreter} si můžeme ilustrovat interpretaci kontextu a pravidelných aktivit v ideálním případě. Je z něho jasně patrné, jak rozsáhlý a velmi provázaný může konečný produkt být a je téměř jisté, že v rámci této práce bude ve výsledku realizována pouze určitá podmnožina takto komplexního problému. Důvodů je hned několik - zaprvé si nejsme jisti, zda a jak dalece bude vybraná platforma vůbec schopna takto definované požadavky pokrýt a za druhé je zřejmé, že rozsah takového řešení přesahuje časový rozpočet vymezený pro tuto práci.
+
+Procesy rozpracované touto formou nám však pomohou lépe uchopit celý problém a uvědomit si, jak bychom se s ním měli potýkat během vývoje. Zároveň nám umožní rozmýšlet finální řešení v takové podobě, aby jeho návrh odpovídal požadavkům na budoucí snadné a přehledné rozšiřování.
+
+\begin{figure}\centering
+	\includegraphics[width=1\textwidth]{figures/interpreter_process}
+	\caption{Diagram možné kontextové interpretace.}
+	\label{fig:interpreter}
+\end{figure}
 
 \section{Sémantický model}\label{sec:semantic_model}
 Sémantický model si nejlépe popíšeme pomocí diagramu \ref{fig:semantic} na straně \pageref{fig:semantic}, na kterém je znázorněna struktura OWL modelu. V něm se vyskytují třídy (zvýrazněny tučně), jejich instance (ostatní) a vztahové relace (plná šipka - dědičnost, čárkovaná šipka - vztah) a je rozdělen na tři části - první popisuje třídy a jejich instance, které jsou pro naši aplikaci pevně stanoveny a v současném stavu se nepočítá s jejich modifikací.
@@ -667,7 +680,7 @@ obsahuje informace o poloze, ve které docházelo k pravidelnému spouštění d
 V případě spravování datových zdrojů jsme se rozhodli pro podobný princip jaký preferuje Google Android například v případě získávání informací o poloze\cite{android_location}. V zásadě se v tomto modelu setkáme se dvěmi součástmi, které si v následujícím textu blíže rozebereme. Kromě toho si detailně popíšeme vzájemnou spolupráci těchto součástí a také vlastnosti, které takto definovaná struktura má.
 
 \subsection{Manager}
-Manager (LocationManager\cite{android_location_manager}) je definován jako třída\cite{class} a slouží k poskytování veškerých informací v rámci konkrétního zdroje stejně jako registraci modulů, které chtějí být upozorněny v případě nastalých změn. V našem případě může být celkové pojetí již definovaných Managerů (LocationManager, WifiManager atp.) zbytečně komplikované a naopak některou doplňkovou funkcionalitu nemusí obsahovat. Proto jsme se rozhodli toto rozhraní co nejvíce zjednodušit pomocí předsunutého prvku, který nám umožní i dodatečné úpravy tak, abychom dosáhli požadovaného chování. Aby mohl být vývojáři definovaný modul registrován pro odběr změn, musí splňovat definované požadavky. Zde přichází ke slovu druhá součást a tou je Listener.
+Manager (LocationManager\cite{android_location_manager}) je definován jako třída\cite{class} a slouží k poskytování veškerých informací v rámci konkrétního zdroje stejně jako registraci modulů, které chtějí být upozorněny v případě nastalých změn. V našem případě může být celkové pojetí již definovaných Managerů (LocationManager, WifiManager atp.) zbytečně komplikované a naopak některou doplňkovou funkcionalitu nemusí obsahovat. Proto jsme se rozhodli toto rozhraní co nejvíce zjednodušit pomocí předsunutého prvku, který nám umožní i dodatečné úpravy tak, abychom dosáhli požadovaného chování. Aby mohl být vývojáři definovaný modul registrován pro odběr změn, musí splňovat specifikované požadavky. Zde přichází ke slovu druhá součást a tou je Listener.
 
 \subsection{Listener}
 Listener (LocationListener\cite{android_location_listener}) je definován jako interface\cite{interface}, který musí každý modul, usilující o registraci, implementovat. Díky tomu máme jistotu, že jsme nad všemi registrovanými moduly (listenery) schopni zavolat potřebné metody (například metodu spojenou s akcí “nastala změna pozice”). Zároveň tento způsob poskytuje dostatečnou volnost vývojářům, kteří mohou na nastalou situaci reagovat vlastní implementací těchto definovaných metod.
@@ -689,7 +702,7 @@ Takto definovaná struktura nám dává výhodu vzájemné nezávislosti a obsto
 Neměl by tak být problém přidat během dalšího vývoje nové Managery a jejich Listenery. Zásah do stávajícího kódu je zřejmý, nicméně popsaný a jasně řízený. Z toho důvodu stačí, když se bude vývojář řídit výše specifikovaným návrhem a dodrží popsanou strukturu.
 
 \section{Ukládání logů}
-Požadavkem pro efektivní ukládání logovacích záznamů je dodržení flexibilní a vzájemně nezávislé struktury především z důvodu pravděpodobných změn (rozšíření) během budoucího vývoje. Proto jsme využili mírně upraveného principu popsaného v kapitole [Správa datových zdrojů] (Manager - Listener). V následující kapitole si popíšeme proces jeho fungování a také v čem spočívají drobné modifikace tohoto systému a jaké nás k tomu vedly důvody.
+Požadavkem pro efektivní ukládání logovacích záznamů je dodržení flexibilní a vzájemně nezávislé struktury především z důvodu pravděpodobných změn (rozšíření) během budoucího vývoje. Proto jsme využili mírně upraveného principu popsaného v kapitole \ref{data_sources_management} na straně \pageref{data_sources_management} (Manager - Listener). V následující kapitole si popíšeme proces jeho fungování a také v čem spočívají drobné modifikace tohoto systému a jaké nás k tomu vedly důvody.
 
 Podíváme-li se na diagram \ref{fig:manager_listener} na straně \pageref{fig:manager_listener}, nejsou zde na první pohled zřejmé žádné procesní změny. Listenery se registrují obvyklým způsobem, mírně rozdílný je však postup při ohlášení změny. LogManager má přímý odkaz na hlavní databázovou entitu LogRecord, která v sobě obsahuje odkazy na mnoho dalších entit, které je potřeba společně uložit do databáze. Aby mohl LogManager entitu LogRecord naplnit, musel by vlastnit odkazy na všechny relevantní entity v databázi. Tento postup by ale odporoval požadavkům na nízkou provázanost a flexibilitu, proto jsme zvolili odlišný algoritmus.
 
@@ -698,11 +711,16 @@ Ve chvíli, kdy LogManager obdrží informaci o změně, vytvoří novou instanc
 Je zřejmé, že než dojde k uložení jednotlivých instanciovaných entit, je potřeba je naplnit relevantními daty. K tomu využijeme již nadefinované moduly z kapitoly \ref{data_sources_management} na straně \pageref{data_sources_management}, které kromě registrace k odběru změn poskytují zároveň přístup k relevantním datům.
 
 \section{Vyhledávání pravidelností}
+Aby měla naše aplikace z čeho čerpat data pro zobrazování odpovídajících aplikací na hlavní obrazovce, je potřeba v nasbíraných datech najít vzory pravidelností, nad kterými se pak budeme dotazovat. PeriodicActivityManager tak používá již několikrát zmiňovanou koncepci registrovaných modulů, pro tento účel mírně poupravenou. Všechny implementují rozhraní PeriodicSeeker a PeriodicActivityManager si udržuje jejich seznam.
+
+Jak jsou postupně spouštěny, vyhledávají v databázi logovacích záznamů pravidelnosti spojené s jimi sledovaným atributem/atributy a ukládají je do databázových struktur. Jednotlivé moduly jsou na sobě nezávislé a díky tomu nezáleží na pořadí, ve kterém jsou případně spouštěny.
+
+Vykonávat tuto operaci by bylo vhodné ve chvíli, kdy uživatel neprovádí na mobilním zařízení žádnou činnost (například spí). Jednou z možností je nechat chvíli spouštění tohoto procesu pouze na něm a naučit se, kdy je nejlepší tuto operaci provádět. V dnešní době však už uživatelé tyto typy mobilních zařízení v noci nevypínají, ale obvykle je pouze přepínají do \uv{letadlového} módu. V tomto stavu nepřijímají žádný signál, ale celou noc jsou zapnutá a díky tomu bychom mohli spouštění této operace registrovat právě na tuto událost. Toto řešení se nám zdá v současné době postačující a zároveň ještě uvažujeme o periodickém provádění, například každých deset nebo dvacet hodin, pro případ, že by uživatel tento mód nepoužíval.
 
 \section{Filtrování pravidelností}
-Abychom mohli uživateli v daný okamžik nabídnout co nejlepší seznam aplikací, musíme provádět určitou formu selekce dostupných pravidelných záznamů. Abychom zachovali nízkou provázanost a do budoucna zvýšili komfort rozšiřování, vytvořili jsme interface Filter, který implementují všechny třídy, které umožňují filtraci seznamu aplikací (ten je jim předán jako parametr). PeriodicActivityManager uchovává jejich seznam, který pokaždé prochází a u každého spouští metodu zodpovědnou za provedení odpovídající úlohy.
+Hlavním smyslem naší aplikace je v daný okamžik nabídnout uživateli co nejlepší seznam aplikací a proto musíme provádět určitou formu selekce dostupných pravidelných záznamů. Abychom zachovali nízkou provázanost a do budoucna zvýšili komfort rozšiřování, vytvořili jsme interface Filter, který implementují všechny třídy, jenž umožňují filtraci seznamu aplikací (ten je jim předán jako parametr). PeriodicActivityManager uchovává jejich seznam, který při každé obměně uživatelského rozhraní prochází a u filtrů spouští metodu zodpovědnou za provedení odpovídající úlohy.
 
-Jednotlivé filtry si tak odvedou svou práci, aniž by PeriodicActivityManager musel vědět, jaký vlastně spouští. Navíc na sobě musí být zcela nezávislé a z toho důvodu ponechávají v seznamu jednak aplikace, které odpovídají jejich kriteriím, ale zároveň ty, které nemají žádnou informaci o filtrovaném atributu (to znamená, že na tomto atributu nezáleží). Pokud tedy například filtr aktivních Wi-Fi připojení zjistí, že hodnota odpovídá aktuálnímu kontextu, aplikaci v seznamu ponechá, stejně jako tu, která ji má blíže nespecifikovanou (typicky null). Díky tomu je zajištěno, že ze seznamu nebudou odstraněny aplikace závislé na jiných kriteriích.
+Díky tomu jednotlivé filtry provedou potřebné operace, aniž by PeriodicActivityManager musel vědět, jaký vlastně aktuálně spouští. Nutnou podmínkou tohoto přístupu je, že na sobě musí být zcela nezávislé a z toho důvodu ponechávají v seznamu jednak aplikace, které odpovídají jejich kriteriím, ale zároveň ty, které nemají žádnou informaci o filtrovaném atributu (to znamená, že na tomto atributu nezáleží). Pokud tedy například filtr aktivních Wi-Fi připojení zjistí, že hodnota odpovídá aktuálnímu kontextu, aplikaci v seznamu ponechá, stejně jako tu, která ji má blíže nespecifikovanou (typicky null). Prostřednictvím tohoto mechanismu je zajištěno, že ze seznamu nebudou odstraněny aplikace nezávislé na právě testovaném kritériu.
 
 \section{Uživatelské rozhraní}
 Během implementace našeho projektu se z časových důvodů a vzhledem ke stanoveným cílům nebudeme zabývat hlavní viditelnou součástí, kterou je Launcher. Existuje několik jeho v principu podobných verzí s dostupným zdrojovým kódem, ze kterých vybereme tu nejvhodnější a využijeme ji v našem projektu. Nám tato volba ušetří čas a umožní se soustředit na hlavní cíle projektu, navíc díky tomu bude zaručeno, že nebudeme znovu vynalézat kolo a nutit uživatele zvykat si na něco jiného než co poměrně důvěrně zná a již se s tím naučil pracovat. Jak budeme zobrazovat seznam relevantních aplikací a komunikovat s uživatelem si popíšeme v následujících kapitolách.
@@ -718,7 +736,7 @@ Tím jsme vyřešili obnovu seznamu aplikací, které ale bude potřeba na hlavn
 
 Sofistikovanějším způsobem řazení by bylo se zaměřit na stanovení priorit, které jednotlivé aplikace v seznamu mají, a na jejich základě v něm pořadí upravovat. Je však nutné nalézt metodu, pomocí které převedeme vlastnosti jednotlivých pravidelných záznamů na jediné číslo - prioritu. Když se na celý problém podíváme detailněji, tak zjistíme, že to není zcela jednoduchá operace. Máme-li aplikaci, která je spouštěna během jednoho dne v týdnu, a druhou, která je spouštěna v přítomnosti specifické Wi-Fi, nejsme v případě, že jsou obě podmínky splněny, schopni určit, která z nich by měla mít prioritu vyšší. Proto se v současné chvíli omezíme na určování priorit pouze u těch aplikací, které mají jasně vymezené časové období (například od 8:00 do 9:00), a ostatním ponecháme tu nejnižší.
 
-\subsection{Komunikace s uživatelem}
+\subsection{Komunikace s uživatelem}\label{communication}
 Při celkovém pohledu na vyvíjenou aplikaci je zcela zřejmé, že některé informace nejsme schopni zjistit pouze prostřednictvím pasivního sledování uživatelské činnosti. Bez aktivních podnětů tak například těžko zjistíme rozložení dne (jaké časové rozmezí pro uživatele představuje snídaně, dopoledne nebo oběd) nebo jak dané pořadí aplikací odpovídá jeho aktuálním potřebám. Z toho důvodu jsme nuceni nalézt formu, prostřednictvím které budeme s uživatelem komunikovat, tyto informace od něj získávat nebo si nechávat potvrzovat správnost našeho úsudku.
 
 Největším problémem této oblasti je, že se tento způsob shromažďování informací stane pro uživatele otravné nebo ho bude zdržovat při práci. Z jeho pohledu není nic horšího, než když si potřebuje rychle najít spoj a naše aplikace se bude snažit z něj vymámit informace o spokojenosti s aktuálně nabízeným seznamem nebo v jaké se aktuálně nachází fázi dne. Z uvedeného příkladu vyplývá, že si musíme důkladně rozmyslet, kdy budeme po uživateli chtít doplňující informace a když už k tomu dojde, tak především zvolit co nejstručnější formu a dát mu například vybrat z několika nejpravděpodobnějších možností.
@@ -857,9 +875,26 @@ Běžnou rutinou každého programátora je zajištění ochrany kódu před po�
 Naším požadavkem bylo využívání Gitu\cite{git} vzhledem k tomu, že nabízí o mnoho více možností správy zdrojového kódu než jeho konkurent Subversion\cite{svn}, který je navíc v dnešní době mírně na ústupu. Vzhledem k tomu, že náš projekt není ničím tajným, nevidíme problém ve využití veřejného webového nástroje GitHub\cite{github}, který nám zdarma zajišťuje serverovou část. Podmínkou je však zobrazení repositáře ostatním uživatelům v módu read-only (jen ke čtení). Náš projekt na serveru GitHub\cite{github_project}.
 
 \chapter{Budoucí práce}
+Úkolem této kapitoly by mělo být vytvoření vize budoucích prací a dalšího rozvíjení potencionálu našeho projektu. Jak se mohl čtenář během studování této práce přesvědčit, jedná se o velmi komplexní a rozsáhlý problém, který nabízí nepřeberné množství oblastí, jenž se dají rozšiřovat a vylepšovat. Obrovské možnosti budoucího systému jsme si nastínili především v kapitole \ref{architecture} na straně \pageref{architecture}, která popisuje jednotlivé součásti způsobem, jak by mohly fungovat v plně dokončeném projektu.
+
+Z tohoto faktu je patrné, že v rámci našeho projektu jsme byli schopni implementačně pokrýt pouze omezenou podmnožinu problému. Díky detailní analýze a důrazu na nízkou provázanost jednotlivých součástí je však možné nezávisle rozšiřovat jednotlivé oblasti, aniž bychom museli zásadně modifikovat stávající zdrojový kód. Všechny operace jsou o to snazší, že je princip fungování jednotlivých částí rozepsán v textu. 
+
+Jednou z nutných oblastí, které musí být provedeny pro plnohodnotné nasazení, je testování na reálných datech. Rozhodně je však potřeba před jeho samotným masovým započetím doimplementovat funkcionalitu spojenou s čištěním databáze od starých záznamů (jak logovacích, tak periodických), která zaručí aktuálnost nasbíraných a interpretačních dat.
+
+Naším velkým úkolem do budoucna by mohlo být vytvoření veřejně dostupné API, která by ostatním běžícím aplikacím umožňovala efektivní spolupráci s naším Launcherem. Uživateli by toto spojení poskytovalo o několik úrovní vyšší komfort a zjednodušení spouštění aplikací. Ruku v ruce jde s tímto záměrem úsilí o specifikaci pokynů (anglicky guidelines), které zdokumentují a popíší nejlepší způsoby (best practices) vývoje mobilních aplikací tak, aby jejich spolupráce s naším Launcherem byla maximálně efektivní. Aplikace by mohly vystavovat některá interní data, která by následně mohla být využita námi, stejně jako spouštět eventy, které bychom byli schopni zachytit a efektivněji tak například monitorovat jejich životní cyklus. Vzhledem k tomu, že naše aplikace cílí na zrakově postižené uživatele, mohl by navíc součástí těchto specifikací být návod, jak správně vyvíjet mobilní aplikace, aby jejich přístupnost těmto skupinám byla co nejlepší.
+
+V rámci úprav uživatelského rozhraní a komunikace s uživatelem bude potřeba implementovat aplikační logiku popsanou v kapitole \ref{communication} na straně \pageref{communication}. Za pozornost navíc stojí využití (jako hlavní obrazovky) projektu vyvíjeného na ČVUT FEL, katedře počítačové grafiky a interakce. Jedná se o modifikované Grid View\cite{grid_view}, které poskytuje vylepšenou funkcionalitu a zlepšení přístupnosti zrakově postiženým.
 
 \begin{conclusion}
-	%sem napište závěr Vaší práce
+V úvodní kapitole jsme si nastínili celkový problém, který jsme se snažili v rámci této práce popsat, stanovit si hlavní cíle a vytvořit funkční řešení. V závěru bychom se měli zpětně na tyto body podívat a kriticky zhodnotit, zda jsme si vedli úspěšně - co se nám povedlo naplnit a co ne.
+
+Základem vyhovujícího řešení byla nutnost dobře poznat cílovou skupinu uživatelů, její potřeby a pravidelný cyklus. Myslíme si, že tento krok se nám podařilo splnit velmi dobře a provedené rozhovory byly pro nás nedocenitelnou profesní zkušeností. Díky jejich dostatečnému množství pak bylo jednodušší stanovit pravidelný režim průměrného uživatele naší aplikace, což nám poskytlo ještě lepší vhled do nitra celkového problému.
+
+Detailně provedená rešerše operačních systémů nám pomohla vybrat ten, který optimálně splňuje naše požadavky. V rámci jednotlivých kriterií jsme se navíc snažili reflektovat specifické potřeby naší cílové skupiny a produkt tak lépe směřovat právě na ně.
+
+Dále jsme provedli samotný návrh klíčových součástí našeho systému. Po celou dobu vývoje naší aplikace jsme měli na mysli jejich výslednou flexibilitu a jednoduchou rozšiřitelnost spojenou s nízkou provázaností. Veškerou jejich specifikaci protíná linie podobného rozvržení na jednotlivé moduly, jež disponují přesně definovanou a striktně omezenou funkcionalitou (neobsahují zbytečně nic navíc), která právě tyto požadavky zaručuje. Navíc jsou mezi sebou propojeny pomocí flexibilních vazeb (například zmiňovaný Manager - Listener), což také vyhovuje stanoveným podmínkám. Slabší částí práce je řešení modulu pro vyhledávání pravidelností, kde si nejsme zcela jisti, že tento koncept dokáže pokrýt budoucí nároky na rozšiřování aplikace.
+
+Čtenář se již měl tu možnost přesvědčit, že takto provedená analýza a návrh v celkovém časovém rozvrhu ve výsledku odčerpala zdroje vlastní implementaci, která tím pádem pokrývá určitou podmnožinu komplexně definovaného problému. Nicméně naprogramovaná aplikace je funkční a v současné chvíli umožňuje zaznamenávání jednotlivých aktivit na základě časových pravidelností a dostupných Wi-Fi sítí. Jedná se tedy o určitou beta verzi připravenou ke komplexnějšímu testování, jenž je z podstaty problému samo námětem na samostatnou práci, především z důvodu časové náročnosti v případě testování na reálných datech.
 \end{conclusion}
 
 \bibliographystyle{plain}
@@ -870,8 +905,24 @@ Naším požadavkem bylo využívání Gitu\cite{git} vzhledem k tomu, že nabí
 \chapter{Seznam použitých zkratek}
 % \printglossaries
 \begin{description}
-	\item[GUI] Graphical user interface
-	\item[XML] Extensible markup language
+	\item[API] Application Programming Interface
+	\item[BSSID] Basic Service Set IDentifier
+	\item[BTS] Base Transceiver Station
+	\item[CRUD] Create Read Update Delete
+	\item[GPS] Global Positioning System
+	\item[HW] HardWare
+	\item[ID] IDentification number
+	\item[IDE] Integrated Development Environment
+	\item[IDOS] Integrovaný DOpravní Systém
+	\item[MHD] Městská Hromadná Doprava
+	\item[ORM] Object Related Mapping
+	\item[OS] Operating System
+	\item[OWL] Web Ontology Language
+	\item[SDK] Software Development Kit
+	\item[SSID] Service Set Identifier
+	\item[URL] Uniform Resource Locator
+	\item[Wi-Fi] Wireless Fidelity
+	\item[XML] eXtensible Markup Language
 \end{description}
 
 \chapter{Seznam ostatních příloh}
@@ -1146,14 +1197,12 @@ Eva Vonešová
 
 \begin{figure}
 	\dirtree{%
-		.1 readme.txt\DTcomment{stručný popis obsahu CD}.
-		.1 exe\DTcomment{adresář se spustitelnou formou implementace}.
-		.1 src.
-		.2 impl\DTcomment{zdrojové kódy implementace}.
-		.2 thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
-		.1 text\DTcomment{text práce}.
-		.2 thesis.pdf\DTcomment{text práce ve formátu PDF}.
-		.2 thesis.ps\DTcomment{text práce ve formátu PS}.
+		.1 README.md\DTcomment{stručný popis projektu a obsahu CD}.
+		.1 docs.
+		.2 master\_thesis\DTcomment{zdrojová forma práce ve formátu \LaTeX{}}.
+		.2 pdf\DTcomment{text práce ve formátu PDF}.
+		.1 interview\DTcomment{zvukové záznamy uživatelských rozhovorů}.
+		.1 source\DTcomment{zdrojové kódy implementace}.
 	}
 \end{figure}
 

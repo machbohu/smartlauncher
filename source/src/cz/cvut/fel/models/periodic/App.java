@@ -5,6 +5,8 @@ import java.util.List;
 import com.roscopeco.ormdroid.Entity;
 import com.roscopeco.ormdroid.Query;
 
+import cz.cvut.fel.globals.Constants;
+
 
 public class App extends Entity implements Comparable<App> {
 	public int id;
@@ -38,7 +40,7 @@ public class App extends Entity implements Comparable<App> {
 		return !Query.query(AppPeriod.class).where(Query.eql("app", this)).executeMulti().isEmpty();
 	}
 	
-	public boolean hasPeriod(String period){
+	public boolean checkPeriod(String period){
 		Period p = Period.get(period);
 		return p != null && Query.query(AppPeriod.class).where(
 				Query.and(Query.eql("app", this), Query.eql("period", p))).execute() != null;
@@ -48,7 +50,7 @@ public class App extends Entity implements Comparable<App> {
 		return !Query.query(AppDay.class).where(Query.eql("app", this)).executeMulti().isEmpty();
 	}
 	
-	public boolean hasDay(String day){
+	public boolean checkDay(String day){
 		Day d = Day.get(day);
 		return d != null && Query.query(AppDay.class).where(
 				Query.and(Query.eql("app", this), Query.eql("day", d))).execute() != null;
@@ -58,8 +60,8 @@ public class App extends Entity implements Comparable<App> {
 		return time_from != 0 && time_to != 0;
 	}
 	
-	public boolean hasTime(long time){
-		return time >= time_from && time <= time_to;
+	public boolean checkTime(long time){
+		return time >= (time_from - Constants.HALF_AN_HOUR) && time <= time_to;
 	}
 
 	@Override

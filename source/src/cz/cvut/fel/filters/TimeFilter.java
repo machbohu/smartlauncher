@@ -24,21 +24,21 @@ public class TimeFilter implements Filter {
 		
 		for(App app : apps){
 			if(app.hasPeriods()){
-				if(!app.hasPeriod(period)){
+				if(!app.checkPeriod(period)){
 					apps.remove(app);
 				}
 			}else{
 				continue;
 			}
 			if(app.hasDays()){
-				if(!app.hasDay(day)){
+				if(!app.checkDay(day)){
 					apps.remove(app);
 				}
 			}else{
 				continue;
 			}
 			if(app.hasTime()){
-				if(!app.hasTime(time)){
+				if(!app.checkTime(time)){
 					apps.remove(app);
 				}
 			}else{

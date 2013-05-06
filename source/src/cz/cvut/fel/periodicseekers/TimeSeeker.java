@@ -13,12 +13,12 @@ import cz.cvut.fel.models.periodic.App;
 import cz.cvut.fel.models.periodic.WifiNetworkP;
 
 
-public class ActiveWifiSeeker implements PeriodicSeeker {
-	private static final ActiveWifiSeeker instance = new ActiveWifiSeeker();
+public class TimeSeeker implements PeriodicSeeker {
+	private static final TimeSeeker instance = new TimeSeeker();
 	
-	private ActiveWifiSeeker() {}
+	private TimeSeeker() {}
 	
-	public static ActiveWifiSeeker getInstance(){
+	public static TimeSeeker getInstance(){
 		return instance;
 	}
 	
@@ -49,9 +49,6 @@ public class ActiveWifiSeeker implements PeriodicSeeker {
 			
 			double logCnt = logApps.size();
 			
-			// TODO maybe we should consider periodic activity as
-			// "launched when connected to Wi-Fis A, B and C"
-			// not only for "connected to only one Wi-Fi A"
 			for(String key : wifisCnt.keySet()){
 				// Check if this could be taken as periodic activity
 				// and if so - save it

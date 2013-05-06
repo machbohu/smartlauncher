@@ -159,6 +159,11 @@
 {\em greenDAO – Android ORM for SQLite}.
 \newblock [cit. 22.4.2013] \\ http://greendao-orm.com/.
 
+\bibitem{grid_view}
+{\em Grid View}.
+\newblock [cit. 6.5.2013] \\
+  http://developer.android.com/guide/topics/ui/layout/gridview.html.
+
 \bibitem{heureka}
 {\em Heureka}.
 \newblock [cit. 22.4.2013] \\ http://www.heureka.cz/.

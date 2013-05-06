@@ -75,45 +75,46 @@ Warning--to sort, need author, organization, or key in github
 Warning--to sort, need author, organization, or key in git
 Warning--to sort, need author, organization, or key in svn
 Warning--to sort, need author, organization, or key in github_project
-You've used 72 entries,
+Warning--to sort, need author, organization, or key in grid_view
+You've used 73 entries,
             2118 wiz_defined-function locations,
-            713 strings with 14210 characters,
-and the built_in function-call counts, 10392 in all, are:
-= -- 1008
-> -- 72
+            716 strings with 14312 characters,
+and the built_in function-call counts, 10536 in all, are:
+= -- 1022
+> -- 73
 < -- 0
-+ -- 73
++ -- 74
 - -- 0
-* -- 506
-:= -- 1235
-add.period$ -- 144
-call.type$ -- 72
-change.case$ -- 144
+* -- 513
+:= -- 1252
+add.period$ -- 146
+call.type$ -- 73
+change.case$ -- 146
 chr.to.int$ -- 0
-cite$ -- 144
-duplicate$ -- 576
-empty$ -- 1369
+cite$ -- 146
+duplicate$ -- 584
+empty$ -- 1388
 format.name$ -- 0
-if$ -- 2449
+if$ -- 2483
 int.to.chr$ -- 0
-int.to.str$ -- 72
+int.to.str$ -- 73
 missing$ -- 0
-newline$ -- 291
+newline$ -- 295
 num.names$ -- 0
-pop$ -- 288
+pop$ -- 292
 preamble$ -- 1
-purify$ -- 144
+purify$ -- 146
 quote$ -- 0
-skip$ -- 431
+skip$ -- 437
 stack$ -- 0
-substring$ -- 361
-swap$ -- 72
+substring$ -- 366
+swap$ -- 73
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 288
-warning$ -- 72
+type$ -- 292
+warning$ -- 73
 while$ -- 0
-width$ -- 74
-write$ -- 506
-(There were 72 warnings)
+width$ -- 75
+write$ -- 513
+(There were 73 warnings)
