@@ -7,6 +7,8 @@ Warning--to sort, need author, organization, or key in mobile_stats
 Warning--to sort, need author, organization, or key in market_share
 Warning--to sort, need author, organization, or key in pcmag
 Warning--to sort, need author, organization, or key in amplified
+Warning--to sort, need author, organization, or key in tasker
+Warning--to sort, need author, organization, or key in locale
 Warning--to sort, need author, organization, or key in launcher
 Warning--to sort, need author, organization, or key in platform
 Warning--to sort, need author, organization, or key in heureka
@@ -64,6 +66,7 @@ Warning--to sort, need author, organization, or key in android_location_manager
 Warning--to sort, need author, organization, or key in class
 Warning--to sort, need author, organization, or key in android_location_listener
 Warning--to sort, need author, organization, or key in interface
+Warning--to sort, need author, organization, or key in atooma
 Warning--to sort, need author, organization, or key in android_project_structure
 Warning--to sort, need author, organization, or key in android_i18n
 Warning--to sort, need author, organization, or key in active_record
@@ -71,50 +74,51 @@ Warning--to sort, need author, organization, or key in ormlite
 Warning--to sort, need author, organization, or key in ormdroid
 Warning--to sort, need author, organization, or key in greendao
 Warning--to sort, need author, organization, or key in launchers_list
+Warning--to sort, need author, organization, or key in explore_by_touch
 Warning--to sort, need author, organization, or key in github
 Warning--to sort, need author, organization, or key in git
 Warning--to sort, need author, organization, or key in svn
 Warning--to sort, need author, organization, or key in github_project
 Warning--to sort, need author, organization, or key in grid_view
-You've used 73 entries,
+You've used 77 entries,
             2118 wiz_defined-function locations,
-            716 strings with 14312 characters,
-and the built_in function-call counts, 10536 in all, are:
-= -- 1022
-> -- 73
+            728 strings with 14624 characters,
+and the built_in function-call counts, 11112 in all, are:
+= -- 1078
+> -- 77
 < -- 0
-+ -- 74
++ -- 78
 - -- 0
-* -- 513
-:= -- 1252
-add.period$ -- 146
-call.type$ -- 73
-change.case$ -- 146
+* -- 541
+:= -- 1320
+add.period$ -- 154
+call.type$ -- 77
+change.case$ -- 154
 chr.to.int$ -- 0
-cite$ -- 146
-duplicate$ -- 584
-empty$ -- 1388
+cite$ -- 154
+duplicate$ -- 616
+empty$ -- 1464
 format.name$ -- 0
-if$ -- 2483
+if$ -- 2619
 int.to.chr$ -- 0
-int.to.str$ -- 73
+int.to.str$ -- 77
 missing$ -- 0
-newline$ -- 295
+newline$ -- 311
 num.names$ -- 0
-pop$ -- 292
+pop$ -- 308
 preamble$ -- 1
-purify$ -- 146
+purify$ -- 154
 quote$ -- 0
-skip$ -- 437
+skip$ -- 461
 stack$ -- 0
-substring$ -- 366
-swap$ -- 73
+substring$ -- 386
+swap$ -- 77
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 292
-warning$ -- 73
+type$ -- 308
+warning$ -- 77
 while$ -- 0
-width$ -- 75
-write$ -- 513
-(There were 73 warnings)
+width$ -- 79
+write$ -- 541
+(There were 77 warnings)
