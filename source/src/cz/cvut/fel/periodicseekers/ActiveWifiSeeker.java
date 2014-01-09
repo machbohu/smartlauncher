@@ -12,7 +12,12 @@ import cz.cvut.fel.models.log.WifiNetworkL;
 import cz.cvut.fel.models.periodic.App;
 import cz.cvut.fel.models.periodic.WifiNetworkP;
 
-
+/**
+ * Seek for periodic activities connected with Wi-Fi
+ * (application <-> Wi-Fi network).
+ * 
+ * @author machbohu
+ */
 public class ActiveWifiSeeker implements PeriodicSeeker {
 	private static final ActiveWifiSeeker instance = new ActiveWifiSeeker();
 	
@@ -36,7 +41,7 @@ public class ActiveWifiSeeker implements PeriodicSeeker {
 			for(LogApp logApp : logApps){
 				// For every Log find active Wi-Fi connection, if available
 				LogRecord log = logApp.log;
-				WifiNetworkL activeWifi = log.getActiveWifi();
+				WifiNetworkL activeWifi = log.getWifi();
 				
 				if(activeWifi != null){
 					if(wifisCnt.containsKey(activeWifi.ssid)){
@@ -50,7 +55,7 @@ public class ActiveWifiSeeker implements PeriodicSeeker {
 			double logCnt = logApps.size();
 			
 			// TODO maybe we should consider periodic activity as
-			// "launched when connected to Wi-Fis A, B and C"
+			// "launched when connected to Wi-Fis A, B and C" or "in a date range"
 			// not only for "connected to only one Wi-Fi A"
 			for(String key : wifisCnt.keySet()){
 				// Check if this could be taken as periodic activity
@@ -62,7 +67,7 @@ public class ActiveWifiSeeker implements PeriodicSeeker {
 						wifi = new WifiNetworkP();
 						wifi.ssid = key;
 					}else{
-						if(App.filter("name", app.name, "wifi", wifi) != null){
+						if(!App.filter("name", app.name, "wifi", wifi).isEmpty()){
 							break;
 						}
 					}

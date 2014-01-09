@@ -1,5 +1,6 @@
 package cz.cvut.fel.filters;
 
+import java.util.Iterator;
 import java.util.List;
 
 import android.net.wifi.WifiInfo;
@@ -17,8 +18,10 @@ public class ActiveWifiFilter implements Filter {
 	}
 	
 	/**
-	 * Remove all applications not having active Wi-Fi
-	 * or no information (null)
+	 * Filter list of applications according to connected Wi-Fi.
+	 * 
+	 * Remove all applications not having actual Wi-Fi.
+	 * Don't remove those having Wi-Fi reference set to null. 
 	 */
 	@Override
 	public List<App> filter(List<App> apps) {
@@ -28,11 +31,15 @@ public class ActiveWifiFilter implements Filter {
 		WifiNetworkP wifi = null;
 		
 		if(wifiInfo.getSSID() != null){
+			// TODO actual SSID is not present in DB?
 			wifi = WifiNetworkP.get("ssid", wifiInfo.getSSID());
+			Iterator<App> i = apps.iterator();
 			
-			for(App app : apps){
+			while(i.hasNext()){
+				App app = i.next();
+				// TODO can we use != between objects?
 				if(app.wifi != wifi && app.wifi != null){
-					apps.remove(app);
+					i.remove();
 				}
 			}
 		}

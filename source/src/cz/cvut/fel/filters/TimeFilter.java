@@ -1,5 +1,6 @@
 package cz.cvut.fel.filters;
 
+import java.util.Iterator;
 import java.util.List;
 
 import cz.cvut.fel.managers.TimeManager;
@@ -14,6 +15,10 @@ public class TimeFilter implements Filter {
 		return instance;
 	}
 	
+	/**
+	 * Filter list of applications according to actual time,
+	 * period and day
+	 */
 	@Override
 	public List<App> filter(List<App> apps) {
 		if(apps == null) return apps;
@@ -21,28 +26,28 @@ public class TimeFilter implements Filter {
 		String period = TimeManager.getPeriodName();
 		String day = TimeManager.getShortDayName();
 		long time = TimeManager.getTimeSinceMidnight();
+		Iterator<App> i = apps.iterator();
 		
-		for(App app : apps){
+		while(i.hasNext()){
+			App app = i.next();
+			
 			if(app.hasPeriods()){
 				if(!app.checkPeriod(period)){
-					apps.remove(app);
+					i.remove();
+					continue;
 				}
-			}else{
-				continue;
 			}
 			if(app.hasDays()){
 				if(!app.checkDay(day)){
-					apps.remove(app);
+					i.remove();
+					continue;
 				}
-			}else{
-				continue;
 			}
 			if(app.hasTime()){
 				if(!app.checkTime(time)){
-					apps.remove(app);
+					i.remove();
+					continue;
 				}
-			}else{
-				continue;
 			}
 		}
 		

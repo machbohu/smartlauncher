@@ -13,6 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 import cz.cvut.fel.listeners.TimeListener;
 
+/**
+ * Provide informations about time, period, day etc. and also register
+ * listeners for their timers. 
+ * 
+ * @author machbohu
+ */
 public class TimeManager{
 	public static final String EVEN = "even";
 	public static final String ODD = "odd";
@@ -24,10 +30,16 @@ public class TimeManager{
 			new HashMap<TimeListener, ScheduledFuture<?>>();
 	private static Map<TimeListener, Integer> times = new HashMap<TimeListener, Integer>();
 
+	/**
+	 * Every listener has its own timer 
+	 * 
+	 * @param l - listener to add
+	 * @param seconds - when this time is up, listener's event is fired 
+	 */
 	public static void addListener(TimeListener l, int seconds){
 		final Runnable timer = new Timer(l);
         final ScheduledFuture<?> timerHandle = 
-        		scheduler.scheduleAtFixedRate(timer, 0, seconds, TimeUnit.SECONDS);
+        		scheduler.scheduleAtFixedRate(timer, seconds, seconds, TimeUnit.SECONDS);
         timers.put(l, timerHandle);
         times.put(l, seconds);
 	}

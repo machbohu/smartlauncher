@@ -8,7 +8,7 @@
 \bibitem{iphone_blind_dev}
 {\em Accessibility on iPhone}.
 \newblock [cit. 22.4.2013] \\
-  http://developer.apple.com/library/ios/\#documentation/UserExperience/Conceptual/iPhoneAccessibility/Accessibility\_on\_iPhone/Accessibility\_on\_iPhone.html.
+  http://developer.apple.com/library/ios/\#documentation/\\UserExperience/Conceptual/iPhoneAccessibility/\\Accessibility\_on\_iPhone/Accessibility\_on\_iPhone.html.
 
 \bibitem{android_adw_launcher}
 {\em adw-launcher-android}.
@@ -81,7 +81,7 @@
 \bibitem{android_wifi}
 {\em Android WifiManager}.
 \newblock [cit. 22.4.2013] \\
-  http://developer.android.com/reference/android/net/wifi/WifiManager.html\#isWifiEnabled().
+  http://developer.android.com/reference/android/net/wifi/\\WifiManager.html\#isWifiEnabled().
 
 \bibitem{apple_about_jailbreak}
 {\em Apple oficiálně upozorňuje na negativa Jailbreaku}.
@@ -91,7 +91,7 @@
 \bibitem{apple_url_scheme}
 {\em Apple URL Scheme Reference}.
 \newblock [cit. 22.4.2013] \\
-  http://developer.apple.com/library/ios/\#featuredarticles/iPhoneURLScheme\_Reference/Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40007899.
+  http://developer.apple.com/library/ios/\#featuredarticles/\\iPhoneURLScheme\_Reference/\\Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40007899.
 
 \bibitem{atooma}
 {\em Atooma}.
@@ -134,7 +134,7 @@
 \bibitem{win8_blind}
 {\em Ease of access settings improve Windows Phone 8 accessibility}.
 \newblock [cit. 22.4.2013] \\
-  http://allaboutwindowsphone.com/flow/item/15887\_Ease\_of\_access\_settings\_improv.php.
+  http://allaboutwindowsphone.com/flow/item/\\15887\_Ease\_of\_access\_settings\_improv.php.
 
 \bibitem{explore_by_touch}
 {\em Explore by touch}.
@@ -180,7 +180,7 @@
 \bibitem{win_calendar}
 {\em How to access calendar data for Windows Phone}.
 \newblock [cit. 22.4.2013] \\
-  http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh286421(v=vs.105).aspx.
+  http://msdn.microsoft.com/en-us/library/windowsphone/develop/\\hh286421(v=vs.105).aspx.
 
 \bibitem{android_profile}
 {\em How to check if phone is mute, vibrate or loud in android}.
@@ -202,7 +202,7 @@
 \bibitem{apple_listener}
 {\em Introduction to Calendars and Reminders}.
 \newblock [cit. 22.4.2013] \\
-  http://developer.apple.com/library/ios/\#documentation/DataManagement/Conceptual/EventKitProgGuide/Introduction/Introduction.html.
+  http://developer.apple.com/library/ios/\#documentation/\\DataManagement/Conceptual/EventKitProgGuide/Introduction/\\Introduction.html.
 
 \bibitem{ios_jailbreak}
 {\em iOS jailbreaking}.

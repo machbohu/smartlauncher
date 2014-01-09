@@ -6,6 +6,11 @@ import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.provider.Settings;
 
+/**
+ * Providing informations about phone state.
+ * 
+ * @author machbohu
+ */
 public class PhoneStateManager {
 	private static Context context;
 	private static LocationManager locManager;

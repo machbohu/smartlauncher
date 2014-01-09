@@ -3,6 +3,8 @@ package cz.cvut.fel.managers;
 import java.util.LinkedList;
 import java.util.List;
 
+import mobi.intuitit.android.p.launcher.Launcher;
+
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -10,6 +12,14 @@ import android.content.Context;
 import android.content.Intent;
 import cz.cvut.fel.listeners.LaunchListener;
 
+/**
+ * Manage launch application info and register launch listeners that
+ * should be informed about fired event.
+ * 
+ * Listen for application launch in {@link Launcher#startActivitySafely}.
+ * 
+ * @author machbohu
+ */
 public class LaunchManager{
 	private static List<LaunchListener> listeners = new LinkedList<LaunchListener>();
 	private static Intent lastIntent;

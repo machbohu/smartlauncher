@@ -64,6 +64,9 @@ public class App extends Entity implements Comparable<App> {
 		return time >= (time_from - Constants.HALF_AN_HOUR) && time <= time_to;
 	}
 
+	/**
+	 * Launcher screen sorting
+	 */
 	@Override
 	public int compareTo(App another) {
 		if(getPriority() < another.getPriority()){
@@ -73,6 +76,10 @@ public class App extends Entity implements Comparable<App> {
 		}else{
 			return 1;
 		}
+	}
+	
+	public String toString(){
+		return this.name;
 	}
 	
 // ---------- PRIVATE --------------------------------------

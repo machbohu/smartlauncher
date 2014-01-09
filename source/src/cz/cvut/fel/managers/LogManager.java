@@ -19,6 +19,12 @@ import cz.cvut.fel.models.log.LogRecord;
 import cz.cvut.fel.models.log.LogWifi;
 import cz.cvut.fel.models.log.PhoneSettings;
 
+/**
+ * LogManager listen for specific events ({@link LaunchManager}, {@link TimeManager}) 
+ * and is responsible for logging phone state when those are fired.
+ * 
+ * @author machbohu
+ */
 public class LogManager implements LaunchListener, TimeListener{
     private static final String LOG_TAG = "LogManager";
     private static final LogManager instance = new LogManager();
@@ -43,13 +49,13 @@ public class LogManager implements LaunchListener, TimeListener{
         
         // Register LogManager for event listening
         LaunchManager.addListener(instance);
-//      TimeManager.addListener(this, 1);
+//      TimeManager.addListener(instance, 1);
 	}
 	
 	@Override
 	public void onAppLaunch(Intent i) {
 		// reset timer countdown for this listener
-		TimeManager.resetTimer(this);
+		TimeManager.resetTimer(instance);
 		
 		saveLogRecord();
 	}

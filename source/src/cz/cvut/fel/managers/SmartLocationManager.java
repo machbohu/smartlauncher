@@ -6,6 +6,11 @@ import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
 
+/**
+ * Providing informations about current location.
+ * 
+ * @author machbohu
+ */
 public class SmartLocationManager {
 	private static Context context;
 	private static LocationManager locationManager; 

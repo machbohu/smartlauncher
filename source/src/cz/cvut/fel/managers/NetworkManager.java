@@ -10,6 +10,11 @@ import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 
+/**
+ * NetworkManager provides information about network state (BTS, Wi-Fi)
+ * 
+ * @author machbohu
+ */
 public class NetworkManager {
 	private static Context context;
 	private static TelephonyManager telephonyManager;

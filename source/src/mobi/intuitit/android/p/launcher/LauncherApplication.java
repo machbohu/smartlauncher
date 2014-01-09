@@ -26,7 +26,6 @@ import com.roscopeco.ormdroid.ORMDroidApplication;
 
 import cz.cvut.fel.managers.Interpreter;
 import cz.cvut.fel.managers.LaunchManager;
-import cz.cvut.fel.managers.LogManager;
 import cz.cvut.fel.managers.NetworkManager;
 import cz.cvut.fel.managers.PeriodicActivityManager;
 import cz.cvut.fel.managers.PhoneStateManager;

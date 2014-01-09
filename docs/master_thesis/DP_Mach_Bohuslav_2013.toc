@@ -22,8 +22,8 @@
 \contentsline {subsection}{\numberline {1.2.3}Cena koncov\IeC {\'y}ch za\IeC {\v r}\IeC {\'\i }zen\IeC {\'\i }}{15}{subsection.1.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Dostupn\IeC {\'e} aplikace}{17}{subsection.1.2.4}
 \contentsline {subsection}{\numberline {1.2.5}Mo\IeC {\v z}nosti a omezen\IeC {\'\i }}{19}{subsection.1.2.5}
-\contentsline {subsection}{\numberline {1.2.6}V\IeC {\'y}sledky \IeC {\v r}e\IeC {\v s}er\IeC {\v s}e}{24}{subsection.1.2.6}
-\contentsline {section}{\numberline {1.3}Architektura syst\IeC {\'e}mu}{24}{section.1.3}
+\contentsline {subsection}{\numberline {1.2.6}V\IeC {\'y}sledky re\IeC {\v s}er\IeC {\v s}e}{24}{subsection.1.2.6}
+\contentsline {section}{\numberline {1.3}Architektura syst\IeC {\'e}mu}{25}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}Senzory}{25}{subsection.1.3.1}
 \contentsline {subsection}{\numberline {1.3.2}Aktivita OS}{27}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Data ze senzor\IeC {\r u}}{27}{subsection.1.3.3}
@@ -40,6 +40,7 @@
 \contentsline {subsection}{\numberline {1.6.1}Manager}{40}{subsection.1.6.1}
 \contentsline {subsection}{\numberline {1.6.2}Listener}{40}{subsection.1.6.2}
 \contentsline {subsection}{\numberline {1.6.3}Princip}{40}{subsection.1.6.3}
+\contentsline {subsection}{\numberline {1.6.4}Vlastnosti}{41}{subsection.1.6.4}
 \contentsline {section}{\numberline {1.7}Ukl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } log\IeC {\r u}}{42}{section.1.7}
 \contentsline {section}{\numberline {1.8}Vyhled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i } pravidelnost\IeC {\'\i }}{43}{section.1.8}
 \contentsline {section}{\numberline {1.9}Filtrov\IeC {\'a}n\IeC {\'\i } pravidelnost\IeC {\'\i }}{43}{section.1.9}

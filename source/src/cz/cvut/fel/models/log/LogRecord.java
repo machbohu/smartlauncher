@@ -31,7 +31,7 @@ public class LogRecord extends Entity implements LogListener {
 		return null;
 	}
 	
-	public WifiNetworkL getActiveWifi(){
+	public WifiNetworkL getWifi(){
 		for(LogWifi logWifi : LogWifi.filter("log", this)){
 			if(logWifi.wifi.connected == true) return logWifi.wifi; 
 		}

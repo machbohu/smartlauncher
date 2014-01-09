@@ -82,7 +82,7 @@ Warning--to sort, need author, organization, or key in github_project
 Warning--to sort, need author, organization, or key in grid_view
 You've used 77 entries,
             2118 wiz_defined-function locations,
-            728 strings with 14624 characters,
+            728 strings with 14642 characters,
 and the built_in function-call counts, 11112 in all, are:
 = -- 1078
 > -- 77

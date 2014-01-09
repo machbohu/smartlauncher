@@ -37,6 +37,7 @@ import mobi.intuitit.android.content.LauncherIntent;
 import mobi.intuitit.android.content.LauncherMetadata;
 import mobi.intuitit.android.p.launcher.CellLayout.CellInfo;
 import mobi.intuitit.android.p.launcher.ScreenLayout.onScreenChangeListener;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -76,6 +77,7 @@ import android.os.MessageQueue;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.provider.LiveFolders;
+import android.service.wallpaper.WallpaperService;
 import android.text.Selection;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
@@ -357,7 +359,8 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         mRestoring = false;
     }
 
-    private void setWallpaperDimension() {
+    @SuppressLint("ServiceCast")
+	private void setWallpaperDimension() {
         WallpaperManager wpm = (WallpaperManager) getSystemService(WALLPAPER_SERVICE);
 
         Display display = getWindowManager().getDefaultDisplay();
@@ -456,13 +459,11 @@ public final class Launcher extends Activity implements View.OnClickListener, On
     
     /**
      * [SmartLauncher]
-     * Iterate over given applications names and add them to the screen
+     * Iterate over given applications' names and add them to the screen
      * according to order in List<String>. Items are not stored permanently.
      * 
      * TODO remove permanently added items (applications, widgets ...)
      * from database (i.e. user add icon on default screen)
-	 * 
-     * @param appNames - List of applications names, i.e. com.android.contacts
      */
     private void rewriteDefaultScreen(){
     	final int COLUMN_CNT = 4;
@@ -1538,7 +1539,8 @@ public final class Launcher extends Activity implements View.OnClickListener, On
         }
     }
 
-    private void startWallpaper() {
+    @SuppressLint("ServiceCast")
+	private void startWallpaper() {
         final Intent pickWallpaper = new Intent(Intent.ACTION_SET_WALLPAPER);
         Intent chooser = Intent.createChooser(pickWallpaper, getText(R.string.chooser_wallpaper));
         WallpaperManager wm = (WallpaperManager) getSystemService(Context.WALLPAPER_SERVICE);
