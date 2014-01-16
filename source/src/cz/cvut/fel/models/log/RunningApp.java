@@ -13,7 +13,7 @@ public class RunningApp extends Entity {
 	public static RunningApp get(String name, boolean launched){
 		return Entity.query(RunningApp.class).where(
 				Query.and(Query.eql("name", name), 
-						Query.eql("launched", false))).execute();
+						Query.eql("launched", launched))).execute();
 	}
 	
 	public static List<RunningApp> filter(String col, Object val){

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+import mobi.intuitit.android.p.launcher.LauncherApplication;
 import android.content.Intent;
 import android.util.Log;
 
@@ -23,6 +24,8 @@ import cz.cvut.fel.models.log.PhoneSettings;
  * LogManager listen for specific events ({@link LaunchManager}, {@link TimeManager}) 
  * and is responsible for logging phone state when those are fired.
  * 
+ * Initialized in {@link LauncherApplication#initManagers}
+ * 
  * @author machbohu
  */
 public class LogManager implements LaunchListener, TimeListener{
@@ -31,14 +34,6 @@ public class LogManager implements LaunchListener, TimeListener{
 	private List<Class<? extends LogListener>> listeners = new LinkedList<Class<? extends LogListener>>();
 
 	private LogManager(){
-		init();
-	}
-	
-	public static LogManager getInstance(){
-		return instance;
-	}
-	
-	private void init(){
 		// Add LogListener classes for future instantiating 
         // and listening on LogManager's events
         addListener(BTS.class);
@@ -46,10 +41,10 @@ public class LogManager implements LaunchListener, TimeListener{
         addListener(LogApp.class);
         addListener(LogWifi.class);
         addListener(PhoneSettings.class);
-        
-        // Register LogManager for event listening
-        LaunchManager.addListener(instance);
-//      TimeManager.addListener(instance, 1);
+	}
+	
+	public static LogManager getInstance(){
+		return instance;
 	}
 	
 	@Override

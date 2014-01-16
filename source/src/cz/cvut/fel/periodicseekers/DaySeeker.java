@@ -36,6 +36,11 @@ public class DaySeeker implements PeriodicSeeker {
 			Map<String, Integer> daysCnt = new HashMap<String, Integer>();
 			// Get all Logs linked with launched application
 			List<LogApp> logApps = LogApp.filter("app", app);
+			
+			if(logApps.isEmpty()){
+				continue;
+			}
+			
 			long from = logApps.get(0).log.date;
 			long to = logApps.get(logApps.size()-1).log.date;
 			double weeks = (to - from)/60/60/24/7;
@@ -62,22 +67,28 @@ public class DaySeeker implements PeriodicSeeker {
 						day = new Day();
 						day.name = key;
 						day.save();
+					}else{
+						boolean already_exists = false;
+						
+						for(App a : App.filter("name", app.name)){
+							if(!AppDay.filter("app", a, "day", day).isEmpty()){
+								already_exists = true;
+								break;
+							}
+						}
+						
+						if(already_exists){
+							continue;
+						}
 					}
 					
 					App a = new App();
 					a.name = app.name;
-					a.save();
-					
-					// If this linkage (app <-> day) is not present in DB, save it
-					if(AppDay.filter("app", a, "day", day).isEmpty()){
-						AppDay appDay = new AppDay();
-						appDay.app = a;
-						appDay.day = day;
-						// Should save also app and day
-						appDay.save();
-					}else{
-						a.delete();
-					}
+					AppDay appDay = new AppDay();
+					appDay.app = a;
+					appDay.day = day;
+					// Should save also app and day
+					appDay.save();
 				}
 			}
 		}

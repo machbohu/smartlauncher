@@ -26,6 +26,7 @@ import com.roscopeco.ormdroid.ORMDroidApplication;
 
 import cz.cvut.fel.managers.Interpreter;
 import cz.cvut.fel.managers.LaunchManager;
+import cz.cvut.fel.managers.LogManager;
 import cz.cvut.fel.managers.NetworkManager;
 import cz.cvut.fel.managers.PeriodicActivityManager;
 import cz.cvut.fel.managers.PhoneStateManager;
@@ -69,9 +70,14 @@ public class LauncherApplication extends Application {
         SmartLocationManager.init(c);
         // Initiate LaunchManager
         LaunchManager.init(c);
+        
         // Initiate LogManager
-//        LogManager logm = LogManager.getInstance();
-//        logm.init();
+        LogManager logm = LogManager.getInstance();
+        // Register to LaunchManager for event listening
+        LaunchManager.addListener(logm);
+        // Register to TimeManager for event listening
+//      TimeManager.addListener(logm, 1800);
+        
         // Initialize Interpreter
         Interpreter.init();
         // Initialize PeriodicActivityManager

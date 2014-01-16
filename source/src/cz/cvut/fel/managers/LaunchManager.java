@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import mobi.intuitit.android.p.launcher.Launcher;
-
+import mobi.intuitit.android.p.launcher.LauncherApplication;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -17,6 +17,8 @@ import cz.cvut.fel.listeners.LaunchListener;
  * should be informed about fired event.
  * 
  * Listen for application launch in {@link Launcher#startActivitySafely}.
+ * 
+ * Initialized in {@link LauncherApplication#initManagers}
  * 
  * @author machbohu
  */

@@ -3,6 +3,7 @@ package cz.cvut.fel.models.log;
 import java.util.List;
 
 import com.roscopeco.ormdroid.Entity;
+import com.roscopeco.ormdroid.Query;
 
 import cz.cvut.fel.listeners.LogListener;
 import cz.cvut.fel.managers.TimeManager;
@@ -20,6 +21,10 @@ public class LogRecord extends Entity implements LogListener {
 	public long time;
 	public String day;
 	public String period;
+	
+	public static List<LogRecord> getAll(){
+		return Query.query(LogRecord.class).executeMulti();
+	}
 	
 	@Override
 	public List<Entity> onLogSave(LogRecord lr) {

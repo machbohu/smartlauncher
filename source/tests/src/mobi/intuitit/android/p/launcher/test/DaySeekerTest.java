@@ -35,11 +35,11 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		app.launched = true;
 		app.save();
 		toBeDeleted.add(app);
-//		RunningApp app2 = new RunningApp();
-//		app2.name = "Test2";
-//		app2.launched = true;
-//		app2.save();
-//		toBeDeleted.add(app2);
+		RunningApp app2 = new RunningApp();
+		app2.name = "Test2";
+		app2.launched = true;
+		app2.save();
+		toBeDeleted.add(app2);
 		// Log entry app <-> log
 		LogRecord log = new LogRecord();
 		log.date = 1385856000;
@@ -50,6 +50,17 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		la.app = app;
 		la.log = log;
 		la.save();
+		// Log entry app2 <-> log
+		log = new LogRecord();
+		log.date = 1385856000;
+		log.day = "Monday";
+		log.save();
+		toBeDeleted.add(log);
+		la = new LogApp();
+		la.app = app2;
+		la.log = log;
+		la.save();
+		toBeDeleted.add(la);
 		toBeDeleted.add(la);
 		// Log entry app <-> log
 		log = new LogRecord();
@@ -61,7 +72,6 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		la.app = app;
 		la.log = log;
 		la.save();
-		toBeDeleted.add(la);
 		// Log entry app <-> log
 		log = new LogRecord();
 		log.date = 1386201600;
@@ -84,6 +94,17 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		la.log = log;
 		la.save();
 		toBeDeleted.add(la);
+		// Log entry app2 <-> log
+		log = new LogRecord();
+		log.date = 1388361600;
+		log.day = "Monday";
+		log.save();
+		toBeDeleted.add(log);
+		la = new LogApp();
+		la.app = app2;
+		la.log = log;
+		la.save();
+		toBeDeleted.add(la);
 
 	}
 	
@@ -102,13 +123,13 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		
 		DaySeeker ds = DaySeeker.getInstance();
 		ds.seek();
-		// Check there is no duality created
-//		ds.seek();
+		// Try if there will be some duality created
+		ds.seek();
 		
 		List<App> apps = App.filter("name", "Test1");
 		toBeDeleted.addAll(apps);
-//		List<App> apps2 = App.filter("name", "Test2");
-//		toBeDeleted.addAll(apps2);
+		List<App> apps2 = App.filter("name", "Test2");
+		toBeDeleted.addAll(apps2);
 		List<Day> days = Day.filter("Monday");
 		toBeDeleted.addAll(days);
 		List<AppDay> ads = AppDay.filter("app", apps.get(0), "day", days.get(0));
@@ -116,7 +137,7 @@ public class DaySeekerTest extends ApplicationTestCase<LauncherApplication> {
 		
 		assertFalse("No periodic Day found", days.isEmpty());
 		assertEquals("Test1 app rows count", 1, apps.size());
-//		assertEquals("Test2 app rows count", 0, apps2.size());
+		assertEquals("Test2 app rows count", 0, apps2.size());
 		assertEquals("Monday day rows count", 1, days.size());
 		assertEquals("App <-> Day link count", 1, ads.size());
 	}
